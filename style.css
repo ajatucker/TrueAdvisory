@@ -141,45 +141,30 @@ nav .menu{
   background: white;
 }
 
-.center .bottom {
-    
-    position: relative;
-    width: 100%;
-    margin-top: 20px;
-    padding: 5%;
-    
+.center .row {
+  display: flex;
 }
 
-.center .bottom h1{
-  
-    padding-right: 60%;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    color: #fff;
-    font-size: 50px;
-    font-weight: 600;
-    text-align: left;
-  }
+.center .column {
+  flex: 50%;
+  padding: 10px;
 
-.center .bottom p{
-  
-    padding-right: 60%;
-    padding-top: 5%;
-    padding-bottom: 10%;
-    color: white;
-    font-size: 25px;
-    font-weight: 400;
-    text-align: left;
-  }  
+}
 
-  .center .bottom h2{
-    
-    padding-left: 60%;
-    padding-top: 10%;
-    padding-bottom: 5%;
-    color: #fff;
-    font-size: 50px;
-    font-weight: 600;
-    text-align: right;
-  }
+.center .column h1{
+  background-color: #fccc01;
+  padding: 5%;
+  color: #fff;
+  font-size: 40px;
+  font-weight: 600;
+  text-align: left;
+}
 
+.center .column p{
+  background-color: #fccc01;
+  padding: 5%;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: left;
+}
