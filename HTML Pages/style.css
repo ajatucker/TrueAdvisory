@@ -84,6 +84,11 @@ nav .menu{
    color: black;
 }
 
+.discussions ul li a{
+  color: #00B2A9;
+  font-size: 20px;
+}
+
 .center{
   position: absolute;
   background-color:#062757;
@@ -175,6 +180,13 @@ nav .menu{
     font-size: 50px;
     font-weight: 600;
     text-align: right;
+  }
+
+  .center .bottom h3{
+    color: #fff;
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
   }
 
   .umdlogo

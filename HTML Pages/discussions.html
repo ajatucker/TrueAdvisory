@@ -9,86 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
    </head>
 
-<!-- Navbar -->
-
-
-<!-- Header -->
-<header class="w3-container w3-center">
-  <h1 class="w3-margin w3-jumbo w3-text-white">DISCUSSIONS</h1>
-  <img src = "discussionspic.png" alt="Discussion clip art">
-  <p class="w3-xlarge w3-text-white">Get Connected With Your Classmates and Tutors</p>
-  <button class="w3-button w3-yellow w3-padding-large w3-large w3-margin-top">Find a Discussion</button>
-</header>
-
-<!-- First Grid -->
-<div class="w3-row-padding w3-white w3-padding-64 w3-container">
-  <div class="w3-content">
-    <div class="w3-center">
-      <h1>True Advisory Discussions</h1>
-      <h5 class="w3-padding-32">True Advisory Discussions are a great way to stay connected with your classmates, tutors and TAs outside of the
-        classroom.  You can search for classes you are currently enrolled in and join conversations with your classmates.  You can also ask tutors
-        or TAs questions, stay up to date on class deadlines, and have private discussions for group projects.  You will never have to worry about 
-        missing an assignment deadline or waiting a week to have your question answered again!
-      </h5>
-
-      <p class="w3-text-grey">~~ANY ADDITIONAL INFO~~</p>
-    </div>
-    <div class="w3-third w3-center">
-    </div>
-  </div>
-</div>
-
-<!-- Second Grid -->
-<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
-  <div class="w3-content">
-    <div class="w3-third w3-center">
-    </div>
-
-    <div class="w3-center">
-      <h1>Course Discussions</h1>
-      <p class="w3-text-blue">CIS 435 - CLASS DISCUSSION</p>
-      <p class="w3-text-blue">CIS 316 - CLASS DISCUSSION</p>
-      <p class="w3-text-blue">MATH 115 - HOMEWORK HELP</p>
-      <p class="w3-text-blue">See More Discussions...</p>
-    </div>
-  </div>
-</div>
-
-<div class="w3-container w3-yellow w3-center w3-padding-64">
-    <h1 class="w3-margin w3-xlarge">GO BLUE!</h1>
-</div>
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-  <div class="w3-xlarge w3-padding-32">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
- </div>
- <p></p>
-</footer>
-
-<script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
 <body>
   <nav>
     <div class="menu">
       <ul>
         <li><a href="site.html">Home</a></li>
         <li><a href="classes.html">Courses</a></li>
-        <li><a href="#">Tutoring</a></li>
+        <li><a href="tutors.html">Tutoring</a></li>
         <li><a href="discussions.html">Discussions</a></li>
         <li><a href="#">Other Resources</a></li>
         <li><a href="#">About Us</a></li>
@@ -99,29 +26,31 @@ function myFunction() {
     </div>
   </nav>
   <div class="center">
-    <div class="title">TRUE ADVISORY</div>
-    <div class="picture"> <img src="images/UMDLOGO.png" alt="UMD logo"></div>
-    <div class="sub_title">Your One-Stop Shop for Tutoring, Advising, and Course Discussions</div>
+    <div class="title">True ADVISORY DISCUSSIONS</div>
+    <div class="sub_title">
+      True Advisory Discussions are a great way to stay connected with your classmates, tutors and TAs outside of the
+          classroom.  You can search for classes you are currently enrolled in and join conversations with your classmates.  You can also ask tutors
+          or TAs questions, stay up to date on class deadlines, and have private discussions for group projects.  You will never have to worry about 
+          missing an assignment deadline or waiting a week to have your question answered again!
+          Want to join in on the discussion? View the discussions below or get started now!</div>
     <div class="btns">
       <button>Get Started</button>
     </div>
-    <div class="row"> 
-      <div class="column"> 
-        <h1>Welcome to True Advisory</h1>
-        <p>True Advisory is a one-stop shop for tutoring and course discussion. Add your courses to your course list, 
-            and you can see the course discussion and available resources for that course. Users can submit updates to 
-            the page if the information is outdated, especially so students can stay up-to-date with what they need to 
-            succeed. There are a few problems that True Advisory seeks to solve. Currently important resources are scattered 
-            around the main UMD website. Depending on the major, there is often a lack of resources. Tutoring is scarce, 
-            and it can be hard to find help.</p>
+    <div class="display-flex-center">
+      <div class= "bottom">
+        <h3>Course Discussions</h3>
+        <div class="discussions">
+          <ul>
+            <li><a href="#">Disciss CIS 435</a></li>
+            <li><a href="#">Disciss CIS 316</a></li>
+            <li><a href="#">Disciss MATH 115</a></li>
+            <li><a href="#">Discussions</a></li>
+            <li><a href="#">Other Resources</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
       </div>
-    
-    <div class="column"> 
-      <img src = "images/schoolpic.png" alt="School">
-    </div>
-    </div>
-  
-  
+    </div>  
   </div>
 </body>
 
