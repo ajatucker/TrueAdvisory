@@ -183,7 +183,11 @@ nav .menu{
   }
 
 .main {
+<<<<<<< Updated upstream
    background: #f8f8f8;
+=======
+  background: #0026ff;
+>>>>>>> Stashed changes
   padding: 150px 0; }
 
 .clear {
@@ -197,7 +201,11 @@ body {
   font-weight: 400;
   font-family: Poppins; }
 
+<<<<<<< Updated upstream
 .main .container {
+=======
+.center .container {
+>>>>>>> Stashed changes
   width: 900px;
   background: rgb(255, 255, 255);
   margin: 0 auto;
@@ -212,7 +220,11 @@ body {
   -o-border-radius: 20px;
   -ms-border-radius: 20px; }
 
+<<<<<<< Updated upstream
 .main .display-flex {
+=======
+.center .display-flex {
+>>>>>>> Stashed changes
   justify-content: space-between;
   -moz-justify-content: space-between;
   -webkit-justify-content: space-between;
@@ -224,7 +236,11 @@ body {
   -o-align-items: center;
   -ms-align-items: center; }
 
+<<<<<<< Updated upstream
 .main .display-flex-center {
+=======
+.center .display-flex-center {
+>>>>>>> Stashed changes
   justify-content: center;
   -moz-justify-content: center;
   -webkit-justify-content: center;
@@ -236,7 +252,11 @@ body {
   -o-align-items: center;
   -ms-align-items: center; }
 
+<<<<<<< Updated upstream
 .main .position-center {
+=======
+.center .position-center {
+>>>>>>> Stashed changes
   position: absolute;
   top: 50%;
   left: 50%;
@@ -246,6 +266,7 @@ body {
   -o-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%); }
 
+<<<<<<< Updated upstream
 .main .signup {
   margin-bottom: 150px; }
 
@@ -265,6 +286,25 @@ body {
 
 .main .signup-image {
   
+=======
+.center .signup {
+  margin-bottom: 150px; }
+
+.center .signup-content {
+  padding: 75px 0; }
+
+.center .signup-form, .signup-image, .signin-form, .signin-image {
+  width: 50%;
+  overflow: hidden; }
+
+.center .signup-image {
+  margin: 0 55px; }
+
+.center .form-title {
+  margin-bottom: 33px; }
+
+.center .signup-image {
+>>>>>>> Stashed changes
   margin-top: 45px; }
 
 figure {
@@ -496,6 +536,17 @@ label.valid {
     -webkit-transform: scale(1.3) translateZ(0);
     transform: scale(1.3) translateZ(0); }
 
+<<<<<<< Updated upstream
+=======
+.zmdi-facebook {
+  background: #3b5998; }
+
+.zmdi-twitter {
+  background: #1da0f2; }
+
+.zmdi-google {
+  background: #e72734; }
+>>>>>>> Stashed changes
 
 .signin-form {
   margin-right: 90px;
@@ -578,5 +629,9 @@ label.valid {
 
   .social-label {
     margin-right: 0px;
+<<<<<<< Updated upstream
     margin-bottom: 10px; } }
 
+=======
+    margin-bottom: 10px; } }
+>>>>>>> Stashed changes
