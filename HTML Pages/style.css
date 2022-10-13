@@ -199,6 +199,16 @@ body {
   font-weight: 400;
   font-family: Poppins; }
 
+  .left-text-align{
+    float:left;
+  }
+
+  .right-img-align{
+    float: right;
+    width: 75%;
+    height:  75%;
+  }
+
 
 .center .container {
   width: 900px;
