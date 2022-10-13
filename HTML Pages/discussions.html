@@ -1,43 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>True Advisory - Discussions</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-</style>
-</head>
-<body style="background-color: rgba(6,39,87,255);">
+  <head>
+    <title>True Advisory - Discussions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!------<title> Website Layout | CodingLab</title>------>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+   </head>
 
 <!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-card w3-yellow w3-left-align w3-large;>
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-text-black">Home</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-text-black">Courses</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-text-black">Tutoring</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Discussions</a>
-  </div>
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Courses</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Tutoring</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Discussions</a>
-  </div>
-</div>
 
 <!-- Header -->
-<header class="w3-container w3-center" style="padding:128px 16px">
+<header class="w3-container w3-center">
   <h1 class="w3-margin w3-jumbo w3-text-white">DISCUSSIONS</h1>
-  <img src = "discussionspic.png" alt="Discussion clip art" style="width:379px;height:276px;">
+  <img src = "discussionspic.png" alt="Discussion clip art">
   <p class="w3-xlarge w3-text-white">Get Connected With Your Classmates and Tutors</p>
   <button class="w3-button w3-yellow w3-padding-large w3-large w3-margin-top">Find a Discussion</button>
 </header>
@@ -67,7 +45,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
 
     <div class="w3-center">
-      <h1>Open Discussions</h1>
+      <h1>Course Discussions</h1>
       <p class="w3-text-blue">CIS 435 - CLASS DISCUSSION</p>
       <p class="w3-text-blue">CIS 316 - CLASS DISCUSSION</p>
       <p class="w3-text-blue">MATH 115 - HOMEWORK HELP</p>
@@ -90,7 +68,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
  </div>
- <p>Poweblue by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+ <p></p>
 </footer>
 
 <script>
@@ -104,6 +82,47 @@ function myFunction() {
   }
 }
 </script>
-
+<body>
+  <nav>
+    <div class="menu">
+      <ul>
+        <li><a href="site.html">Home</a></li>
+        <li><a href="classes.html">Courses</a></li>
+        <li><a href="#">Tutoring</a></li>
+        <li><a href="discussions.html">Discussions</a></li>
+        <li><a href="#">Other Resources</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+      <ul>
+        <li><b><a href="/index.html" class="login_button">Login</a></li></b>
+      </ul>
+    </div>
+  </nav>
+  <div class="center">
+    <div class="title">TRUE ADVISORY</div>
+    <div class="picture"> <img src="images/UMDLOGO.png" alt="UMD logo"></div>
+    <div class="sub_title">Your One-Stop Shop for Tutoring, Advising, and Course Discussions</div>
+    <div class="btns">
+      <button>Get Started</button>
+    </div>
+    <div class="row"> 
+      <div class="column"> 
+        <h1>Welcome to True Advisory</h1>
+        <p>True Advisory is a one-stop shop for tutoring and course discussion. Add your courses to your course list, 
+            and you can see the course discussion and available resources for that course. Users can submit updates to 
+            the page if the information is outdated, especially so students can stay up-to-date with what they need to 
+            succeed. There are a few problems that True Advisory seeks to solve. Currently important resources are scattered 
+            around the main UMD website. Depending on the major, there is often a lack of resources. Tutoring is scarce, 
+            and it can be hard to find help.</p>
+      </div>
+    
+    <div class="column"> 
+      <img src = "images/schoolpic.png" alt="School">
+    </div>
+    </div>
+  
+  
+  </div>
 </body>
+
 </html>
