@@ -13,23 +13,35 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <div class="menu">
-          <ul>
-            <li><a href="site.html">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Feedback</a></li>
-          </ul>
-          <ul>
-            <li><b><a href="signin.html" class="login_button">Login</a></li></b>
-          </ul>
-        </div>
-    </nav>
-
-    <div class="center">
-
+   
+    <div class="wrapper">
+        <div id="content">
+        <nav class="navbar rounded">
+            <div class="container-fluid">
+              <div class="menu">
+                <div class="row" style="width: 2500px">
+                  <div class="col-2">
+                    <img src="Images/UMDLOGO.png" alt="UMD logo" style="width:82px;height:59px;" class="center">
+                  </div>
+                  <div class="col-4">
+                    <ul>
+                      <li><a href="site.html">Home</a></li>
+                      <li><a href="#">About</a></li>
+                      <li><a href="#">Services</a></li>
+                      <li><a href="#">Contact</a></li>
+                      <li><a href="#">Feedback</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-3">
+                    <ul>
+                      <li><b><a href="signin.html" >Login</a></b></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        
         <!-- Sign up form -->
         <section class="signup">
             <div class="container">
@@ -69,3 +81,7 @@
                 </div>
             </div>
         </section>
+ 
+    </div>
+</body>
+</html>

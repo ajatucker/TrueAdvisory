@@ -27,8 +27,10 @@ a, a:hover, a:focus {
     border-radius:.45rem!important
 }
 
+
 .navbar {
-    padding: 15px 10px;
+    max-width: auto;
+    
     background:#062757;
     border: none;
     border-radius: 0;
@@ -49,13 +51,12 @@ a, a:hover, a:focus {
     margin: 40px 0;
 }
 
-.navbar .menu{
-  max-width: 1250px;
-  margin: auto;
+.menu{
+  width:auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  
 }
 
 .menu ul{
@@ -104,8 +105,6 @@ a, a:hover, a:focus {
     border-radius: 5px;
     transition: all 0.3s ease;
     background-color: #fccc01;
-    
-   
 }
 
 .menu ul li b a:hover{
@@ -123,6 +122,7 @@ a, a:hover, a:focus {
     width: 100%;
     align-items: stretch;
     perspective: 1500px;
+    padding: 0px; 
 }
 
 
@@ -207,7 +207,7 @@ a.download {
 }
 
 a.article, a.article:hover {
-    background: #fccc01 !important;
+    background: #fccc01; !important;
     color: #fff !important;
 }
 
@@ -482,15 +482,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-weight: 400;
     font-family: Poppins; }
   
-.home{
-  width: 1800px;
-  padding:0%;
-
-}
-
-
   .container {
-    width: 900px;
+    max-width: auto;
     background: #fff;
     margin: 0 auto;
     -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
@@ -504,8 +497,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -o-border-radius: 20px;
     border-radius: 20px; 
     margin-top: 200px;
-
 }
+
   
   .display-flex {
     -ms-justify-content: space-between;

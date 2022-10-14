@@ -25,25 +25,30 @@
 
         <!-- Page Content Holder -->
         <div id="content">
-
-            <nav class="navbar navbar-expand-lg rounded center">
-              <div class="container-fluid home">
-                <div class="row">
-                      <div class="col-md-8">
-                      <div class="menu">
-                        <img src="Images/UMDLOGO.png" alt="UMD logo" style="width:89px; height:59px;">
-                        <ul>
-                          <li><a href="site.html">Home</a></li>
-                          <li><a href="#">Courses</a></li>
-                          <li><a href="#">Discussions</a></li>
-                          <li><a href="#">Tutoring</a></li>
-                          <li><a href="#">About</a></li>
-                          <li><b><a href="signin.html" class="login_button">Login</a></li></b>
-                        </ul>
-                      </div>
+            <nav class="navbar rounded">
+              <div class="container-fluid">
+                <div class="menu">
+                  <div class="row" style="width: 2500px">
+                    <div class="col-2">
+                      <img src="Images/UMDLOGO.png" alt="UMD logo" style="width:82px;height:59px;" class="center">
+                    </div>
+                    <div class="col-8">
+                      <ul>
+                        <li><a href="site.html">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Feedback</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-2">
+                      <ul>
+                        <li><b><a href="signin.html" >Login</a></b></li>
+                      </ul>
                     </div>
                   </div>
                 </div>
+              </div>
             </nav>
             
             <h1>WELCOME TO TRUE ADVISORY</h1>
@@ -67,6 +72,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
 </body>
 
 </html>
