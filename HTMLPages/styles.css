@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background-color:#062757;
 }
 
 p {
@@ -206,7 +206,6 @@ a.article, a.article:hover {
 }
 
 
-
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -217,9 +216,36 @@ a.article, a.article:hover {
     transition: all 0.3s;
 }
 
+#content h1{
+    margin-top: 20px;
+    color: #fff;
+    font-size: 75px;
+    font-weight: 600;
+    top: 25%;
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+#content p{
+    margin-top: 20px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 300;
+    top: 25%;
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+  }
+
 #content .btns{
   margin-top: 20px;
+  top: 25%;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
 }
+
 
 #content .btns button{
   background-color: #fccc01;
@@ -317,3 +343,16 @@ a.article, a.article:hover {
     }
 
 }
+
+/---------------------------------------------------
+    FOOTER
+-----------------------------------------------------/
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #00274C;
+    color: white;
+    text-align: center;
+  }
