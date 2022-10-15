@@ -207,7 +207,7 @@ a.download {
 }
 
 a.article, a.article:hover {
-    background: #fccc01; !important;
+    background: #fccc01 !important;
     color: #fff !important;
 }
 
@@ -363,6 +363,17 @@ a.article, a.article:hover {
         transform: rotate(-45deg) translate(1px, -1px);
     }
 
+}
+/*---------------------------------------------------
+    LISTING
+-----------------------------------------------------*/
+.list{
+  max-width: 200px;
+}
+
+.list ul li a{
+  color: #00B2A9;
+  font-size: 20px;
 }
 
 /*---------------------------------------------------

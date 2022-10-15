@@ -26,42 +26,64 @@
         <!-- Page Content Holder -->
         <div id="content">
 
-          <nav class="navbar rounded">
-            <div class="container-fluid">
-              <div class="menu">
-                <div class="row" style="width: 2500px">
-                  <div class="col-2">
-                    <img src="Images/UMDLOGO.png" alt="UMD logo" style="width:82px;height:59px;" class="center">
-                  </div>
-                  <div class="col-8">
-                    <ul>
-                      <li><a href="site.html">Home</a></li>
-                      <li><a href="#">About</a></li>
-                      <li><a href="#">Services</a></li>
-                      <li><a href="#">Contact</a></li>
-                      <li><a href="#">Feedback</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-2">
-                    <ul>
-                      <li><b><a href="signin.html" >Login</a></b></li>
-                    </ul>
+          <nav class="navbar navbar-expand-lg rounded center">
+            <div class="container-fluid home">
+              <div class="row">
+                    <div class="col-md-8">
+                    <div class="menu">
+                      <img src="Images/UMDLOGO.png" alt="UMD logo" style="width:89px; height:59px;">
+                      <ul>
+                        <li><a href="site.html">Home</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Discussions</a></li>
+                        <li><a href="#">Tutoring</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><b><a href="signin.html" class="login_button">Login</a></b></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
           </nav>
             
             <h1>TRUE ADVISORY COURSES</h1>
-            <img src="Images/logo.png" alt="UMD logo" style="width:288px;height:355px;margin-top:20px;" class="center">
+            <img src="Images/classespic.png" alt="UMD logo" style="width:288px;height:355px;margin-top:20px;" class="center">
             <div class="btns">
               <button>Get Started</button>
             </div>
-            <p>True Advisory Course views can help you access basic course information and overviews to make better enrollment decisisons.
-              Want to view available courses at the University of Michigan - Dearborn? View the course listing below or get started now!</p>
+            <p>
+              <p>Have you been frustrated trying to find information on a class you’re considering registering for? 
+            </p>
+            <div class="line"></div>
+            <p>Look no further - True Advisory Course views can help you access basic course information and overviews to make better enrollment decisions. Each course page, other than featuring a course overview, will display a list of tutors and a link to the class discussion. This information should be relatively up-to-date. 
+
+              Students can request information updates often that way information is as up-to-date as possible. To become an arbiter of information for the site, you must request admin access to help keep the site updated for future students. 
+              
+              Have any issues with the information provided in the course overview? Request to change it, and the admins will be notified. They will review the information and add any additional information at their discretion.
+              
+              Please note that admins have the discretion to delete accounts to punish bad behavior and bad actors. While this is a self-moderating community, any activity going against proper conduct as is defined by the University may result in the deletion of your account.
+            
+              </p>
+              <p>Want to view available courses at the University of Michigan - Dearborn? View the course listing below or get started now!</p>
             <div class="line"></div>
         </div>
-    </div>
+
+        
+      </div>
+      <div class="container-fluid">
+        <div class="center">
+          <div class="list">
+              <ul>
+                <li><a href="#">CIS 100</a></li>
+                <li><a href="#">CIS 200</a></li>
+                <li><a href="#">CIS 350</a></li>
+                <li><a href="#">CIS 427</a></li>
+                <li><a href="#">CIS 450</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -70,7 +92,7 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
+    <script>
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
