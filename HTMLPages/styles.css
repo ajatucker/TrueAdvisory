@@ -246,7 +246,7 @@ a.article, a.article:hover {
 }
 
 #content h1{
-    margin-top: 20px;
+    margin: 20px;
     color: #fff;
     font-size: 75px;
     font-weight: 600;
@@ -273,13 +273,14 @@ a.article, a.article:hover {
     FOOTER
 -----------------------------------------------------*/
 #content footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    top: 25%;
     width: 100%;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    color: white;
+    padding: 0 200px;
     text-align: center;
   }
   
