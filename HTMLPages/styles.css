@@ -205,7 +205,7 @@ a.download {
 }
 
 a.article, a.article:hover {
-    background: #fccc01; !important;
+    background: #fccc01 !important;
     color: #fff !important;
 }
 
@@ -377,8 +377,13 @@ a.article, a.article:hover {
     }
 
 }
-
-
+/*---------------------------------------------------
+   images
+-----------------------------------------------------*/
+.umdlogo{
+  width:82px;
+  height:59px;"
+}
 
 /*---------------------------------------------------
     SignIn and SignUp pages
