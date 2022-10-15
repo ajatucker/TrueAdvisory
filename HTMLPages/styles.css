@@ -213,11 +213,23 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-.center {
+#content .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+  }
+
+  #content .center ul{
+    margin-top: 20px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 300;
+    top: 25%;
+    width: 100%;
+    padding: 0 5px;
+    text-align: center;
+    list-style-position: inside;
   }
 
 #content {
@@ -382,7 +394,7 @@ a.article, a.article:hover {
 -----------------------------------------------------*/
 .umdlogo{
   width:82px;
-  height:59px;"
+  height:59px;
 }
 
 /*---------------------------------------------------
