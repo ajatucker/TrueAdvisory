@@ -285,7 +285,7 @@ a.article, a.article:hover {
   
 
 #content .btns{
-  margin-top: 20px;
+  margin-top: 40px;
   top: 25%;
   width: 100%;
   padding: 0 20px;
@@ -299,7 +299,7 @@ a.article, a.article:hover {
   width: 170px;
   border-radius: 5px;
   border: none;
-  margin: 0 10px;
+  margin: 0 20px;
   border: 2px solid white;
   font-size: 20px;
   font-weight: 500;
