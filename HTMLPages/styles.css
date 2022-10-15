@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color:#062757;
+    background-color:#00274C;
 }
 
 p {
@@ -27,11 +27,9 @@ a, a:hover, a:focus {
     border-radius:.45rem!important
 }
 
-
 .navbar {
     max-width: auto;
-    
-    background:#062757;
+    background:#00274C;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
@@ -259,6 +257,20 @@ a.article, a.article:hover {
     
   }
 
+  /*---------------------------------------------------
+    FOOTER
+-----------------------------------------------------*/
+#content footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 30px;
+    color: white;
+    text-align: center;
+  }
+  
+
 #content .btns{
   margin-top: 20px;
   top: 25%;
@@ -365,19 +377,7 @@ a.article, a.article:hover {
 
 }
 
-/*---------------------------------------------------
-    FOOTER
------------------------------------------------------*/
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #00274C;
-    color: white;
-    text-align: center;
-  }
-  
+
 
 /*---------------------------------------------------
     SignIn and SignUp pages
@@ -468,7 +468,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-size: 36px; }
   
   .main {
-    background: #062757;
+    background: #00274C;
     padding: 150px 0; }
   
   .clear {
@@ -478,7 +478,6 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-size: 13px;
     line-height: 1.8;
     color: #222;
-    background: #062757;
     font-weight: 400;
     font-family: Poppins; }
   
@@ -570,6 +569,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -o-border-radius: 5px;
     border-radius: 5px;
     margin-top: 25px;
+    margin-bottom: 25px;
+    
     cursor: pointer; }
     .form-submit:hover {
       background: #4292dc; }
@@ -790,6 +791,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
       width: auto; }
   
     .form-button {
+    
       text-align: center; }
   
     .signin-form {
