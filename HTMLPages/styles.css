@@ -421,6 +421,12 @@ a.article, a.article:hover {
   height:59px;
 }
 
+.logo{
+  width:288px;
+  height:355px;
+  margin-top:20px;
+}
+
 /*---------------------------------------------------
     SignIn and SignUp pages
 -----------------------------------------------------*/
