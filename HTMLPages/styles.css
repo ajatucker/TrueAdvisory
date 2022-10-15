@@ -271,6 +271,11 @@ a.article, a.article:hover {
 
   .course{
     color: #00274C;
+    font-size: 15pt;
+  }
+
+  .btn-padding{
+    padding-left: 25px;
   }
   
 
