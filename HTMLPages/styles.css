@@ -269,6 +269,14 @@ a.article, a.article:hover {
     
   }
 
+  .course{
+    color: #00274C;
+    font-size: 15pt;
+  }
+
+  .btn-padding{
+    padding-left: 25px;
+  }
   
 
   /*---------------------------------------------------
@@ -280,12 +288,10 @@ a.article, a.article:hover {
     color: #fff;
     font-size: 20px;
     font-weight: 300;
-    margin-left: auto;
-    margin-right: auto;
+    top: 25%;
     width: 100%;
     padding: 0 200px;
     text-align: center;
-    bottom: 10%
   }
   
 
