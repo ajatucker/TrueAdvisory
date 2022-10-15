@@ -29,7 +29,12 @@ a, a:hover, a:focus {
 
 .navbar {
     max-width: auto;
+<<<<<<< Updated upstream
     background:#00274C;
+=======
+    padding: 15px 10px;
+    background:#062757;
+>>>>>>> Stashed changes
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
@@ -50,7 +55,13 @@ a, a:hover, a:focus {
 }
 
 .menu{
+<<<<<<< Updated upstream
   width:auto;
+=======
+  max-width: auto;
+  
+  margin: auto;
+>>>>>>> Stashed changes
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -507,6 +518,12 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -o-border-radius: 20px;
     border-radius: 20px; 
     margin-top: 200px;
+<<<<<<< Updated upstream
+=======
+}
+.container-fluid{
+    padding: 0 !important;
+>>>>>>> Stashed changes
 }
 
   
