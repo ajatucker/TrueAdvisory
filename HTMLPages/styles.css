@@ -290,6 +290,89 @@ a.article, a.article:hover {
     margin: 20px;
    
   }
+
+
+  /* ---------------------------------------------------
+     USER PAGE CONTENT STYLE
+----------------------------------------------------- */
+#usercontent .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  color: #00274C;
+  background: #fff;
+}
+#usercontent .center h2{
+  margin: 20px;
+  font-size: 35px;
+  font-weight: 600;
+  top: 25%;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+}
+
+
+#usercontent .center ul{
+  margin-top: 20px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 300;
+  top: 25%;
+  width: 100%;
+  padding: 0 5px;
+  text-align: center;
+  list-style-position: inside;
+}
+
+#usercontent {
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+
+#usercontent image {
+  margin-top: 20px;
+  position: relative;
+  padding: 0 20px;
+}
+
+#usercontent h1{
+  margin: 20px;
+  color: #fff;
+  font-size: 75px;
+  font-weight: 600;
+  top: 25%;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+}
+
+#usercontent p{
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 300;
+  top: 25%;
+  width: 100%;
+  padding: 0 200px;
+  text-align: center;
+  
+}
+
+.usercourse{
+  color: #00274C;
+  font-size: 15pt;
+}
+
+.btn-default{
+  padding: 10px;
+  margin: 20px;
+ 
+}
   
 
   /*---------------------------------------------------
@@ -306,7 +389,21 @@ a.article, a.article:hover {
     padding: 0 200px;
     text-align: center;
   }
-  
+
+ #usercontent footer {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  background-color: #00274C;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  top: 25%;
+  width: 100%;
+  padding: 0 200px;
+  text-align: center;
+  border-radius:.45rem!important
+
+}
 
 #content .btns{
   margin-top: 40px;
