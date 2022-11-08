@@ -1,29 +1,32 @@
 <?php
 require('database.php');
 // Get ID
-$discussion_id = filter_input(INPUT_GET, 'discussionID', FILTER_VALIDATE_INT);
+$discussion_id = filter_input(INPUT_GET, 'discussion_id', FILTER_VALIDATE_INT);
 if ($discussion_id == NULL || $discussion_id == FALSE) {
-    $discussion_id = 1;
+    $discussion_id = 00;
 }
+
+$discussion_name = filter_input(INPUT_GET, 'discussionName');
+
 
 // Get all users
 $queryAllCategories = 'SELECT * FROM discussions';
-$statement2 = $db->prepare($queryAllCategories);
-$statement2->execute();
-$discussions = $statement2->fetchAll();
-$statement2->closeCursor();
+$statementMessage = $db->prepare($queryAllCategories);
+$statementMessage->execute();
+$discussions = $statementMessage->fetch();
+$statementMessage->closeCursor();
 
 
 $message_id = filter_input(INPUT_GET, 'messageID', FILTER_VALIDATE_INT);
 if ($message_id == NULL || $message_id == FALSE) {
-    $message_id = 1;
+    $message_id = 0;
 }
 
 // Get all users
 $queryAllCategories2 = 'SELECT * FROM messages';
 $statement3 = $db->prepare($queryAllCategories2);
 $statement3->execute();
-$message_id = $statement3->fetchAll();
+$message = $statement3->fetchAll();
 $statement3->closeCursor();
 
 
@@ -140,20 +143,19 @@ $statement3->closeCursor();
                         </div> 
                 </div>
             </nav>
-            <?php foreach ($discussions as $discussion)?>
-            <?php foreach ($message_id as $messageType)?>
+            <div class="center">
+                <h3>
+                    <?php echo $discussions['discussionName'];?>
+                </h3>
+            </div>
             <form action="/action_page.php">
+                <?php foreach ($message as $messageType)?>
                 <div class="course">
-                    <div class="center">
-                        <h3>
-                        <?php echo $discussion['discussionName'];?>
-                        </h3>
-                    </div>
-                    <?php echo $messageType['message'];?>
-                    <br>
-                    <div class="center btn-padding">
-                    <button type="button" class="btn btn-default">Add New Comment</button>
-                    </div>
+                        <?php echo $messageType['message'];?>
+                </div>
+                <?php endforeach; ?>
+                <div class="center btn-padding">
+                    <button type="button" class="btn btn-default">Add New Comment</button> 
                 </div>
             </form>
 
