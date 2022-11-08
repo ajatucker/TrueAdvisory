@@ -295,15 +295,14 @@ a.article, a.article:hover {
   /*---------------------------------------------------
     FOOTER
 -----------------------------------------------------*/
-#content footer {
-    margin-top: 60px;
-    margin-bottom: 20px;
-    color: #fff;
+#content credits {
+    margin: 200px;
+    color: #00274C;
     font-size: 20px;
     font-weight: 300;
     top: 25%;
-    width: 100%;
-    padding: 0 200px;
+    padding-left: 300px;
+  
     text-align: center;
   }
   
@@ -937,13 +936,13 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
 }
 
 .chat-room .kiri-side .user-head {
-    background: #2980b9;
+    background: #00274C;
     color: #FFFFFF;
     min-height: 70px;
     padding: 15px;
 }
 .chat-room .kanan-side .user-head {
-    background: #2980b9;
+    background: #00274C;
     color: #FFFFFF;
     min-height: 70px;
     padding: 10px;
@@ -966,7 +965,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
 }
 
 .chat-room-head {
-    background: #3498db;
+    background: #00274C;
     color: #FFFFFF;
     min-height: 70px;
     padding: 15px;
