@@ -1,5 +1,5 @@
 <?php
-require('database.php');
+require('./backend/database.php');
 // Get ID
 $discussion_id = filter_input(INPUT_GET, 'discussionID', FILTER_VALIDATE_INT);
 if ($discussion_id == NULL || $discussion_id == FALSE) {
@@ -82,38 +82,10 @@ $statement2->closeCursor();
             </p>
             <p>Want to join in on the discussion? View the active class discussions below or get started now!</p>
             <div class="line"></div>
-            <div class="center">
-              <h2>Available Discussions</h2>
-              <ul>
-                <li><a href="#">Discuss CIS 100</a></li>
-                <li><a href="#">Discuss CIS 200</a></li>
-                <li><a href="#">Discuss CIS 350</a></li>
-                <li><a href="#">Discuss CIS 427</a></li>
-                <li><a href="#">Discuss CIS 450</a></li>
-              </ul>
-            </div>
-            <div class="line"></div>
           </div>
         </div>
         <header>
-          <div class="collapse bg-dark" id="navbarHeader">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-8 col-md-7 py-4">
-                  <h4 class="text-white">About</h4>
-                  <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-                </div>
-                <div class="col-sm-4 offset-md-1 py-4">
-                  <h4 class="text-white">Contact</h4>
-                  <ul class="list-unstyled">
-                    <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                    <li><a href="#" class="text-white">Like on Facebook</a></li>
-                    <li><a href="#" class="text-white">Email me</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          
    
     
           <div class="album py-5 bg-light">
@@ -137,7 +109,7 @@ $statement2->closeCursor();
                     </div>
                   </div>
                 </div>
-            <?php endforeach; ?>
+              <?php endforeach; ?>
  
               </div>
  
