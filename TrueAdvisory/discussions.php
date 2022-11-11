@@ -81,13 +81,13 @@ $statement2->closeCursor();
             
             </p>
             <p>Want to join in on the discussion? View the active class discussions below or get started now!</p>
+            <div class="btns">
+              <button>Get Started</button>
+            </div>
             <div class="line"></div>
           </div>
         </div>
-        <header>
           
-   
-    
           <div class="album py-5 bg-light">
             <div class="container">
    
@@ -117,14 +117,9 @@ $statement2->closeCursor();
           </div>
    
                 <!-- Page Content Holder -->
-                <div id="content">
-       
-            <div class="btns">
-              <button>Get Started</button>
-            </div>
-            <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
-        </div>
-           
-   
-</body>
+              <div id="content">
+                  <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
+              </div>
+            
+  </body>
 </html>
