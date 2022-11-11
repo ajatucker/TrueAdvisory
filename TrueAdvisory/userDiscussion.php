@@ -1,5 +1,5 @@
 <?php
-require('database.php');
+require('backend/database.php');
 // Get ID
 $discussion_id = filter_input(INPUT_GET, 'discussion_id', FILTER_VALIDATE_INT);
 if ($discussion_id == NULL || $discussion_id == FALSE) {
@@ -9,12 +9,12 @@ if ($discussion_id == NULL || $discussion_id == FALSE) {
 $discussion_name = filter_input(INPUT_GET, 'discussionName');
 
 
-// Get all users
-$queryAllCategories = 'SELECT * FROM discussions';
-$statementMessage = $db->prepare($queryAllCategories);
-$statementMessage->execute();
-$discussions = $statementMessage->fetch();
-$statementMessage->closeCursor();
+
+$queryAllCategoriesDiscussions = 'SELECT * FROM discussions';
+$statementDiscussions = $db->prepare($queryAllCategoriesDiscussions);
+$statementDiscussions->execute();
+$discussions = $statementDiscussions->fetch();
+$statementDiscussions->closeCursor();
 
 
 $message_id = filter_input(INPUT_GET, 'messageID', FILTER_VALIDATE_INT);
@@ -22,12 +22,12 @@ if ($message_id == NULL || $message_id == FALSE) {
     $message_id = 0;
 }
 
-// Get all users
-$queryAllCategories2 = 'SELECT * FROM messages';
-$statement3 = $db->prepare($queryAllCategories2);
-$statement3->execute();
-$message = $statement3->fetchAll();
-$statement3->closeCursor();
+
+$queryAllCategoriesMessages = 'SELECT * FROM messages';
+$statementMessages = $db->prepare($queryAllCategoriesMessages);
+$statementMessages->execute();
+$message = $statementMessages->fetchAll();
+$statementMessages->closeCursor();
 
 
 
@@ -149,11 +149,14 @@ $statement3->closeCursor();
                 </h3>
             </div>
             <form action="/action_page.php">
-                <?php foreach ($message as $messageType)?>
                 <div class="course">
-                        <?php echo $messageType['message'];?>
+                        <?php 
+                            foreach ($message as $messageType){
+                                echo $messageType['message'], nl2br("\n") ;
+                            }
+                        ?>
                 </div>
-                <?php endforeach; ?>
+                
                 <div class="center btn-padding">
                     <button type="button" class="btn btn-default">Add New Comment</button> 
                 </div>

@@ -1,5 +1,5 @@
 <?php
-require('database.php');
+require('backend/database.php');
 // Get ID
 $discussion_id = filter_input(INPUT_GET, 'discussionID', FILTER_VALIDATE_INT);
 if ($discussion_id == NULL || $discussion_id == FALSE) {
