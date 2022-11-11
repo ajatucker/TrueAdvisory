@@ -35,7 +35,7 @@ if ($username == null || $username == false || $password == null
     <link rel="stylesheet" href="signupandsignin/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
    
