@@ -67,7 +67,6 @@ $statement2->closeCursor();
               </div>
             </div>
           </nav>
-
             <h1>TRUE ADVISORY DISCUSSIONS</h1>
             <img src="Images/discussionspic.png" alt="UMD logo" class="classordisimg center">
             <p>
@@ -81,48 +80,35 @@ $statement2->closeCursor();
             </p>
             <p>Want to join in on the discussion? View the active class discussions below or get started now!</p>
             
-            
+            <div class="btns">
+              <button>Get Started</button>
+            </div>
           </div>
         </div>
           <div class="album py-5 bg-light">
             <div class="container">
-    
               <div class="row">
-
-              <?php foreach ($discussions as $discussion) : ?>
-                <div class="col-md-4">
+                <?php foreach ($discussions as $discussion) : ?>
+                <div class="col-md-3">
                   <div class="card mb-4 box-shadow">
                     <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
                     <div class="card-body">
                       <p class="card-text"><?php echo $discussion['discussionName'];?></p>
                       <div class="d-flex justify-content-between align-items-center">
+                        <a href="userDiscussion.php?discussion_id=<?php echo $discussion['discussionID'];?>" ></a>
                         <div class="btn-group">
-                          <a href="userDiscussion.php?discussion_id=<?php echo $discussion['discussionID'];?>" >
                             <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                          </a>
-
                         </div>
-                        <small class="text-muted">9 mins</small>
                       </div>
                     </div>
                   </div>
                 </div>
-            <?php endforeach; ?>
-
+                <?php endforeach; ?>
               </div>
-
             </div>
           </div>
-    
                 <!-- Page Content Holder -->
-                <div id="content">
-        
-            <div class="btns">
-              <button>Get Started</button>
-            </div>
+              <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
           </div>
-          
-          
-          <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
-        </body>
+  </body>
 </html>
