@@ -1,4 +1,4 @@
-//<?php
+<?php
     $dsn = 'mysql:host=localhost;dbname=trueadvisorydb';
     $username = 'root';
     $password = '';
