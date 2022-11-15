@@ -1,4 +1,5 @@
 <?php
+require_once('./backend/database.php');
 // We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
@@ -6,32 +7,25 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: signin.html');
 	exit;
 }
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'trueadvisorydb';
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-if (mysqli_connect_errno()) {
-	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-}
 
-
+$user_id = $_SESSION['id'];
+$email = $_SESSION['email'];
+//$major = $_SESSION['major'];
 
 // We don't have the password or email info stored in sessions so instead we can get the results from the database.
-$stmt = $con->prepare('SELECT email, name, password, major FROM user WHERE id = ?');
-// In this case we can use the account ID to get the account info.
-$stmt->bind_param('i', $_SESSION['id']);
-$stmt->execute();
-$stmt->bind_result($email, $name, $password, $major);
-$stmt->fetch();
-$stmt->close();
+$queryUser = 'SELECT * FROM user WHERE id = :user_id';
+$statementUser = $db->prepare($queryUser);
+$statementUser->bindValue(':user_id', $user_id);
+$statementUser->execute();
+$user = $statementUser->fetch();
+$statementUser->closeCursor();
 
-$userListStmt = $con->prepare('SELECT courseID FROM usercourselist WHERE id = ?');
-$userListStmt->bind_param('i', $_SESSION['id']);
+
+$userListStmt = $db->prepare('SELECT courseID FROM usercourselist WHERE id = :user_id');
+$userListStmt->bindValue(':user_id', $user_id);
 $userListStmt->execute();
-$userListStmt->bind_result($course);
-$courseList = $userListStmt->fetch_all();
-$userListStmt->close();
+$course = $statementUser->fetch();
+$userListStmt->closeCursor();
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +39,7 @@ $userListStmt->close();
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -146,7 +140,7 @@ $userListStmt->close();
                             </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                 <label for="name" class="input-group">
-                                <input type="text" class="form-control" value="<?=$name ?>" id="name">
+                                <input type="text" class="form-control" value="<?=$user['name'] ?>" id="name">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-outline-secondary">Edit</button>
                                             </div>
@@ -213,7 +207,7 @@ $userListStmt->close();
                             </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <label for="major" class="input-group">
-                                            <input type="text" class="form-control" value="<?=$major?>" id="major">
+                                            <input type="text" class="form-control" value="<?=$user['major']?>" id="major">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-outline-secondary">Edit</button>
                                             </div>

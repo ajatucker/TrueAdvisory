@@ -1,3 +1,28 @@
+<?php
+require_once('database.php');
+$name = filter_input(INPUT_POST, 'name');
+$password = filter_input(INPUT_POST, 'pass');
+$major = filter_input(INPUT_POST, 'major');
+$email = filter_input(INPUT_POST, 'email');
+
+if ($username == null || $username == false || $password == null
+                         || $email == null || $major == null
+                         || $password == false ) {
+    $error_message = "Invalid data. Check all fields and try again.";
+} else {
+
+    // Add the user into the database
+    $query = "INSERT INTO `user` (`email`, `name`, `password`, `major`) VALUES (:email, :name, :pass, :major)";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':name', $name);
+    $statement->bindValue(':pass', $password);
+    $statement->bindValue(':email', $email);
+    $statement->bindValue(':major', $major);
+    $statement->execute();
+    $statement->closeCursor();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +35,7 @@
     <link rel="stylesheet" href="signupandsignin/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
    
@@ -54,6 +79,10 @@
                                 <input type="email" name="email" id="email" placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
+                                <label for="major"><i class="zmdi zmdi-email"></i></label>
+                                <input type="major" name="major" id="major" placeholder="Your Major"/>
+                            </div>
+                            <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="pass" id="pass" placeholder="Password"/>
                             </div>
@@ -62,7 +91,7 @@
                                 <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                                    <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
                             </div>
                         </form>
                     </div>

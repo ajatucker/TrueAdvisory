@@ -1,3 +1,45 @@
+<?php
+require('backend/database.php');
+// Get ID
+$discussion_id = filter_input(INPUT_GET, 'discussion_id', FILTER_VALIDATE_INT);
+if ($discussion_id == NULL || $discussion_id == FALSE) {
+    $discussion_id = 00;
+}
+
+$discussion_name = filter_input(INPUT_GET, 'discussionName');
+
+
+
+$queryAllCategoriesDiscussions = 'SELECT * FROM discussions';
+$statementDiscussions = $db->prepare($queryAllCategoriesDiscussions);
+$statementDiscussions->execute();
+$discussions = $statementDiscussions->fetch();
+$statementDiscussions->closeCursor();
+
+
+$message_id = filter_input(INPUT_GET, 'messageID', FILTER_VALIDATE_INT);
+if ($message_id == NULL || $message_id == FALSE) {
+    $message_id = 0;
+}
+
+
+$queryAllCategoriesMessages = 'SELECT * FROM messages';
+$statementMessages = $db->prepare($queryAllCategoriesMessages);
+$statementMessages->execute();
+$message = $statementMessages->fetchAll();
+$statementMessages->closeCursor();
+
+
+
+// // Get products for selected category
+// $queryProducts = 'SELECT * FROM products WHERE categoryID = :category_id ORDER BY productID';
+// $statement3 = $db->prepare($queryProducts);
+// $statement3->bindValue(':category_id', $category_id);
+// $statement3->execute();
+// $products = $statement3->fetchAll();
+// $statement3->closeCursor();
+// ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +60,7 @@
 </head>
 
 <body>
- 
+
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
@@ -73,59 +115,56 @@
 
         <!-- Page Content Holder -->
         <div id="content" style ="background-color: white;">
-
             <nav class="navbar navbar-expand-lg rounded">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
-                        <span></span>
+                        <span>&ZeroWidthSpace;</span>
                         <span></span>
                         <span></span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        &ZeroWidthSpace;<i class="fas fa-align-justify"></i>
                     </button>
 
                     <div class="menu">
                         <ul>
-                          <li><a href="site.html">Home</a></li>
-                          <li><a href="#">Courses</a></li>
-                          <li><a href="#">Discussions</a></li>
-                          <li><a href="#">Tutoring</a></li>
-                          <li><a href="#">About</a></li>
+                            <li><a href="site.html">True Advisory</a></li>
+                            <li><a href="site.html">Home</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="#">Discussions</a></li>
+                            <li><a href="#">Tutoring</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Other Resources</a></li>
                         </ul>
                         <ul>
-                          <li><b><a href="signin.html" class="login_button">Login</a></li></b>
+                            <li><b><a href="signin.html" class="login_button">Login</a></b></li>
                         </ul>
                         </div> 
                 </div>
             </nav>
+            <div class="center">
+                <h3>
+                    <?php echo $discussions['discussionName'];?>
+                </h3>
+            </div>
             <form action="/action_page.php">
                 <div class="course">
-                    <div class="center">
-
-                        <h3>
-                            CIS 3501 - Datastructures/Analysis for Software Engineers
-                        </h3>
-                        <h3>
-                            Course Description
-                        </h3>
-                        <h3>
-                            tutors
-                        </h3>
-                    </div>
-                    <br>
-                    <div class="center btn-padding">
-                    <button type="button" class="btn btn-default">View CIS 435 Discussion</button>
-                    <button type="button" class="btn btn-default">Request Page Updated</button>
-                    <button type="button" class="btn btn-default">Add to Course List</button>
-                    </div>
+                        <?php 
+                            foreach ($message as $messageType){
+                                echo $messageType['message'], nl2br("\n") ;
+                            }
+                        ?>
+                </div>
+                
+                <div class="center btn-padding">
+                    <button type="button" class="btn btn-default">Add New Comment</button> 
                 </div>
             </form>
+
+    
         </div>
     </div>
-    
-   
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
