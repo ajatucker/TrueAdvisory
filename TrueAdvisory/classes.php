@@ -1,3 +1,57 @@
+<?php
+require('./backend/database.php');
+// Get ID
+$course_id = filter_input(INPUT_GET, 'courseID', FILTER_VALIDATE_INT);
+if ($course_id == NULL || $course_id == FALSE) {
+    $course_id = 1;
+}
+
+if (!isset ($_GET['page']) ) {  
+
+  $page_number = 1;  
+
+} else {  
+
+  $page_number = $_GET['page'];  
+
+}
+
+$limit = 4;  
+// get the initial page number
+$initial_page = ($page_number-1) * $limit; 
+
+$getAllCourses = 'SELECT * FROM courses';  
+$statementCourseList = $db->prepare($getAllCourses);
+$statementCourseList->execute();
+$courses = $statementCourseList->fetchAll();
+$statementCourseList->closeCursor();
+// get the result
+ $total_course_rows = $statementCourseList->rowCount(); 
+// get the required number of pages
+$total_course_pages = ceil($total_course_rows / $limit);  
+
+$getQueryCourse = "SELECT * FROM courses LIMIT " . $initial_page . ',' . $limit;  
+$resultCourse = $db->prepare($getQueryCourse);    
+$resultCourse->execute(); 
+$currCourse = $resultCourse->fetchAll();
+$resultCourse->closeCursor();
+
+    //display the retrieved result on the webpage  
+
+    // while ($row = mysqli_fetch_array($result)) {  
+
+    //     echo $row['ID'] . ' ' . $row['Country'] . '</br>';  
+
+    // }  
+ 
+// Get all discussions
+#$queryAllCategories = 'SELECT * FROM discussions';
+// $statement2 = $db->prepare($queryAllCategories);
+// $statement2->execute();
+// $discussions = $statement2->fetchAll();
+// $statement2->closeCursor();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,42 +117,42 @@
             
               </p>
               <p>Want to view available courses at the University of Michigan - Dearborn? View the course listing below or get started now!</p>
+              <div class="btns">
+                <button>Get Started</button>
+              </div>
             <div class="line"></div>
-            <div class="center">
-              <h2>Available Courses</h2>
-              <ul>
-                <li><a href="#">CIS 100</a></li>
-                <li><a href="#">CIS 200</a></li>
-                <li><a href="#">CIS 350</a></li>
-                <li><a href="#">CIS 427</a></li>
-                <li><a href="#">CIS 450</a></li>
-              </ul>
+            <div class="album py-5 bg-light">
+            <div class="container">
+              <div class="row">
+                <?php foreach ($currCourse as $course) : ?>
+                <div class="col-md-3">
+                  <div class="card mb-4 box-shadow">
+                    <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
+                    <div class="card-body">
+                      <p class="card-text"><?php echo $course['courseName'];?></p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">
+                              <a href="userCourse.php?course_id=<?php echo $course['courseID'];?>" >View</a>
+                            </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+              </div>
+ 
+              <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
+                  echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+              ?>
             </div>
-            <div class="line"></div>
-            <div class="btns">
-              <button>Get Started</button>
-            </div>
-            <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
-        
-      </div>
-    </div>
-
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-                $(this).toggleClass('active');
-            });
-        });
-    </script>
-</body>
-
+          </div>
+   
+                <!-- Page Content Holder -->
+              <div id="content">
+                  <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
+              </div>
+            
+  </body>
 </html>
