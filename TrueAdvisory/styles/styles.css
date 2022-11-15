@@ -888,11 +888,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
       }
      
       .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
- 
-      body{
-    margin-top:20px;
-    background:#f5f5f5;
-}
+
  
 /*
     =================================
