@@ -24,8 +24,10 @@ $statementUser->closeCursor();
 $userListStmt = $db->prepare('SELECT courseID FROM usercourselist WHERE id = :user_id');
 $userListStmt->bindValue(':user_id', $user_id);
 $userListStmt->execute();
-$course = $statementUser->fetch();
+$currCourse = $userListStmt->fetchAll();
 $userListStmt->closeCursor();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -163,45 +165,45 @@ $userListStmt->closeCursor();
 
                 <div class="col-md-3">
                     <div class="card mb-4 box-shadow">
-                        <form action="/action_page.php">
-                            <div class="card-body">
+                        <div class="card-body">
                             <p class="card-text">
                                 <h5>
                                     Password:
                                 </h5>
                             </p>
+                            <form action="./backend/edit-pw.php">
                                 <div class="d-flex justify-content-between align-items-center">
                                 <label for="password" class="input-group">
-                                <input type="password" class="form-control" value="******************************" id="password">
+                                <input type="password" class="form-control" name="edit-pw" value="******************************" id="edit-pw">
                                             <div class="input-group-append">
-                                                <input type="submit" name="edit-name" id="edit-name" class="btn btn-outline-secondary" value="Edit"/>
+                                                <input type="submit" name="pw-submit" id="pw-submit" class="btn btn-outline-secondary" value="Edit"/>
                                             </div>
                                         </label>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="card mb-4 box-shadow">
-                        <form action="/action_page.php">
-                            <div class="card-body">
+                        <div class="card-body">
                             <p class="card-text">
                                 <h5>
                                     Majoring in:
                                 </h5>
                             </p>
+                            <form action="./backend/edit-major.php">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <label for="major" class="input-group">
-                                            <input type="text" class="form-control" value="<?=$user['major']?>" id="major">
+                                            <input type="text" class="form-control" value="<?=$user['major']?>" name="edit-major" id="edit-major">
                                             <div class="input-group-append">
-                                                <input type="submit" name="edit-name" id="edit-name" class="btn btn-outline-secondary" value="Edit"/>
+                                                <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Edit"/>
                                             </div>
                                         </label>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -215,7 +217,14 @@ $userListStmt->closeCursor();
                             <div class="card mb-4 box-shadow">
                                 <div class="card-body">     
                             <div class="row">
-                                <h5 class="center">CIS 200</h5>
+                                <?php foreach ($currCourse as $course) : ?>
+                                <h5 class="center">
+                                    <?php echo $course['courseID'];?>
+                                    <div class="input-group-append">
+                                        <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
+                                    </div>
+                                </h5>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -233,18 +242,18 @@ $userListStmt->closeCursor();
                                     </div>
                                 </div>
                             </div>     
-                                    <div class="row">
-                                        <h3 class="center">CIS 200</h3>
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-body">     
+                            <div class="row">
+                                <?php foreach ($currCourse as $course) : ?>
+                                <h5 class="center">
+                                    <?php echo $course['courseID'];?>
+                                    <div class="input-group-append">
+                                        <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
                                     </div>
-                                    <div class="row">
-                                        <h3 class="center">CIS 350</h3>
-                                    </div>
-                                    <div class="row">
-                                        <h3 class="center">CIS 350</h3>
-                                    </div>
-                                    <div class="row">
-                                        <h3 class="center">CIS 350</h3>
-                                    </div>
+                                </h5>
+                                <?php endforeach; ?>
+                            </div>
                             </div>
                         </div>
            
