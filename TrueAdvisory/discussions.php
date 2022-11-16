@@ -129,7 +129,6 @@ $resultDiscussions->closeCursor();
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary">
                               <a href="userDiscussion.php?discussion_id=<?php echo $discussion['discussionID'];?>" >View</a>
-
                             </button>
                         </div>
                       </div>

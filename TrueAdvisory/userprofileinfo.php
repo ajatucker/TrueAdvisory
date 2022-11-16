@@ -86,12 +86,6 @@ $userListStmt->closeCursor();
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
             </ul>
 
            
@@ -131,48 +125,41 @@ $userListStmt->closeCursor();
 
                 <div class="col-md-3">
                     <div class="card mb-4 box-shadow">
-                        <form action="/action_page.php">
-                            <div class="card-body">
+                        <div class="card-body">
                             <p class="card-text">
                                 <h5>
-                                Name:
+                                    Email: <?=$email?>
                                 </h5>
                             </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                <label for="name" class="input-group">
-                                <input type="text" class="form-control" value="<?=$user['name'] ?>" id="name">
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-secondary">Edit</button>
-                                            </div>
-                                        </label>
-                                </div>
-                            </div>
-                        </form>
+                            <div class="d-flex justify-content-between align-items-center">
+                                
+                             </div>
+                        </div>
                     </div>
                 </div>
-
-
                 <div class="col-md-3">
                     <div class="card mb-4 box-shadow">
-                        <form action="/action_page.php">
-                            <div class="card-body">
+                        <div class="card-body">
                             <p class="card-text">
                                 <h5>
-                                    Email:
+                                    Name:
                                 </h5>
                             </p>
+                            <form action="./backend/edit-name.php" method="POST" id="edit-name-form">
                                 <div class="d-flex justify-content-between align-items-center">
-                                <label for="email" class="input-group">
-                                <input type="text" class="form-control" value="<?=$email?>" id="email">
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-secondary">Edit</button>
-                                            </div>
-                                        </label>
+                                <label for="edit-name" class="input-group">
+                                <input type="text" class="form-control" name="edit-name" value="<?=$user['name'] ?>">
+                                    <div class="input-group-append">
+                                        <input type="submit" name="name-submit" id="name-submit" class="btn btn-outline-secondary" value="Edit"/>                                                
+                                    </div>
+                                </label>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
+
 
                 <div class="col-md-3">
                     <div class="card mb-4 box-shadow">
@@ -187,7 +174,7 @@ $userListStmt->closeCursor();
                                 <label for="password" class="input-group">
                                 <input type="password" class="form-control" value="******************************" id="password">
                                             <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-secondary">Edit</button>
+                                                <input type="submit" name="edit-name" id="edit-name" class="btn btn-outline-secondary" value="Edit"/>
                                             </div>
                                         </label>
                                 </div>
@@ -209,7 +196,7 @@ $userListStmt->closeCursor();
                                     <label for="major" class="input-group">
                                             <input type="text" class="form-control" value="<?=$user['major']?>" id="major">
                                             <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-secondary">Edit</button>
+                                                <input type="submit" name="edit-name" id="edit-name" class="btn btn-outline-secondary" value="Edit"/>
                                             </div>
                                         </label>
                                 </div>
@@ -222,20 +209,47 @@ $userListStmt->closeCursor();
                 <div class="col-lg-6">
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
-                                <div class="row">
-                                    <h3 class="center">Your Class List</h3>
-                                </div>     
+                            <div class="row">
+                                <h3 class="center">Your Class List</h3>
+                            </div>
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-body">     
+                            <div class="row">
+                                <h5 class="center">CIS 200</h5>
+                            </div>
                         </div>
-                   </div>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-body">
-                                <div class="row">
-                                    <h3 class="center">Your Tutoring List</h3>
-                                </div>     
+            </div>
+        </div>
+                
+                 
+                    
+                        <div class="col-lg-6">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <h3 class="center">Your Tutoring List</h3>
+                                    </div>
+                                </div>
+                            </div>     
+                                    <div class="row">
+                                        <h3 class="center">CIS 200</h3>
+                                    </div>
+                                    <div class="row">
+                                        <h3 class="center">CIS 350</h3>
+                                    </div>
+                                    <div class="row">
+                                        <h3 class="center">CIS 350</h3>
+                                    </div>
+                                    <div class="row">
+                                        <h3 class="center">CIS 350</h3>
+                                    </div>
+                            </div>
                         </div>
-                   </div>
+           
+                   
+                    
                 </div>
             </div>
         </div>
