@@ -1,26 +1,57 @@
 <?php
-require('backend/database.php');
+require('./backend/database.php');
 // Get ID
 $discussion_id = filter_input(INPUT_GET, 'discussionID', FILTER_VALIDATE_INT);
 if ($discussion_id == NULL || $discussion_id == FALSE) {
     $discussion_id = 1;
 }
 
-// Get all users
-$queryAllCategories = 'SELECT * FROM discussions';
-$statement2 = $db->prepare($queryAllCategories);
-$statement2->execute();
-$discussions = $statement2->fetchAll();
-$statement2->closeCursor();
+if (!isset ($_GET['page']) ) {  
 
-// // Get products for selected category
-// $queryProducts = 'SELECT * FROM products WHERE categoryID = :category_id ORDER BY productID';
-// $statement3 = $db->prepare($queryProducts);
-// $statement3->bindValue(':category_id', $category_id);
-// $statement3->execute();
-// $products = $statement3->fetchAll();
-// $statement3->closeCursor();
-// ?>
+  $page_number = 1;  
+
+} else {  
+
+  $page_number = $_GET['page'];  
+
+}
+
+$limit = 4;  
+// get the initial page number
+$initial_page = ($page_number-1) * $limit; 
+
+$getAllDiscussions = 'SELECT * FROM discussions';  
+$statementDiscussionList = $db->prepare($getAllDiscussions);
+$statementDiscussionList->execute();
+$discussions = $statementDiscussionList->fetchAll();
+$statementDiscussionList->closeCursor();
+// get the result
+ $total_rows = $statementDiscussionList->rowCount(); 
+// get the required number of pages
+$total_pages = ceil($total_rows / $limit);  
+
+$getQueryDiscussions = "SELECT * FROM discussions LIMIT " . $initial_page . ',' . $limit;  
+$resultDiscussions = $db->prepare($getQueryDiscussions);    
+$resultDiscussions->execute(); 
+$currDiscussions = $resultDiscussions->fetchAll();
+$resultDiscussions->closeCursor();
+
+    //display the retrieved result on the webpage  
+
+    // while ($row = mysqli_fetch_array($result)) {  
+
+    //     echo $row['ID'] . ' ' . $row['Country'] . '</br>';  
+
+    // }  
+ 
+// Get all discussions
+#$queryAllCategories = 'SELECT * FROM discussions';
+// $statement2 = $db->prepare($queryAllCategories);
+// $statement2->execute();
+// $discussions = $statement2->fetchAll();
+// $statement2->closeCursor();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -88,27 +119,35 @@ $statement2->closeCursor();
           <div class="album py-5 bg-light">
             <div class="container">
               <div class="row">
-                <?php foreach ($discussions as $discussion) : ?>
+                <?php foreach ($currDiscussions as $discussion) : ?>
                 <div class="col-md-3">
                   <div class="card mb-4 box-shadow">
                     <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
                     <div class="card-body">
                       <p class="card-text"><?php echo $discussion['discussionName'];?></p>
                       <div class="d-flex justify-content-between align-items-center">
-                        <a href="userDiscussion.php?discussion_id=<?php echo $discussion['discussionID'];?>" ></a>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary">
+                              <a href="userDiscussion.php?discussion_id=<?php echo $discussion['discussionID'];?>" >View</a>
+                            </button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <?php endforeach; ?>
+              <?php endforeach; ?>
               </div>
+ 
+              <?php for($page_number = 1; $page_number<= $total_pages; $page_number++) {  
+                  echo '<a href = "discussions.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+              ?>
             </div>
           </div>
+   
                 <!-- Page Content Holder -->
-              <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
-          </div>
+              <div id="content">
+                  <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
+              </div>
+            
   </body>
 </html>

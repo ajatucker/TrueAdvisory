@@ -24,8 +24,23 @@ $statementUser->closeCursor();
 $userListStmt = $db->prepare('SELECT courseID FROM usercourselist WHERE id = :user_id');
 $userListStmt->bindValue(':user_id', $user_id);
 $userListStmt->execute();
-$course = $statementUser->fetch();
+$currCourse = $userListStmt->fetchAll();
 $userListStmt->closeCursor();
+
+$userTutoringStmt = $db->prepare('SELECT courseID FROM usercourselist WHERE (id = :user_id)  AND (doesTutor = 1)');
+$userTutoringStmt->bindValue(':user_id', $user_id);
+$userTutoringStmt->execute();
+$currTutoring = $userTutoringStmt->fetchAll();
+$userTutoringStmt->closeCursor();
+
+$sbDiscussStmt = $db->prepare('SELECT * FROM discussions WHERE courseID=(SELECT courseID FROM usercourselist WHERE (id = :user_id))');
+$sbDiscussStmt->bindValue(':user_id', $user_id);
+$sbDiscussStmt->execute();
+$currDiscussions = $sbDiscussStmt->fetchAll();
+$sbDiscussStmt->closeCursor();
+
+$sbTutorStmt = $db->prepare('SELECT * FROM user WHERE id=(SELECT id FROM usercourselist WHERE (id = :user_id))');
+
 ?>
 
 <!DOCTYPE html>
@@ -61,40 +76,48 @@ $userListStmt->closeCursor();
                     <a href="#">Your Home</a>
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
                     <ul class="collapse list-unstyled" id="courseSubmenu">
-                        <li>
-                            <a href="#">CIS 350</a>
-                        </li>
-                        <li>
-                            <a href="#">CIS 427</a>
-                        </li>
-                        <li>
-                            <a href="#">CIS 450</a>
-                        </li>
+                    <?php foreach ($currCourse as $course) : ?>
+                            <a href="#">
+                                <?php echo $course['courseID'];?>        
+                            </a>
+                            <?php endforeach; ?>
+                            <a href="#">CIS 350
+                                                        
+                            </a>
                     </ul>
                 </li>
                 <li>
                     <a href="#discussionSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Discussions</a>
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
                         <li>
-                            <a href="#">Discuss CIS 350</a>
-                        </li>
-                        <li>
-                            <a href="#">Discuss CIS 427</a>
-                        </li>
-                        <li>
-                            <a href="#">Discuss CIS 450</a>
+                            <?php foreach ($currDiscussions as $discuss) : ?>
+                            <a href="#">
+                                <?php echo $discuss['courseID'];?>
+                            </a>
+                            <?php endforeach; ?>
+                            <a href="#">Discuss CIS 350
+                                                        
+                            </a>
                         </li>
                     </ul>
                 </li>
+                
                 <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="#tutorSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tutors</a>
+                    <ul class="collapse list-unstyled" id="tutorSubmenu">
+                        <li>
+                            <a href="#">Anna Smith - CIS 350</a>
+                        </li>
+                        <li>
+                            <a href="#">MBaku - CIS 427</a>
+                        </li>
+                        <li>
+                            <a href="#">Shigeru Miyamoto - CIS 450</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
-
-           
+            
         </nav>
 
         <!-- Page Content Holder -->
@@ -128,93 +151,98 @@ $userListStmt->closeCursor();
                 </div>
             </nav>
             <div class="row">
-
+                
                 <div class="col-md-3">
                     <div class="card mb-4 box-shadow">
-                        <form action="/action_page.php">
-                            <div class="card-body">
+                        <div class="card-body">
                             <p class="card-text">
                                 <h5>
-                                Name:
+                                    Email: <?=$email?>
                                 </h5>
                             </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                <label for="name" class="input-group">
-                                <input type="text" class="form-control" value="<?=$user['name'] ?>" id="name">
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-secondary">Edit</button>
-                                            </div>
-                                        </label>
-                                </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                
+                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-sm-6">
+                            <form action="./backend/request-admin.php" method="POST" id="req-admin-form">
+                                    <input type="submit" name="req-admin" id="req-admin" class="btn btn-default" value="Admin Request"/>
+                            </form>
                             </div>
-                        </form>
+                            <div class="col-sm-6">
+                            <form action="./backend/request-tutor.php" method="POST" id="req-tutor-form">
+                                    <input type="submit" name="req-tutor" id="req-tutor" class="btn btn-default" value="Tutor Request"/>
+                            </form>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <h5>
+                                    Name:
+                                </h5>
+                            </p>
+                            <form action="./backend/edit-name.php" method="POST" id="edit-name-form">
+                                <div class="d-flex justify-content-between align-items-center">
+                                <label for="edit-name" class="input-group">
+                                <input type="text" class="form-control" name="edit-name" value="<?=$user['name'] ?>">
+                                    <div class="input-group-append">
+                                        <input type="submit" name="name-submit" id="name-submit" class="btn btn-outline-secondary" value="Edit"/>                                                
+                                    </div>
+                                </label>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
 
-                <div class="col-md-3">
-                    <div class="card mb-4 box-shadow">
-                        <form action="/action_page.php">
-                            <div class="card-body">
-                            <p class="card-text">
-                                <h5>
-                                    Email:
-                                </h5>
-                            </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                <label for="email" class="input-group">
-                                <input type="text" class="form-control" value="<?=$email?>" id="email">
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-secondary">Edit</button>
-                                            </div>
-                                        </label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
 
                 <div class="col-md-3">
                     <div class="card mb-4 box-shadow">
-                        <form action="/action_page.php">
-                            <div class="card-body">
+                        <div class="card-body">
                             <p class="card-text">
                                 <h5>
                                     Password:
                                 </h5>
                             </p>
+                            <form action="./backend/edit-pw.php">
                                 <div class="d-flex justify-content-between align-items-center">
                                 <label for="password" class="input-group">
-                                <input type="password" class="form-control" value="******************************" id="password">
+                                <input type="password" class="form-control" name="edit-pw" value="******************************" id="edit-pw">
                                             <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-secondary">Edit</button>
+                                                <input type="submit" name="pw-submit" id="pw-submit" class="btn btn-outline-secondary" value="Edit"/>
                                             </div>
                                         </label>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="card mb-4 box-shadow">
-                        <form action="/action_page.php">
-                            <div class="card-body">
+                        <div class="card-body">
                             <p class="card-text">
                                 <h5>
                                     Majoring in:
                                 </h5>
                             </p>
+                            <form action="./backend/edit-major.php">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <label for="major" class="input-group">
-                                            <input type="text" class="form-control" value="<?=$user['major']?>" id="major">
+                                            <input type="text" class="form-control" value="<?=$user['major']?>" name="edit-major" id="edit-major">
                                             <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-secondary">Edit</button>
+                                                <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Edit"/>
                                             </div>
                                         </label>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -222,22 +250,57 @@ $userListStmt->closeCursor();
                 <div class="col-lg-6">
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
+                            <div class="row">
+                                <h3 class="center">Your Course Listing</h3>
+                            </div>
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-body">     
                                 <div class="row">
-                                    <h3 class="center">Your Class List</h3>
-                                </div>     
+                                <?php foreach ($currCourse as $course) : ?>
+                                <h5 class="center">
+                                        <h5>
+                                            <?php echo $course['courseID'];?>
+                                        </h5>
+                                    <div class="input-group-append">
+                                        <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
+                                    </div>
+                                </h5>
+                                <?php endforeach; ?>
+                                </div>
                         </div>
-                   </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-body">
-                                <div class="row">
-                                    <h3 class="center">Your Tutoring List</h3>
-                                </div>     
-                        </div>
-                   </div>
+                    </div>
                 </div>
             </div>
+        </div>
+                
+                 
+                    
+                        <div class="col-lg-6">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <h3 class="center">You're Tutoring</h3>
+                                    </div>
+                                    <div class="card mb-4 box-shadow">
+                                        <div class="card-body">     
+                                            <div class="row">
+                                                <?php foreach ($currTutoring as $tutor) : ?>
+                                                    <h5 class="center">
+                                                        <h5>
+                                                        <?php echo $tutor['courseID'];?>
+                                                        </h5>
+                                                        <div class="input-group-append">
+                                                            <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
+                                                        </div>
+                                                    </h5>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>     
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
         </div>
     </div>
     <div class="footer">
