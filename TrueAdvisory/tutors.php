@@ -1,3 +1,57 @@
+<?php
+require('./backend/database.php');
+// Get ID
+$discussion_id = filter_input(INPUT_GET, 'discussionID', FILTER_VALIDATE_INT);
+if ($discussion_id == NULL || $discussion_id == FALSE) {
+    $discussion_id = 1;
+}
+
+if (!isset ($_GET['page']) ) {  
+
+  $page_number = 1;  
+
+} else {  
+
+  $page_number = $_GET['page'];  
+
+}
+
+$limit = 4;  
+// get the initial page number
+$initial_page = ($page_number-1) * $limit; 
+
+$getAllTutors = 'SELECT * FROM user WHERE tutorPrivileges=1';  
+$statementTutorList = $db->prepare($getAllTutors);
+$statementTutorList->execute();
+$tutors = $statementTutorList->fetchAll();
+$statementTutorList->closeCursor();
+// get the result
+ $total_rows = $statementTutorList->rowCount(); 
+// get the required number of pages
+$total_pages = ceil($total_rows / $limit);  
+
+$getQueryTutors = "SELECT * FROM user WHERE tutorPrivileges=1 LIMIT " . $initial_page . ',' . $limit;  
+$resultTutors = $db->prepare($getQueryTutors);    
+$resultTutors->execute(); 
+$currTutors = $resultTutors->fetchAll();
+$resultTutors->closeCursor();
+
+    //display the retrieved result on the webpage  
+
+    // while ($row = mysqli_fetch_array($result)) {  
+
+    //     echo $row['ID'] . ' ' . $row['Country'] . '</br>';  
+
+    // }  
+ 
+// Get all discussions
+#$queryAllCategories = 'SELECT * FROM discussions';
+// $statement2 = $db->prepare($queryAllCategories);
+// $statement2->execute();
+// $discussions = $statement2->fetchAll();
+// $statement2->closeCursor();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +99,7 @@
           </nav>
             
         <h1>TRUE ADVISORY TUTORS</h1>
-        <img src="Images/cappic.png" alt="Graduation cap" class="classordisimg center" style="width:500px;height:500px;">
+        <img src="Images/schoolpics_163.png" alt="Graduation cap" class=" mb-4 classordisimg center" style="width:166px;height:200px; border-radius:10%;">
         <p>
           <p>Are you a tutor, or someone who likes to help others?
         </p>
@@ -65,13 +119,46 @@
             <li><a href="#">Anna Williams - CIS 200 - annawilliams@email</a></li>
           </ul>
         </div>
-        <div class="line"></div>
         <div class="btns">
-          <button>Get Started</button>
+              <button>Get Started</button>
+            </div>
+          </div>
         </div>
-        <credits style = "color:white">Powered by the University of Michigan - Dearborn and learning in CIS 435</credits>
-        </div>
-    </div>
-</body>
-
+          <div class="album py-5 bg-light">
+            <div class="container">
+              <div class="row">
+                <?php foreach ($currTutors as $tutor) : ?>
+                <div class="col-md-3">
+                  <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                      <img src="Images/schoolpics_161.png" alt="Card image tutors" style="width:166px;height:200px;">
+                      <p class="card-text">
+                        <?php echo $tutor['name'];?>
+                        <?php echo $tutor['email'];?>
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">
+                              <a href="userDiscussion.php?discussion_id=<?php echo $discussion['discussionID'];?>" >View</a>
+                            </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+              </div>
+ 
+              <?php for($page_number = 1; $page_number<= $total_pages; $page_number++) {  
+                  echo '<a href = "tutors.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+              ?>
+            </div>
+          </div>
+   
+                <!-- Page Content Holder -->
+              <div id="content">
+                  <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
+              </div>
+            
+  </body>
 </html>

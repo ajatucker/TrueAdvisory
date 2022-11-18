@@ -1,28 +1,3 @@
-<?php
-require_once('database.php');
-$name = filter_input(INPUT_POST, 'name');
-$password = filter_input(INPUT_POST, 'pass');
-$major = filter_input(INPUT_POST, 'major');
-$email = filter_input(INPUT_POST, 'email');
-
-if ($username == null || $username == false || $password == null
-                         || $email == null || $major == null
-                         || $password == false ) {
-    $error_message = "Invalid data. Check all fields and try again.";
-} else {
-
-    // Add the user into the database
-    $query = "INSERT INTO `user` (`email`, `name`, `password`, `major`) VALUES (:email, :name, :pass, :major)";
-    $statement = $db->prepare($query);
-    $statement->bindValue(':name', $name);
-    $statement->bindValue(':pass', $password);
-    $statement->bindValue(':email', $email);
-    $statement->bindValue(':major', $major);
-    $statement->execute();
-    $statement->closeCursor();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +44,7 @@ if ($username == null || $username == false || $password == null
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign Up</h2>
-                        <form action="./backend/register-form.php" class="form" method="POST">
+                        <form action="./backend/register.php" class="form" method="POST">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="name" id="name" placeholder="Your Name"/>
