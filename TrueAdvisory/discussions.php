@@ -1,3 +1,27 @@
+<?php
+require('backend/database.php');
+// Get ID
+$discussion_id = filter_input(INPUT_GET, 'discussionID', FILTER_VALIDATE_INT);
+if ($discussion_id == NULL || $discussion_id == FALSE) {
+    $discussion_id = 1;
+}
+
+// Get all users
+$queryAllCategories = 'SELECT * FROM discussions';
+$statement2 = $db->prepare($queryAllCategories);
+$statement2->execute();
+$discussions = $statement2->fetchAll();
+$statement2->closeCursor();
+
+// // Get products for selected category
+// $queryProducts = 'SELECT * FROM products WHERE categoryID = :category_id ORDER BY productID';
+// $statement3 = $db->prepare($queryProducts);
+// $statement3->bindValue(':category_id', $category_id);
+// $statement3->execute();
+// $products = $statement3->fetchAll();
+// $statement3->closeCursor();
+// ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +34,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -43,7 +67,6 @@
               </div>
             </div>
           </nav>
-
             <h1>TRUE ADVISORY DISCUSSIONS</h1>
             <img src="Images/discussionspic.png" alt="UMD logo" class="classordisimg center">
             <p>
@@ -57,69 +80,35 @@
             </p>
             <p>Want to join in on the discussion? View the active class discussions below or get started now!</p>
             
-            
-          </div>
-        </div>
-        <header>
-          <div class="collapse bg-dark" id="navbarHeader">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-8 col-md-7 py-4">
-                  <h4 class="text-white">About</h4>
-                  <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-                </div>
-                <div class="col-sm-4 offset-md-1 py-4">
-                  <h4 class="text-white">Contact</h4>
-                  <ul class="list-unstyled">
-                    <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                    <li><a href="#" class="text-white">Like on Facebook</a></li>
-                    <li><a href="#" class="text-white">Email me</a></li>
-                  </ul>
-                </div>
-              </div>
+            <div class="btns">
+              <button>Get Started</button>
             </div>
           </div>
-   
-    
+        </div>
           <div class="album py-5 bg-light">
             <div class="container">
-    
               <div class="row">
-
-              <?php foreach ($discussions as $discussion) : ?>
-                <div class="col-md-4">
+                <?php foreach ($discussions as $discussion) : ?>
+                <div class="col-md-3">
                   <div class="card mb-4 box-shadow">
                     <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
                     <div class="card-body">
                       <p class="card-text"><?php echo $discussion['discussionName'];?></p>
                       <div class="d-flex justify-content-between align-items-center">
+                        <a href="userDiscussion.php?discussion_id=<?php echo $discussion['discussionID'];?>" ></a>
                         <div class="btn-group">
-                          <a href="userDiscussion.php?discussion_id=<?php echo $discussion['discussionID'];?>" >
                             <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                          </a>
-
                         </div>
-                        <small class="text-muted">9 mins</small>
                       </div>
                     </div>
                   </div>
                 </div>
-            <?php endforeach; ?>
-
+                <?php endforeach; ?>
               </div>
-
             </div>
           </div>
-    
                 <!-- Page Content Holder -->
-                <div id="content">
-        
-            <div class="btns">
-              <button>Get Started</button>
-            </div>
-            <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
-        </div>
-            
-    
-</body>
+              <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
+          </div>
+  </body>
 </html>

@@ -1,17 +1,57 @@
-<!DOCTYPE html>
-<html>
+<?php
+require('backend/database.php');
+// Get ID
+$discussion_id = filter_input(INPUT_GET, 'discussion_id', FILTER_VALIDATE_INT);
+if ($discussion_id == NULL || $discussion_id == FALSE) {
+    $discussion_id = 00;
+}
 
+$discussion_name = filter_input(INPUT_GET, 'discussionName');
+
+
+
+$queryAllCategoriesDiscussions = 'SELECT * FROM discussions';
+$statementDiscussions = $db->prepare($queryAllCategoriesDiscussions);
+$statementDiscussions->execute();
+$discussions = $statementDiscussions->fetch();
+$statementDiscussions->closeCursor();
+
+
+$message_id = filter_input(INPUT_GET, 'messageID', FILTER_VALIDATE_INT);
+if ($message_id == NULL || $message_id == FALSE) {
+    $message_id = 0;
+}
+
+
+$queryAllCategoriesMessages = 'SELECT * FROM messages';
+$statementMessages = $db->prepare($queryAllCategoriesMessages);
+$statementMessages->execute();
+$message = $statementMessages->fetchAll();
+$statementMessages->closeCursor();
+
+
+
+// // Get products for selected category
+// $queryProducts = 'SELECT * FROM products WHERE categoryID = :category_id ORDER BY productID';
+// $statement3 = $db->prepare($queryProducts);
+// $statement3->bindValue(':category_id', $category_id);
+// $statement3->execute();
+// $products = $statement3->fetchAll();
+// $statement3->closeCursor();
+// ?>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <title>True Advisory - User Home</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -20,7 +60,7 @@
 </head>
 
 <body>
- 
+
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
@@ -70,82 +110,59 @@
                 <li>
                     <a href="#" class="download">Sign in</a>
                 </li>
-                <li>
-                    <a href="#" class="article">Back to article</a>
-                </li>
             </ul>
         </nav>
 
         <!-- Page Content Holder -->
         <div id="content" style ="background-color: white;">
-
             <nav class="navbar navbar-expand-lg rounded">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
-                        <span></span>
+                        <span>&ZeroWidthSpace;</span>
                         <span></span>
                         <span></span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        &ZeroWidthSpace;<i class="fas fa-align-justify"></i>
                     </button>
 
                     <div class="menu">
                         <ul>
-                          <li><a href="site.html">Home</a></li>
-                          <li><a href="#">Courses</a></li>
-                          <li><a href="#">Discussions</a></li>
-                          <li><a href="#">Tutoring</a></li>
-                          <li><a href="#">About</a></li>
+                            <li><a href="site.html">True Advisory</a></li>
+                            <li><a href="site.html">Home</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="#">Discussions</a></li>
+                            <li><a href="#">Tutoring</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Other Resources</a></li>
                         </ul>
                         <ul>
-                          <li><b><a href="signin.html" class="login_button">Login</a></li></b>
+                            <li><b><a href="signin.html" class="login_button">Login</a></b></li>
                         </ul>
                         </div> 
                 </div>
             </nav>
-            
+            <div class="center">
+                <h3>
+                    <?php echo $discussions['discussionName'];?>
+                </h3>
+            </div>
             <form action="/action_page.php">
-                <div class="form-group">
-                  <label for="email">Email address:</label>
-                  <input type="email" class="form-control" id="email">
+                <div class="course">
+                        <?php 
+                            foreach ($message as $messageType){
+                                echo $messageType['message'], nl2br("\n") ;
+                            }
+                        ?>
                 </div>
-                <button type="submit" class="btn btn-default">Edit</button>
+                
+                <div class="center btn-padding">
+                    <button type="button" class="btn btn-default">Add New Comment</button> 
+                </div>
             </form>
-            <form action="/action_page.php">
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd">
-                </div>
-                <button type="submit" class="btn btn-default">Edit</button>
-            </form>
-            <form action="/action_page.php">
-                <div class="form-group">
-                  <label for="major">Major:</label>
-                  <input type="major" class="form-control" id="major">
-                </div>
-                <button type="submit" class="btn btn-default">Edit</button>
-              </form>
 
-            <h2>Collapsible Sidebar Using Bootstrap 4</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div class="line"></div>
-
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div class="line"></div>
-
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div class="line"></div>
-
-            <h3>Lorem Ipsum Dolor</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    
         </div>
     </div>
 
@@ -156,7 +173,7 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
+    <script>
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');

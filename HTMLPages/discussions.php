@@ -1,3 +1,27 @@
+<?php
+require('database.php');
+// Get ID
+$discussion_id = filter_input(INPUT_GET, 'discussionID', FILTER_VALIDATE_INT);
+if ($discussion_id == NULL || $discussion_id == FALSE) {
+    $discussion_id = 1;
+}
+
+// Get all users
+$queryAllCategories = 'SELECT * FROM discussions';
+$statement2 = $db->prepare($queryAllCategories);
+$statement2->execute();
+$discussions = $statement2->fetchAll();
+$statement2->closeCursor();
+
+// // Get products for selected category
+// $queryProducts = 'SELECT * FROM products WHERE categoryID = :category_id ORDER BY productID';
+// $statement3 = $db->prepare($queryProducts);
+// $statement3->bindValue(':category_id', $category_id);
+// $statement3->execute();
+// $products = $statement3->fetchAll();
+// $statement3->closeCursor();
+// ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
