@@ -25,9 +25,5 @@ $user = $statementUser->fetch();
 $statementUser->closeCursor();
 header('Location: ../userprofileinfo.php');
 
-// $userListStmt = $db->prepare('SELECT courseID FROM usercourselist WHERE id = :user_id');
-// $userListStmt->bindValue(':user_id', $user_id);
-// $userListStmt->execute();
-// $course = $statementUser->fetch();
-// $userListStmt->closeCursor();
+
 ?>

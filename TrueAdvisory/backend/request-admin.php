@@ -8,17 +8,12 @@ if (!isset($_SESSION['loggedin'])) {
 	exit;
 }
 
-//$user_id = $_SESSION['id'];
-//$email = $_SESSION['email'];
-//$major = $_SESSION['major'];
-
-$editname = filter_input(INPUT_POST, 'edit-name');
+$adminPriv = filter_input(INPUT_POST, 'req-admin');
 
 
-$queryUser = 'UPDATE user SET name=:editname WHERE id = :sessionid';
+$queryUser = 'UPDATE user SET adminPrivileges=2 WHERE id = :sessionid';
 $statementUser = $db->prepare($queryUser);
 $statementUser->bindValue(':sessionid', $_SESSION['id']);
-$statementUser->bindValue(':editname', $editname);
 $statementUser->execute();
 $user = $statementUser->fetch();
 $statementUser->closeCursor();
