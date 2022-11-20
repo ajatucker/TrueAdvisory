@@ -20,21 +20,21 @@ $limit = 4;
 // get the initial page number
 $initial_page = ($page_number-1) * $limit; 
 
-$getAllDiscussions = 'SELECT * FROM discussions';  
-$statementDiscussionList = $db->prepare($getAllDiscussions);
-$statementDiscussionList->execute();
-$discussions = $statementDiscussionList->fetchAll();
-$statementDiscussionList->closeCursor();
+$getAllTutors = 'SELECT * FROM user WHERE tutorPrivileges=1';  
+$statementTutorList = $db->prepare($getAllTutors);
+$statementTutorList->execute();
+$tutors = $statementTutorList->fetchAll();
+$statementTutorList->closeCursor();
 // get the result
- $total_rows = $statementDiscussionList->rowCount(); 
+ $total_rows = $statementTutorList->rowCount(); 
 // get the required number of pages
 $total_pages = ceil($total_rows / $limit);  
 
-$getQueryDiscussions = "SELECT * FROM discussions LIMIT " . $initial_page . ',' . $limit;  
-$resultDiscussions = $db->prepare($getQueryDiscussions);    
-$resultDiscussions->execute(); 
-$currDiscussions = $resultDiscussions->fetchAll();
-$resultDiscussions->closeCursor();
+$getQueryTutors = "SELECT * FROM user WHERE tutorPrivileges=1 LIMIT " . $initial_page . ',' . $limit;  
+$resultTutors = $db->prepare($getQueryTutors);    
+$resultTutors->execute(); 
+$currTutors = $resultTutors->fetchAll();
+$resultTutors->closeCursor();
 
     //display the retrieved result on the webpage  
 
@@ -127,12 +127,15 @@ $resultDiscussions->closeCursor();
           <div class="album py-5 bg-light">
             <div class="container">
               <div class="row">
-                <?php foreach ($currDiscussions as $discussion) : ?>
+                <?php foreach ($currTutors as $tutor) : ?>
                 <div class="col-md-3">
                   <div class="card mb-4 box-shadow">
                     <div class="card-body">
                       <img src="Images/schoolpics_161.png" alt="Card image tutors" style="width:166px;height:200px;">
-                      <p class="card-text"><?php echo $discussion['discussionName'];?></p>
+                      <p class="card-text">
+                        <?php echo $tutor['name'];?>
+                        <?php echo $tutor['email'];?>
+                      </p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary">

@@ -27,6 +27,19 @@ $userListStmt->execute();
 $currCourse = $userListStmt->fetchAll();
 $userListStmt->closeCursor();
 
+$userTutoringStmt = $db->prepare('SELECT courseID FROM usercourselist WHERE (id = :user_id)  AND (doesTutor = 1)');
+$userTutoringStmt->bindValue(':user_id', $user_id);
+$userTutoringStmt->execute();
+$currTutoring = $userTutoringStmt->fetchAll();
+$userTutoringStmt->closeCursor();
+
+$sbDiscussStmt = $db->prepare('SELECT * FROM discussions WHERE courseID=(SELECT courseID FROM usercourselist WHERE (id = :user_id))');
+$sbDiscussStmt->bindValue(':user_id', $user_id);
+$sbDiscussStmt->execute();
+$currDiscussions = $sbDiscussStmt->fetchAll();
+$sbDiscussStmt->closeCursor();
+
+$sbTutorStmt = $db->prepare('SELECT * FROM user WHERE id=(SELECT id FROM usercourselist WHERE (id = :user_id))');
 
 ?>
 
@@ -65,8 +78,7 @@ $userListStmt->closeCursor();
                     <ul class="collapse list-unstyled" id="courseSubmenu">
                     <?php foreach ($currCourse as $course) : ?>
                             <a href="#">
-                                <?php echo $course['courseID'];?>
-                                                        
+                                <?php echo $course['courseID'];?>        
                             </a>
                             <?php endforeach; ?>
                             <a href="#">CIS 350
@@ -78,10 +90,9 @@ $userListStmt->closeCursor();
                     <a href="#discussionSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Discussions</a>
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
                         <li>
-                            <?php foreach ($currCourse as $course) : ?>
+                            <?php foreach ($currDiscussions as $discuss) : ?>
                             <a href="#">
-                                <?php echo $course['courseID'];?>
-                                                        
+                                <?php echo $discuss['courseID'];?>
                             </a>
                             <?php endforeach; ?>
                             <a href="#">Discuss CIS 350
@@ -140,7 +151,7 @@ $userListStmt->closeCursor();
                 </div>
             </nav>
             <div class="row">
-
+                
                 <div class="col-md-3">
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
@@ -153,6 +164,18 @@ $userListStmt->closeCursor();
                                 
                              </div>
                         </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-sm-6">
+                            <form action="./backend/request-admin.php" method="POST" id="req-admin-form">
+                                    <input type="submit" name="req-admin" id="req-admin" class="btn btn-default" value="Admin Request"/>
+                            </form>
+                            </div>
+                            <div class="col-sm-6">
+                            <form action="./backend/request-tutor.php" method="POST" id="req-tutor-form">
+                                    <input type="submit" name="req-tutor" id="req-tutor" class="btn btn-default" value="Tutor Request"/>
+                            </form>
+                            </div>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -228,20 +251,22 @@ $userListStmt->closeCursor();
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
                             <div class="row">
-                                <h3 class="center">Your Class List</h3>
+                                <h3 class="center">Your Course Listing</h3>
                             </div>
                             <div class="card mb-4 box-shadow">
                                 <div class="card-body">     
-                            <div class="row">
+                                <div class="row">
                                 <?php foreach ($currCourse as $course) : ?>
                                 <h5 class="center">
-                                    <?php echo $course['courseID'];?>
+                                        <h5>
+                                            <?php echo $course['courseID'];?>
+                                        </h5>
                                     <div class="input-group-append">
                                         <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
                                     </div>
                                 </h5>
                                 <?php endforeach; ?>
-                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -254,14 +279,16 @@ $userListStmt->closeCursor();
                             <div class="card mb-4 box-shadow">
                                 <div class="card-body">
                                     <div class="row">
-                                        <h3 class="center">Your Tutoring List</h3>
+                                        <h3 class="center">You're Tutoring</h3>
                                     </div>
                                     <div class="card mb-4 box-shadow">
                                         <div class="card-body">     
                                             <div class="row">
-                                                <?php foreach ($currCourse as $course) : ?>
+                                                <?php foreach ($currTutoring as $tutor) : ?>
                                                     <h5 class="center">
-                                                        <?php echo $course['courseID'];?>
+                                                        <h5>
+                                                        <?php echo $tutor['courseID'];?>
+                                                        </h5>
                                                         <div class="input-group-append">
                                                             <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
                                                         </div>
@@ -269,14 +296,11 @@ $userListStmt->closeCursor();
                                                     <?php endforeach; ?>
                                                 </div>
                                             </div>     
-                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-           
-                   
-                    
-                </div>
-            </div>
         </div>
     </div>
     <div class="footer">
