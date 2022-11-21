@@ -1426,3 +1426,63 @@ a.guest-on i {
 .chat-room-head .search-btn::placeholder { /* Most modern browsers support this now. */
   color:    #fff;
 }
+
+.pAboutUs {
+  display: inline-flex;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  color: #fff;
+  font-size: 25px !important;
+  font-weight: 300 !important;
+  top: 25% !important;
+  text-align: left !important;
+}
+
+.pictureAboutUs {
+  width:300px;
+  height:355px;
+  margin-top:20px; 
+  float: left;
+  display: inline-flex;
+} 
+
+
+.containera{
+  overflow: hidden;
+  
+}
+
+.box{
+  min-height: 300px !important;
+  display: flex !important;
+  margin-bottom: 40px;
+  
+}
+
+.box p{
+  all: unset !important;
+  font-size: 1.5rem !important;
+  direction: ltr !important;
+  text-align: left !important;
+  color: #fff !important;
+}
+
+.box img {
+  min-width: 300px;
+  min-height: 300px;
+  margin-inline-end: 25px !important;
+  object-fit: cover;
+}
+
+.right {
+  direction: rtl !important;
+}
+
+.left {
+  direction: ltr !important;
+}
+
+.hehe {
+  flex-direction: column;
+  color: white;
+}
