@@ -139,7 +139,7 @@ $sbTutorStmt = $db->prepare('SELECT * FROM user WHERE id=(SELECT id FROM usercou
                         <ul>
                             <li><a href="site.html">Home</a></li>
                             <li><a href="classes.html">Courses</a></li>
-                            <li><a href="discussions.html">Discussions</a></li>
+                            <li><a href="discussions.php">Discussions</a></li>
                             <li><a href="tutors.html">Tutoring</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">Other Resources</a></li>

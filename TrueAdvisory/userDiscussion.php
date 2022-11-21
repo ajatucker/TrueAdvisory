@@ -8,14 +8,19 @@ if ($discussion_id == NULL || $discussion_id == FALSE) {
 
 $discussion_name = filter_input(INPUT_GET, 'discussionName');
 
-
-
 $queryAllCategoriesDiscussions = 'SELECT * FROM discussions';
 $statementDiscussions = $db->prepare($queryAllCategoriesDiscussions);
 $statementDiscussions->execute();
 $discussions = $statementDiscussions->fetch();
 $statementDiscussions->closeCursor();
 
+/*$user_list = filter_input(INPUT_GET, 'name');
+
+$queryAllCategoriesUserList = 'SELECT * FROM user';
+$statementUserList = $db->prepare($queryAllCategoriesUserList);
+$statementUserList->execute();
+$userList = $statementUserList->fetch();
+$statementUserList->closeCursor();*/
 
 $message_id = filter_input(INPUT_GET, 'messageID', FILTER_VALIDATE_INT);
 if ($message_id == NULL || $message_id == FALSE) {
@@ -29,7 +34,23 @@ $statementMessages->execute();
 $message = $statementMessages->fetchAll();
 $statementMessages->closeCursor();
 
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: signin.html');
+	exit;
+}
 
+$user_id = $_SESSION['id'];
+$email = $_SESSION['email'];
+
+$queryUser = 'SELECT * FROM user WHERE id = :user_id';
+$statementUser = $db->prepare($queryUser);
+$statementUser->bindValue(':user_id', $user_id);
+$statementUser->execute();
+$user = $statementUser->fetch();
+$statementUser->closeCursor();
 
 // // Get products for selected category
 // $queryProducts = 'SELECT * FROM products WHERE categoryID = :category_id ORDER BY productID';
@@ -132,7 +153,7 @@ $statementMessages->closeCursor();
                             <li><a href="site.html">True Advisory</a></li>
                             <li><a href="site.html">Home</a></li>
                             <li><a href="#">Courses</a></li>
-                            <li><a href="#">Discussions</a></li>
+                            <li><a href="discussions.php">Discussions</a></li>
                             <li><a href="#">Tutoring</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">Other Resources</a></li>
@@ -148,19 +169,109 @@ $statementMessages->closeCursor();
                     <?php echo $discussions['discussionName'];?>
                 </h3>
             </div>
-            <form action="/action_page.php">
-                <div class="course">
-                        <?php 
-                            foreach ($message as $messageType){
-                                echo $messageType['message'], nl2br("\n") ;
-                            }
-                        ?>
+            <div class="col-md-12">
+                 <!-- start:chat room -->
+                    <div class="box">
+                        <div class="chat-room">
+                        
+ 
+                        <!-- start:aside tengah chat room -->
+                        <aside class="tengah-side">
+                            <div class="chat-room-head">
+                                <h3>CIS 435</h3>
+                                <form action="#" class="pull-right position">
+                                    <input type="text" placeholder="Search" class="form-control search-btn ">
+                                </form>
+                            </div>
+                            <div class="group-rom">
+                                <?php
+                                    foreach ($message as $messageType){
+                                        $findID = $messageType['id'];
+ 
+                                        $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
+                                        $stmt->execute([$findID]);
+                                        $_SESSION['name'] = $stmt->fetchColumn();
+
+                                        echo "<div class='first-part odd'>".$_SESSION['name']."</div>";
+                                        echo "<div class='second-part'>".$messageType['message']."</div>";
+                                    }
+                                ?>
+                            </div>
+                                <form action="./backend/messageSend.php" class="form" method="POST">
+                                    <div class="chat-txt">
+                                        <input type="text" name="message" id="message" class="form-control">
+                                    </div>
+                                    
+                                    <input type="hidden" id="discussionID" name="discussionID" value=<?php echo $discussions['discussionID']; ?> />
+                                    <input type="hidden" id="id" name="id" value=<?php echo $user['id']; ?> />
+                                    <input type="submit" 
+                                    style="background-color: #fccc01; height:40px; width:125px; margin:0; text-align: left; line-height: 0px; border-radius:5px;" 
+                                    name="signup" 
+                                    id="signup" 
+                                    class="form-submit" 
+                                    value="Submit"/>
+                                </form>
+                            
+                        </aside>
+                        <!-- end:aside tengah chat room -->
+ 
+                        <!-- start:aside kanan chat room -->
+                        <aside class="kanan-side">
+                            <div class="user-head">
+                                <h3>Users</h3>
+                            </div>
+                            <ul class="chat-available-user">
+                                <li>
+                                    <a href="#chat-room.html">
+                                        <i class="fa fa-circle student"></i>
+                                        Jonathan Smith
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#chat-room.html">
+                                        <i class="fa fa-circle tutor"></i>
+                                        Jhone Due
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#chat-room.html">
+                                        <i class="fa fa-circle admin"></i>
+                                        Cendy Andrianto
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#chat-room.html">
+                                        <i class="fa fa-circle student"></i>
+                                        Surya Nug
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#chat-room.html">
+                                        <i class="fa fa-circle admin"></i>
+                                        Monke Lutfy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#chat-room.html">
+                                        <i class="fa fa-circle text-muted"></i>
+                                        Steve Jobs
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#chat-room.html">
+                                        <i class="fa fa-circle text-muted"></i>
+                                        Jonathan Smith
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
+                        <!-- end:aside kanan chat room -->
+ 
+                        </div>
+                    </div>
+                    <!-- end:chat room -->
                 </div>
-                
-                <div class="center btn-padding">
-                    <button type="button" class="btn btn-default">Add New Comment</button> 
-                </div>
-            </form>
+            
 
     
         </div>
