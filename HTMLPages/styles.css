@@ -329,60 +329,6 @@ a.article, a.article:hover {
   margin: 20px;
   }
 
-  
-  /*---------------------------------------------------
-    FOOTER
------------------------------------------------------*/
-credits {
-  margin-top: 60px;
-  margin-bottom: 20px;
-  background-color: #fff;
-  color: #00274C;
-  font-size: 20px;
-  font-weight: 500;
-  top: 25%;
-  width: 100%;
-  padding: 0 200px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  border-radius:.45rem!important;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-  }
-
-  userCredits {
-    margin-top: 60px;
-    margin-bottom: 20px;
-    background-color: #00274C;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 500;
-    top: 25%;
-    width: 100%;
-    padding: 0 200px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    border-radius:.45rem!important;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-    }
-
- #usercontent footer {
-  margin-top: 60px;
-  margin-bottom: 20px;
-  background-color: #00274C;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 300;
-  top: 25%;
-  width: 100%;
-  padding: 0 200px;
-  display: flex;
-    justify-content: center;
-  text-align: center;
-  border-radius:.45rem!important
-}
-
 #content .btns{
   margin-top: 40px;
   top: 25%;
@@ -429,6 +375,43 @@ credits {
   color: black;
 }
 
+
+  /*---------------------------------------------------
+    FOOTER
+-----------------------------------------------------*/
+credits {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  color: #00274C;
+  font-size: 20px;
+  font-weight: 500;
+  top: 25%;
+  width: 100%;
+  padding: 0 200px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius:.45rem!important;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+  userCredits {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  background-color: #00274C;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  top: 25%;
+  width: 100%;
+  padding: 0 200px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius:.45rem!important;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
 
 #sidebarCollapse {
   width: 40px;
