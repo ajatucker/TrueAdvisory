@@ -38,7 +38,7 @@ a, a:hover, a:focus {
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-btn {
@@ -218,6 +218,10 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
+#content  {
+  width: 100%;
+}
+
 #content .center {
     display: block;
     margin-left: auto;
@@ -616,11 +620,6 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     max-width: auto;
     background: #fff;
     margin: 0 auto;
-    -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
     -ms-border-radius: 20px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -934,39 +933,48 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
       padding: 0 30px; }}
 
 /*---------------------------------------------------
-    SignIn and SignUp pages
+    Album Feature
 -----------------------------------------------------*/
 
-      :root {
-        --jumbotron-padding-y: 3rem;
-      }
-      
-      .jumbotron {
-        padding-top: var(--jumbotron-padding-y);
-        padding-bottom: var(--jumbotron-padding-y);
-        margin-bottom: 0;
-        background-color: #fff;
-      }
-      @media (min-width: 768px) {
-        .jumbotron {
-          padding-top: calc(var(--jumbotron-padding-y) * 2);
-          padding-bottom: calc(var(--jumbotron-padding-y) * 2);
-        }
-      }
-      
-      .jumbotron p:last-child {
-        margin-bottom: 0;
-      }
-      
-      .jumbotron-heading {
-        font-weight: 300;
-      }
-      
-      .jumbotron .container {
-        max-width: 40rem;
-      }
-      
-      .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+:root {
+  --jumbotron-padding-y: 3rem;
+}
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #00274C;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
 
 /*
@@ -981,6 +989,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   display: table;
   table-layout: fixed;
   width: 100%;
+  height: 100%;
   position: relative;
 }
 
@@ -993,20 +1002,23 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
 }
 
 .chat-room .kiri-side {
-  width: 25%;
+  width: 20%;
   background: #e5e8ef;
   border-radius: 4px 0 0 4px;
   -webkit-border-radius: 4px 0 0 4px;
 }
 .chat-room .tengah-side {
-  width: 50%;
+  width: 60%;
   background: #fff;
   border-right: 1px solid #e5e8ef;
+  border-bottom: 1px solid #e5e8ef;
 }
 
 .chat-room .kanan-side {
-  width: 25%;
+  width: 20%;
   background: #fff;
+  border-right: 1px solid #e5e8ef;
+  border-bottom: 1px solid #e5e8ef;
 }
 
 .chat-room .kiri-side .user-head {
@@ -1143,27 +1155,28 @@ ul.chat-user li a:hover{
 .chat-room .kiri-side footer {
   background: #d5d7de;
   padding: 15px;
-  height: 70px;
-  width: 25%;
+  height: 100px;
+  width: 20%;
   position: absolute;
   bottom: 0;
 }
 
 .chat-room .tengah-side footer {
-  background: #f6f6f6;
+  background: #f7f8fa;
   padding: 15px;
-  height: 70px;
-  width: 50%;
+  height: 275px;
+  width: 60%;
   position: absolute;
   bottom: 0;
   border-right: 1px solid #E5E8EF;
+  border-bottom: 1px solid #e5e8ef;
 }
 
 .chat-room .kanan-side footer {
   background: #fff;
   padding: 15px;
-  height: 70px;
-  width: 25%;
+  height: 100px;
+  width: 20%;
   position: absolute;
   bottom: 0;
   border-top: 1px solid #E5E8EF;
