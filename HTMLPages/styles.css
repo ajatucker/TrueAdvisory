@@ -34,11 +34,13 @@ a, a:hover, a:focus {
 
 .navbar {
     max-width: auto;
+    width: 100%;
     background:#00274C;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    min-width: 100%;
 }
 
 .navbar-btn {
@@ -59,7 +61,6 @@ a, a:hover, a:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
 }
 
 .menu ul{
@@ -77,7 +78,6 @@ a, a:hover, a:focus {
   font-weight: 700;
   line-height: 80px;
   align-items: center;
-  
 }
 
 .menu ul li:first-child{
@@ -219,7 +219,13 @@ a.article, a.article:hover {
     CONTENT STYLE
 ----------------------------------------------------- */
 #content  {
+  max-width: auto;
   width: 100%;
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  min-width: 1470px;
 }
 
 #content .center {
@@ -252,12 +258,7 @@ a.article, a.article:hover {
   list-style-position: inside;
   }
 
-#content {
-  width: 100%;
-  padding: 20px;
-  min-height: 100vh;
-  transition: all 0.3s;
-}
+
 
 #content image {
   margin-top: 20px;
@@ -389,6 +390,7 @@ credits {
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-bottom: 25px;
   }
 
  #usercontent footer {
@@ -617,7 +619,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     clear: both; }
   
   .container {
-    max-width: auto;
+    max-width: 1400px;
+    width: 100%;
     background: #fff;
     margin: 0 auto;
     -ms-border-radius: 20px;
@@ -627,6 +630,20 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     border-radius: 20px; 
     margin-top: 200px;
   }
+
+  .container-fluid{
+    padding: 0 !important;
+    max-width: auto;
+    width: 100%;
+    
+}
+
+.container-nav{
+  padding: 0 !important;
+  max-width: auto;
+  width: 100%;
+  min-width: 100%;
+}
 
   .display-flex {
     -ms-justify-content: space-between;
@@ -1021,16 +1038,16 @@ footer p {
   border-bottom: 1px solid #e5e8ef;
 }
 
-.chat-room .kiri-side .user-head {
+.chat-room .kiri-side .currUser-head {
   background: #00274C;
   color: #FFFFFF;
-  min-height: 70px;
+  max-height: 100px;
   padding: 15px;
 }
 .chat-room .kanan-side .user-head {
   background: #00274C;
   color: #FFFFFF;
-  min-height: 70px;
+  min-height: 100px;
   padding: 10px;
   border-left: 1px solid #00274C;
   margin-left: -1px;
@@ -1045,20 +1062,29 @@ footer p {
 
 .chat-room .user-head h3 {
   margin: 6px 0 0 0;
-  font-weight: 100;
+  font-weight: 500;
   letter-spacing: 1px;
+  padding: 20px;
+}
+
+.chat-room .currUser-head h3 {
+  margin: 6px 0 0 0;
+  font-weight: 500;
+  letter-spacing: 1px;
+ 
 }
 
 .chat-room-head {
   background: #00274C;
   color: #FFFFFF;
-  min-height: 70px;
-  padding: 15px;
+  min-height: 100px;
+  padding: 30px;
+  
 }
 
 .chat-room-head h3 {
   margin: 5px 0 0;
-  font-weight: 100;
+  font-weight: 500;
   letter-spacing: 1px;
   display: inline-block;
 }
@@ -1071,9 +1097,8 @@ footer p {
   -o-transition: all .3s ease;
   transition: all .3s ease;
   box-shadow: none;
-  background: #01a6b2 url("../img/chat-search.png") no-repeat 12px 9px;
   padding:0 5px 0 35px;
-  margin-top: 2px;
+  margin-top: 10px;
   border: none;
   color: #fff;
 }
@@ -1159,17 +1184,17 @@ ul.chat-user li a:hover{
   width: 20%;
   position: absolute;
   bottom: 0;
+  
 }
 
 .chat-room .tengah-side footer {
   background: #f7f8fa;
   padding: 15px;
-  height: 275px;
+  height: 235px;
   width: 60%;
   position: absolute;
   bottom: 0;
-  
-  border-bottom: 1px solid #e5e8ef;
+ 
 }
 
 .chat-room .kanan-side footer {
@@ -1180,6 +1205,7 @@ ul.chat-user li a:hover{
   position: absolute;
   bottom: 0;
   border-top: 1px solid #E5E8EF;
+  
 }
 
 .chat-room .kiri-side footer .chat-avatar img {
@@ -1302,6 +1328,7 @@ ul.chat-available-user li i {
   width: 100%;
   float: left;
   border-bottom: 1px solid #eaebee;
+  
 }
 
 .group-rom .first-part,
@@ -1370,4 +1397,32 @@ a.guest-on i {
 
 .professor{
   color: rgb(255, 119, 0);
+}
+
+.scroll {
+  height: 1050px;
+  overflow-y: scroll;
+ 
+}
+
+.chat-room-head .search-btn::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #fff;
+}
+.chat-room-head .search-btn:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #fff;
+ opacity:  1;
+}
+.chat-room-head .search-btn::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #fff;
+ opacity:  1;
+}
+.chat-room-head .search-btn:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    #fff;
+}
+.chat-room-head .search-btn::-ms-input-placeholder { /* Microsoft Edge */
+  color:    #fff;
+}
+
+.chat-room-head .search-btn::placeholder { /* Most modern browsers support this now. */
+  color:    #fff;
 }
