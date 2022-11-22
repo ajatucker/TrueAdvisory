@@ -22,10 +22,21 @@ p {
     color: #999;
 }
 
-a, a:hover, a:focus {
+a, a:hover, a:focus{
     color: inherit;
+    
     text-decoration: none;
     transition: all 0.3s;
+}
+
+a, a:link{
+  color: #0000EE;
+  text-decoration: underline;
+}
+
+a, a:visited{
+  color: #551A8B; 
+  text-decoration: underline;
 }
 
 .rounded {
@@ -34,11 +45,13 @@ a, a:hover, a:focus {
 
 .navbar {
     max-width: auto;
+    width: 100%;
     background:#00274C;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    min-width: 100%;
 }
 
 .navbar-btn {
@@ -50,7 +63,7 @@ a, a:hover, a:focus {
 .line {
     width: 100%;
     height: 1px;
-    border-bottom: 1px dashed #ddd;
+    border-bottom: 2.5px solid #ddd;
     margin: 40px 0;
 }
 
@@ -59,7 +72,6 @@ a, a:hover, a:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
 }
 
 .menu ul{
@@ -77,7 +89,6 @@ a, a:hover, a:focus {
   font-weight: 700;
   line-height: 80px;
   align-items: center;
-  
 }
 
 .menu ul li:first-child{
@@ -160,9 +171,25 @@ a, a:hover, a:focus {
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.1em;
+    font-size: 1.3em;
     display: block;
+    color:white;
+    text-decoration: none;
 }
+
+#sidebar ul li a.download{
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  color: #00274C;
+  text-decoration: none;
+}
+
+#sidebar ul li a.download:hover {
+  color: #00274C;
+  background: rgb(182, 182, 182);
+}
+
 #sidebar ul li a:hover {
     color: #00274C;
     background: #fff;
@@ -207,6 +234,7 @@ ul.CTAs a {
 a.download {
     background: #fff;
     color: #00274C;
+    font-size: 0.9em !important;
 }
 
 a.article, a.article:hover {
@@ -219,14 +247,24 @@ a.article, a.article:hover {
     CONTENT STYLE
 ----------------------------------------------------- */
 #content  {
+  max-width: auto;
   width: 100%;
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  min-width: 1570px;
+}
+
+#content .user {
+  background-color: white;
 }
 
 #content .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
   }
 
 #content .center h2{
@@ -251,13 +289,6 @@ a.article, a.article:hover {
   text-align: center;
   list-style-position: inside;
   }
-
-#content {
-  width: 100%;
-  padding: 20px;
-  min-height: 100vh;
-  transition: all 0.3s;
-}
 
 #content image {
   margin-top: 20px;
@@ -298,113 +329,6 @@ a.article, a.article:hover {
   margin: 20px;
   }
 
-  /* ---------------------------------------------------
-     USER PAGE CONTENT STYLE
------------------------------------------------------ */
-#usercontent .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  color: #00274C;
-  background: #fff;
-}
-
-#usercontent .center h2{
-  margin: 20px;
-  font-size: 35px;
-  font-weight: 600;
-  top: 25%;
-  width: 100%;
-  padding: 0 20px;
-  text-align: center;
-}
-
-#usercontent .center ul{
-  margin-top: 20px;
-  color: #fff;
-  font-size: 25px;
-  font-weight: 300;
-  top: 25%;
-  width: 100%;
-  padding: 0 5px;
-  text-align: center;
-  list-style-position: inside;
-}
-
-#usercontent {
-  width: 100%;
-  padding: 20px;
-  min-height: 100vh;
-  transition: all 0.3s;
-}
-
-#usercontent image {
-  margin-top: 20px;
-  position: relative;
-  padding: 0 20px;
-}
-
-#usercontent h1{
-  margin: 20px;
-  color: #fff;
-  font-size: 75px;
-  font-weight: 600;
-  top: 25%;
-  width: 100%;
-  padding: 0 20px;
-  text-align: center;
-}
-
-#usercontent p{
-  margin-top: 40px;
-  margin-bottom: 20px;
-  color: #fff;
-  font-size: 25px;
-  font-weight: 300;
-  top: 25%;
-  width: 100%;
-  padding: 0 200px;
-  text-align: center;
-}
-
-.usercourse{
-  color: #00274C;
-  font-size: 15pt;
-}
-
-.btn-default{
-  padding: 10px;
-  margin: 20px;
-}
-  
-  /*---------------------------------------------------
-    FOOTER
------------------------------------------------------*/
-credits {
-  color: #00274C;
-  font-size: 20px;
-  font-weight: 500;
-  margin-top: 100px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  }
-
- #usercontent footer {
-  margin-top: 60px;
-  margin-bottom: 20px;
-  background-color: #00274C;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 300;
-  top: 25%;
-  width: 100%;
-  padding: 0 200px;
-  text-align: center;
-  border-radius:.45rem!important
-}
-
 #content .btns{
   margin-top: 40px;
   top: 25%;
@@ -437,8 +361,56 @@ credits {
   color: inherit;
 }
 
-#content .btns a:visited{
+#content .btns a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+#content .btns a:hover{
+  color: black;
+}
+
+
+  /*---------------------------------------------------
+    FOOTER
+-----------------------------------------------------*/
+credits {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  background-color: #fff;
   color: #00274C;
+  font-size: 20px;
+  font-weight: 500;
+  top: 25%;
+  width: 100%;
+  padding: 0 200px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius:.45rem!important;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+  userCredits {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  background-color: #00274C;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  top: 25%;
+  width: 100%;
+  padding: 0 200px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius:.45rem!important;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 #sidebarCollapse {
@@ -512,6 +484,7 @@ credits {
 .umdlogo{
   width:82px;
   height:59px;
+  margin-left: 20px;
 }
 
 .logo{
@@ -617,7 +590,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     clear: both; }
   
   .container {
-    max-width: auto;
+    max-width: 1400px;
+    width: 100%;
     background: #fff;
     margin: 0 auto;
     -ms-border-radius: 20px;
@@ -627,6 +601,20 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     border-radius: 20px; 
     margin-top: 200px;
   }
+
+  .container-fluid{
+    padding: 0 !important;
+    max-width: auto;
+    width: 100%;
+    
+}
+
+.container-nav{
+  padding: 0 !important;
+  max-width: auto;
+  width: 100%;
+  min-width: 100%;
+}
 
   .display-flex {
     -ms-justify-content: space-between;
@@ -687,7 +675,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   
   .form-submit {
     display: inline-block;
-    background: #6dabe4;
+    background: #fccc01;
     color: #fff;
     border-bottom: none;
     width: auto;
@@ -701,8 +689,13 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     margin-bottom: 25px;
     cursor: pointer; }
     .form-submit:hover {
-      background: #4292dc; }
-  
+      background: #ecc100;
+      -webkit-transition: all .3s ease;
+      -moz-transition: all .3s ease;
+      -ms-transition: all .3s ease;
+      -o-transition: all .3s ease;
+      transition: all .3s ease; }
+      
   #signin {
     margin-top: 16px; }
   
@@ -1021,16 +1014,16 @@ footer p {
   border-bottom: 1px solid #e5e8ef;
 }
 
-.chat-room .kiri-side .user-head {
+.chat-room .kiri-side .currUser-head {
   background: #00274C;
   color: #FFFFFF;
-  min-height: 70px;
+  max-height: 100px;
   padding: 15px;
 }
 .chat-room .kanan-side .user-head {
   background: #00274C;
   color: #FFFFFF;
-  min-height: 70px;
+  min-height: 100px;
   padding: 10px;
   border-left: 1px solid #00274C;
   margin-left: -1px;
@@ -1045,20 +1038,29 @@ footer p {
 
 .chat-room .user-head h3 {
   margin: 6px 0 0 0;
-  font-weight: 100;
+  font-weight: 500;
   letter-spacing: 1px;
+  padding: 20px;
+}
+
+.chat-room .currUser-head h3 {
+  margin: 6px 0 0 0;
+  font-weight: 500;
+  letter-spacing: 1px;
+ 
 }
 
 .chat-room-head {
   background: #00274C;
   color: #FFFFFF;
-  min-height: 70px;
-  padding: 15px;
+  min-height: 100px;
+  padding: 30px;
+  
 }
 
 .chat-room-head h3 {
   margin: 5px 0 0;
-  font-weight: 100;
+  font-weight: 500;
   letter-spacing: 1px;
   display: inline-block;
 }
@@ -1071,9 +1073,8 @@ footer p {
   -o-transition: all .3s ease;
   transition: all .3s ease;
   box-shadow: none;
-  background: #01a6b2 url("../img/chat-search.png") no-repeat 12px 9px;
   padding:0 5px 0 35px;
-  margin-top: 2px;
+  margin-top: 10px;
   border: none;
   color: #fff;
 }
@@ -1159,17 +1160,17 @@ ul.chat-user li a:hover{
   width: 20%;
   position: absolute;
   bottom: 0;
+  
 }
 
 .chat-room .tengah-side footer {
   background: #f7f8fa;
   padding: 15px;
-  height: 275px;
+  height: 235px;
   width: 60%;
   position: absolute;
   bottom: 0;
-  border-right: 1px solid #E5E8EF;
-  border-bottom: 1px solid #e5e8ef;
+ 
 }
 
 .chat-room .kanan-side footer {
@@ -1180,6 +1181,7 @@ ul.chat-user li a:hover{
   position: absolute;
   bottom: 0;
   border-top: 1px solid #E5E8EF;
+  
 }
 
 .chat-room .kiri-side footer .chat-avatar img {
@@ -1302,6 +1304,7 @@ ul.chat-available-user li i {
   width: 100%;
   float: left;
   border-bottom: 1px solid #eaebee;
+  
 }
 
 .group-rom .first-part,
@@ -1330,7 +1333,6 @@ ul.chat-available-user li i {
   color: #d4d3d3;
 }
 
-
 a.guest-on {
   color: #6a6a6a;
   margin-top: 8px;
@@ -1344,6 +1346,18 @@ a.guest-on i {
   border-radius: 3px;
   -webkit-border-radius: 3px;
   margin-right: 5px;
+}
+
+.chat-room .tengah-side footer .btn.send{
+  background-color: #fccc01; 
+  position: absolute; 
+  top: 60%;left: 84%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.chat-room .tengah-side footer .btn.send:hover{
+  background: #ecc100;
 }
 
 .chat-txt {
@@ -1370,4 +1384,74 @@ a.guest-on i {
 
 .professor{
   color: rgb(255, 119, 0);
+}
+
+.scroll {
+  height: 1050px;
+  overflow-y: scroll;
+ 
+}
+
+.chat-room-head .search-btn::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #fff;
+}
+.chat-room-head .search-btn:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #fff;
+ opacity:  1;
+}
+.chat-room-head .search-btn::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #fff;
+ opacity:  1;
+}
+.chat-room-head .search-btn:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    #fff;
+}
+.chat-room-head .search-btn::-ms-input-placeholder { /* Microsoft Edge */
+  color:    #fff;
+}
+
+.chat-room-head .search-btn::placeholder { /* Most modern browsers support this now. */
+  color:    #fff;
+}
+
+/*---------------------------------------------------
+    About Us
+-----------------------------------------------------*/
+
+.containera{
+  overflow: hidden;
+}
+
+.aboutBox{
+  min-height: 300px !important;
+  display: flex !important;
+  margin-bottom: 40px;
+}
+
+.aboutBox p{
+  all: unset !important;
+  font-size: 1.5rem !important;
+  direction: ltr !important;
+  text-align: left !important;
+  color: #fff !important;
+}
+
+.aboutBox img {
+  min-width: 300px;
+  min-height: 300px;
+  margin-inline-end: 25px !important;
+  object-fit: cover;
+}
+
+.right {
+  direction: rtl !important;
+}
+
+.left {
+  direction: ltr !important;
+}
+
+.hehe {
+  flex-direction: column;
+  color: white;
 }

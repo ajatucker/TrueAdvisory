@@ -19,7 +19,8 @@
     <script>
       tinymce.init({
         selector: 'textarea#tiny',
-        max_height: 250
+        max_height: 215,
+        max_width: 1200
             ,plugins: [
             'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
             'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
@@ -44,7 +45,7 @@
                 <li class="active">
                     <a href="#">Your Home</a>
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
-                    <ul class="collapse list-unstyled" id="courseSubmenu">
+                    <ul class="collapse list-unstyled" id="courseSubmenu" style = "font-size: 1.2em;">
                         <li>
                             <a href="#">CIS 350</a>
                         </li>
@@ -58,7 +59,7 @@
                 </li>
                 <li>
                     <a href="#discussionSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Discussions</a>
-                    <ul class="collapse list-unstyled" id="discussionSubmenu">
+                    <ul class="collapse list-unstyled" id="discussionSubmenu" style = "font-size: 1.2em;">
                         <li>
                             <a href="#">Discuss CIS 350</a>
                         </li>
@@ -78,16 +79,16 @@
                 </li>
             </ul>
 
-            <ul class="list-unstyled CTAs">
+            <ul class="list-unstyled CTAs" style = "font-size: 1.2em;">
                 <li>
-                    <a href="#" class="download">Sign Out</a>
+                    <a href="#" class="download"><b>Sign Out</b></a>
                 </li>
             </ul>
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content" style ="background-color: white;">
-            <nav class="navbar navbar-expand-lg rounded">
+        <div id="content" class ="user">
+            <nav class="navbar navbar-expand-lg rounded ">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
@@ -99,15 +100,15 @@
                         &ZeroWidthSpace;<i class="fas fa-align-justify"></i>
                     </button>
 
-                    <div class="menu">
+                    <div class="menu w-100 order-1 order-md-0 ">
                         <ul>
-                            <li><a href="site.html">True Advisory</a></li>
+                            <li><a href="#">True Advisory</a></li>
                             <li><a href="site.html">Home</a></li>
-                            <li><a href="#">Courses</a></li>
-                            <li><a href="#">Discussions</a></li>
-                            <li><a href="#">Tutoring</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Other Resources</a></li>
+                            <li><a href="courses.html">Courses</a></li>
+                            <li><a href="discussions.html">Discussions</a></li>
+                            <li><a href="tutors.html">Tutoring</a></li>
+                            <li><a href="aboutUs.html">About</a></li>
+                            <li><a href="otherResources.html">Resources</a></li>
                         </ul>
                     </div> 
                 </div>
@@ -116,15 +117,15 @@
             <?php foreach ($message_id as $messageType)?>
        
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-            <div class="container bootstrap snippets bootdey.com" style = "margin-top: 100px; margin-left: auto; margin-right: auto;">
-            <div class="row">
-                <div class="col-md-18 " >
+            <div class="container-fluid bootstrap snippets bootdey.com " style = " max-width: auto; width: 95%;  margin-left: auto; margin-right: auto;">
+            <div class="row " >
+                <div class="col-md-18"  >
                  <!-- start:chat room -->
                     <div class="box ">
-                        <div class="chat-room rounded" style ="width:1400px; height: 1400px;">
+                        <div class="chat-room rounded"  style = "height: 1400px;" >
                         <!-- start:aside kiri chat room -->
-                        <aside class="kiri-side">
-                            <div class="user-head">
+                        <aside class="kiri-side ">
+                            <div class="currUser-head">
                                 <h3>Jackie's Discussions</h3>
                             </div>
                             <ul class="chat-list">
@@ -192,58 +193,132 @@
                         <!-- end:aside kiri chat room -->
 
                         <!-- start:aside tengah chat room -->
-                        <aside class="tengah-side">
+                        <aside class="tengah-side ">
                             <div class="chat-room-head">
                                 <h3>CIS 435</h3>
                                 <form action="#" class="pull-right position">
-                                    <input type="text" placeholder="Search" class="form-control search-btn" style="background-color: #fccc01">
+                                    <input type="text" placeholder="Search" class="form-control search-btn" style="background-color: #fccc01;">
                                 </form>
                             </div>
-                            <div class="group-rom">
-                                <div class="first-part odd">Jonathan Smith</div>
-                                <div class="second-part">Hello Cendy are you there?</div>
-                                <div class="third-part">12:30</div>
-                            </div>
-                            <div class="group-rom">
-                                <div class="first-part">Cendy Andrianto</div>
-                                <div class="second-part">Yoman Smith. Please proceed</div>
-                                <div class="third-part">12:31</div>
-                            </div>
-                            <div class="group-rom">
-                                <div class="first-part odd">Jonathan Smith</div>
-                                <div class="second-part">I want to share a file using chatroom</div>
-                                <div class="third-part">12:32</div>
-                            </div>
-                            <div class="group-rom">
-                                <div class="first-part">Cendy Andrianto</div>
-                                <div class="second-part">oh sure. please send</div>
-                                <div class="third-part">12:32</div>
-                            </div>
-                            <div class="group-rom">
-                                <div class="first-part odd">Jonathan Smith</div>
-                                <div class="second-part"><a href="##">search_scb_dialog.jpg</a> <span class="text-muted">46.8KB</span> <p>
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="img-responsive"></p></div>
-                                <div class="third-part">12:32</div>
-                            </div>
-                            <div class="group-rom">
-                                <div class="first-part">Cendy Andrianto</div>
-                                <div class="second-part">Fantastic job, love it :)</div>
-                                <div class="third-part">12:32</div>
-                            </div>
-                            <div class="group-rom">
-                                <div class="first-part odd">Jonathan Smith</div>
-                                <div class="second-part">Thanks</div>
-                                <div class="third-part">12:33</div>
-                            </div>
-                            <footer>
-                                <div class="chat-txt" style = "width: 550px">
-                                    <textarea id="tiny" style="overflow: hidden;"></textarea>
+                            <div class = "scroll">
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part">Hello Cendy are you there?</div>
+                                    <div class="third-part">12:30</div>
                                 </div>
-                                <div class="btn-group" style="padding-left:80px;">
+                                <div class="group-rom">
+                                    <div class="first-part">Cendy Andrianto</div>
+                                    <div class="second-part">Yoman Smith. Please proceed</div>
+                                    <div class="third-part">12:31</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part">I want to share a file using chatroom</div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part">Cendy Andrianto</div>
+                                    <div class="second-part">oh sure. please send</div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part"><a href="##">search_scb_dialog.jpg</a> <span class="text-muted">46.8KB</span> <p>
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="img-responsive"></p></div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part">Cendy Andrianto</div>
+                                    <div class="second-part">Fantastic job, love it :)</div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part">Thanks</div>
+                                    <div class="third-part">12:33</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part">Hello Cendy are you there?</div>
+                                    <div class="third-part">12:30</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part">Cendy Andrianto</div>
+                                    <div class="second-part">Yoman Smith. Please proceed</div>
+                                    <div class="third-part">12:31</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part">I want to share a file using chatroom</div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part">Cendy Andrianto</div>
+                                    <div class="second-part">oh sure. please send</div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part"><a href="##">search_scb_dialog.jpg</a> <span class="text-muted">46.8KB</span> <p>
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="img-responsive"></p></div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part">Cendy Andrianto</div>
+                                    <div class="second-part">Fantastic job, love it :)</div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part">Thanks</div>
+                                    <div class="third-part">12:33</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part">Hello Cendy are you there?</div>
+                                    <div class="third-part">12:30</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part">Cendy Andrianto</div>
+                                    <div class="second-part">Yoman Smith. Please proceed</div>
+                                    <div class="third-part">12:31</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part">I want to share a file using chatroom</div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part">Cendy Andrianto</div>
+                                    <div class="second-part">oh sure. please send</div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part"><a href="##">search_scb_dialog.jpg</a> <span class="text-muted">46.8KB</span> <p>
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="img-responsive"></p></div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part">Cendy Andrianto</div>
+                                    <div class="second-part">Fantastic job, love it :)</div>
+                                    <div class="third-part">12:32</div>
+                                </div>
+                                <div class="group-rom">
+                                    <div class="first-part odd">Jonathan Smith</div>
+                                    <div class="second-part">Thanks</div>
+                                    <div class="third-part">12:33</div>
+                                </div>
+                             </div>
+                            <footer>
+                                <div class="chat-txt">
+                                    <textarea id="tiny"></textarea>
+                                </div>
+                                <div class="btn-group" style=" position: absolute;top: 40%;left: 84%; -ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);" >
                                     <button type="button" class="btn btn-white" data-original-title="" title=""><i class="fa fa-meh-o"></i></button>
                                     <button type="button" class="btn btn-white" data-original-title="" title=""><i class=" fa fa-paperclip"></i></button>
                                 </div>
-                                <button class="btn" style ="background-color: #fccc01" data-original-title="" title="">Send</button>
+                                <button class="btn send" data-original-title="" title="">Send</button>
                             </footer>
                         </aside>
                         <!-- end:aside tengah chat room -->
@@ -306,7 +381,7 @@
                 </div>
                 </div>
             </div>
-            <credits>Powered by the University of Michigan - Dearborn and learning in CIS 435</credits>
+            <userCredits class = "center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
         </div>
        
 </div>
