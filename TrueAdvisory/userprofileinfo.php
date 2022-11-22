@@ -253,10 +253,10 @@ $sbDiscussStmt->closeCursor();
                             <div class="row">
                                 <h3 class="center">Your Course Listing</h3>
                             </div>
+                            <?php foreach ($currCourse as $course) : ?>
                             <div class="card mb-4 box-shadow">
                                 <div class="card-body">     
                                 <div class="row">
-                                <?php foreach ($currCourse as $course) : ?>
                                 <h5 class="center">
                                         <h5>
                                             <?php echo $course['courseID'];?>
@@ -265,10 +265,10 @@ $sbDiscussStmt->closeCursor();
                                         <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
                                     </div>
                                 </h5>
-                                <?php endforeach; ?>
-                                </div>
+                            </div>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -281,10 +281,16 @@ $sbDiscussStmt->closeCursor();
                                     <div class="row">
                                         <h3 class="center">You're Tutoring</h3>
                                     </div>
+                                    <?php 
+                                                            if($_SESSION['tutorPrivileges'] == 0)
+                                                            {
+                                                                echo "<h5>You're not a tutor.<h5>";
+                                                            }
+                                                        ?>
+                                    <?php foreach ($currTutoring as $tutor) : ?>
                                     <div class="card mb-4 box-shadow">
                                         <div class="card-body">     
                                             <div class="row">
-                                                <?php foreach ($currTutoring as $tutor) : ?>
                                                     <h5 class="center">
                                                         <h5>
                                                         <?php echo $tutor['courseID'];?>
@@ -293,10 +299,10 @@ $sbDiscussStmt->closeCursor();
                                                             <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
                                                         </div>
                                                     </h5>
-                                                    <?php endforeach; ?>
                                                 </div>
                                             </div>     
                                         </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>

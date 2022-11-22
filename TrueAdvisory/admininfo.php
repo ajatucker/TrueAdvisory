@@ -73,7 +73,7 @@ $courseRequestStmt->closeCursor();
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
+    <script src="./backend/functions.js"></script>
 </head>
 
 <body>
@@ -256,9 +256,9 @@ $courseRequestStmt->closeCursor();
                             <div class="row">
                                 <h3 class="center">Registered Course Listing</h3>
                             </div>
+                            <?php foreach ($currCourse as $course) : ?>
                             <div class="card mb-4 box-shadow">
                                 <div class="card-body">     
-                                    <?php foreach ($currCourse as $course) : ?>
                                         <div class="row">
                                 <h5 class="center">
                                         <h5>
@@ -269,26 +269,34 @@ $courseRequestStmt->closeCursor();
                                     </div>
                                 </h5>
                             </div>
-                                <?php endforeach; ?>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
             
-                    
+                 
                         <div class="col-lg-6">
                             <div class="card mb-4 box-shadow">
                                 <div class="card-body">
                                     <div class="row">
                                         <h3 class="center">Current Tutoring List</h3>
                                     </div>
+                                    <?php 
+                                        if($_SESSION['tutorPrivileges'] == 0)
+                                        {
+                                            echo "<h5>You're not a tutor.<h5>";
+                                        }
+                                    ?>
+                                    <?php foreach ($currTutoring as $tutor) : ?>
                                     <div class="card mb-4 box-shadow">
                                         <div class="card-body">     
-                                            <?php foreach ($currTutoring as $tutor) : ?>
                                                 <div class="row">
                                                     <h5 class="center">
                                                         <h5>
+                                                        
+
                                                         <?php echo $tutor['courseID'];?>
                                                         </h5>
                                                         <div class="input-group-append">
@@ -296,13 +304,14 @@ $courseRequestStmt->closeCursor();
                                                         </div>
                                                     </h5>
                                                 </div>
-                                                    <?php endforeach; ?>
                                             </div>     
                                         </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                
                 <div class="row">
                 <div class="col-lg-8 center">
                     <div class="card mb-4 box-shadow">
@@ -310,9 +319,9 @@ $courseRequestStmt->closeCursor();
                             <div class="row">
                                 <h3 class="center">Newly Requested Course Updates</h3>
                             </div>
+                            <?php foreach ($cRequests as $c) : ?>
                             <div class="card mb-4 box-shadow">
                                 <div class="card-body">     
-                                    <?php foreach ($cRequests as $c) : ?>
                                         <div class="row">
                                     <div class="col-sm-3">
                                         <?php echo $c['courseID'];?>
@@ -322,13 +331,15 @@ $courseRequestStmt->closeCursor();
                                         </div>
                                         
                                         <div class="input-group-append">
-                                            <input type="submit" name="admin-accept" id="admin-accept" class="btn btn-outline-secondary" value=">"/>
+                                            <button name="admin-accept" id="admin-accept" class="btn btn-outline-secondary" style="background-color:#83ff9e;">
+                                                <a href="./backend/.php?e=<?php echo $c['courseID']?>">></a>
+                                            </button>
                                         </div>
 
                                     </div>
-                                <?php endforeach; ?>
-                        </div>
-                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -340,31 +351,34 @@ $courseRequestStmt->closeCursor();
                             <div class="row">
                                 <h3 class="center">Incoming Admin Requests</h3>
                             </div>
-                            <div class="card mb-4 box-shadow">
-                                <div class="card-body">     
-                                    <?php foreach ($aRequests as $a) : ?>
-                                        <div class="row">
-                                    <div class="col-sm-3">
-                                        <?php echo $a['name'];?>
-                                    </div>
+                            <?php foreach ($aRequests as $a) : ?>
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-body">     
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <?php echo $a['name'];?>
+                                        </div>
                                         <div class="col-sm-3">
                                             <?php echo $a['email'];?>
                                         </div>
                                         <div class="col-sm-3">
                                             <?php echo $a['major'];?>
                                         </div>
-                                        
                                         <div class="input-group-append">
-                                            <input type="submit" name="admin-accept" id="admin-accept" class="btn btn-outline-secondary" value="Accept" style="background-color:#83ff9e;"/>
+                                            <button name="admin-accept" id="admin-accept" class="btn btn-outline-secondary" value="Accept" style="background-color:#83ff9e;">
+                                                <a href="./backend/admin-approve-request.php?e=<?php echo $a['email']?>">Approve</a>
+                                            </button>
                                         </div>
                                         <div class="input-group-append">
-                                            <input type="submit" name="admin-reject" id="admin-reject" class="btn btn-outline-secondary" value="Reject" style="background-color:#ff8282;"/>
+                                            <button name="admin-reject" id="admin-reject" class="btn btn-outline-secondary" value="Reject" style="background-color:#ff8282;">
+                                                <a href="./backend/admin-deny-request.php?e=<?php echo $a['email']?>">Reject</a>
+                                            </button>
                                         </div>
 
                                     </div>
+                                    </div>
+                                </div>
                                 <?php endforeach; ?>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -376,9 +390,9 @@ $courseRequestStmt->closeCursor();
                                     <div class="row">
                                         <h3 class="center">Incoming Tutor Requests</h3>
                                     </div>
+                                    <?php foreach ($tRequests as $t) : ?>
                                     <div class="card mb-4 box-shadow">
                                         <div class="card-body">     
-                                            <?php foreach ($tRequests as $t) : ?>
                                                 <div class="row">
                                                     <div class="col-sm-3">
                                                         <?php echo $t['name'];?>
@@ -390,15 +404,19 @@ $courseRequestStmt->closeCursor();
                                                         <?php echo $t['major'];?>
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <input type="submit" name="admin-accept" id="admin-accept" class="btn btn-outline-secondary" value="Accept" style="background-color:#83ff9e;"/>
+                                                        <button name="admin-accept" id="admin-accept" class="btn btn-outline-secondary" value="Accept" style="background-color:#83ff9e;">
+                                                            <a href="./backend/tutor-approve-request.php?e=<?php echo $a['email']?>">Approve</a>
+                                                        </button>
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <input type="submit" name="admin-reject" id="admin-reject" class="btn btn-outline-secondary" value="Reject" style="background-color:#ff8282;"/>
+                                                        <button name="admin-reject" id="admin-reject" class="btn btn-outline-secondary" value="Reject" style="background-color:#ff8282;">
+                                                            <a href="./backend/tutor-deny-request.php?e=<?php echo $a['email']?>">Reject</a>
+                                                        </button>
                                                     </div>
                                                 </div>
-                                                    <?php endforeach; ?>
                                             </div>     
                                         </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
