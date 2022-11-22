@@ -7,7 +7,10 @@ $discussionID = filter_input(INPUT_POST, 'discussionID');
 
 if ($message == null || $id ==null ) {
     $error_message = "Enter a message";
-} else {
+    http_response_code( 406 ); 
+    echo json_encode( [ 'msg' => $errors ] );
+} 
+else {
 
 
     // Add the user into the database
@@ -19,5 +22,8 @@ if ($message == null || $id ==null ) {
     $statement->execute();
     $statement->closeCursor();
     header('Location: ../userDiscussion.php');
+
+    http_response_code( 200 );
+    echo json_encode( [ 'msg' => 'Your registration has successfully done' ] );
 }
 ?>

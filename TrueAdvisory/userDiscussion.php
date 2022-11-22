@@ -77,8 +77,12 @@ $statementUser->closeCursor();
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
+    
 </head>
+    
+
 
 <body>
 
@@ -164,116 +168,59 @@ $statementUser->closeCursor();
                         </div> 
                 </div>
             </nav>
-            <div class="center">
-                <h3>
-                    <?php echo $discussions['discussionName'];?>
-                </h3>
-            </div>
-            <div class="col-md-12">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+            <div class="container-fluid bootstrap snippets bootdey.com " style = " max-width: auto; width: 95%;  margin-left: auto; margin-right: auto;">
+            <div class="row " >
+                <div class="col-md-18"  >
                  <!-- start:chat room -->
                     <div class="box">
-                        <div class="chat-room">
+                    <div class="chat-room rounded"  style = "height: 1400px;" >
                         
  
                         <!-- start:aside tengah chat room -->
                         <aside class="tengah-side">
                             <div class="chat-room-head">
-                                <h3>CIS 435</h3>
+                                <h3><?php echo $discussions['discussionName'];?></h3>
                                 <form action="#" class="pull-right position">
                                     <input type="text" placeholder="Search" class="form-control search-btn ">
                                 </form>
                             </div>
-                            <div class="group-rom">
-                                <?php
-                                    foreach ($message as $messageType){
-                                        $findID = $messageType['id'];
- 
-                                        $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
-                                        $stmt->execute([$findID]);
-                                        $_SESSION['name'] = $stmt->fetchColumn();
+                            <div id = "messages">
+                                <div class = "scroll">
+                                    <div class="group-rom">
+                                        <?php
+                                            foreach ($message as $messageType){
+                                                $findID = $messageType['id'];
+        
+                                                $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
+                                                $stmt->execute([$findID]);
+                                                $_SESSION['name'] = $stmt->fetchColumn();
 
-                                        echo "<div class='first-part odd'>".$_SESSION['name']."</div>";
-                                        echo "<div class='second-part'>".$messageType['message']."</div>";
-                                    }
-                                ?>
+                                                echo "<div class='first-part odd'>".$_SESSION['name']."</div>";
+                                                echo "<div class='second-part'>".$messageType['message']."</div>";
+                                            }
+                                        ?>
+                                    </div>
+                                </div>
                             </div>
-                                <form action="./backend/messageSend.php" class="form" method="POST">
+                            <div id = "sendMessages">
+                                <form action="./backend/messageSend.php" id="sendMessage" class="form" method="POST">
                                     <div class="chat-txt">
-                                        <input type="text" name="message" id="message" class="form-control">
+                                        <textarea type="text" name="message" id="message" class="form-control"></textarea>
                                     </div>
                                     
                                     <input type="hidden" id="discussionID" name="discussionID" value=<?php echo $discussions['discussionID']; ?> />
                                     <input type="hidden" id="id" name="id" value=<?php echo $user['id']; ?> />
-                                    <input type="submit" 
-                                    style="background-color: #fccc01; height:40px; width:125px; margin:0; text-align: left; line-height: 0px; border-radius:5px;" 
-                                    name="signup" 
-                                    id="signup" 
-                                    class="form-submit" 
-                                    value="Submit"/>
+                                    <button type="submit" 
+                                    style="background-color: #fccc01;" 
+                                    name="send" 
+                                    id="send" 
+                                    class="btn send">Send</button>
                                 </form>
-                            
+                                <!--action="./backend/messageSend.php"-->
+                            </div>
                         </aside>
                         <!-- end:aside tengah chat room -->
- 
-                        <!-- start:aside kanan chat room -->
-                        <aside class="kanan-side">
-                            <div class="user-head">
-                                <h3>Users</h3>
-                            </div>
-                            <ul class="chat-available-user">
-                                <li>
-                                    <a href="#chat-room.html">
-                                        <i class="fa fa-circle student"></i>
-                                        Jonathan Smith
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#chat-room.html">
-                                        <i class="fa fa-circle tutor"></i>
-                                        Jhone Due
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#chat-room.html">
-                                        <i class="fa fa-circle admin"></i>
-                                        Cendy Andrianto
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#chat-room.html">
-                                        <i class="fa fa-circle student"></i>
-                                        Surya Nug
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#chat-room.html">
-                                        <i class="fa fa-circle admin"></i>
-                                        Monke Lutfy
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#chat-room.html">
-                                        <i class="fa fa-circle text-muted"></i>
-                                        Steve Jobs
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#chat-room.html">
-                                        <i class="fa fa-circle text-muted"></i>
-                                        Jonathan Smith
-                                    </a>
-                                </li>
-                            </ul>
-                        </aside>
-                        <!-- end:aside kanan chat room -->
- 
-                        </div>
-                    </div>
-                    <!-- end:chat room -->
-                </div>
-            
-
-    
         </div>
     </div>
 
@@ -293,5 +240,30 @@ $statementUser->closeCursor();
         });
     </script>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+<script>
+$(document).ready( function() {
 
+    $('#send').click( function(e) {
+        e.preventDefault();
+        let formData = $('#sendMessage').serialize();
+ 
+        $.ajax({
+            method: "POST",
+            url: './backend/messageSend.php',
+            data: formData,
+            success: function(response){
+                console.log(response);
+            },
+            error: function(xhr, status, error){
+                console.error(xhr);
+            }
+        });
+
+    });
+});
+</script>
 </html>
