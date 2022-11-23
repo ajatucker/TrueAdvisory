@@ -35,48 +35,46 @@ require('./backend/informationQuery.php');
             </div>
 
             <ul class="list-unstyled components">
-                <li class="active">
-                    <a href="userHome.php">Your Home</a>
+                <li>
+                    <a href="userprofileinfo.php">Your Home</a>
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
                     <ul class="collapse list-unstyled" id="courseSubmenu">
-                        <li>
-                            <a href="#">CIS 350</a>
-                        </li>
-                        <li>
-                            <a href="#">CIS 427</a>
-                        </li>
-                        <li>
-                            <a href="#">CIS 450</a>
-                        </li>
+                    <?php foreach ($currCourse as $course) : ?>
+                            <a href="classes.php">
+                                <?php echo $course['courseID'];?>        
+                            </a>
+                            <?php endforeach; ?>
                     </ul>
                 </li>
                 <li>
                     <a href="#discussionSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Discussions</a>
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
                         <li>
-                            <a href="#">Discuss CIS 350</a>
-                        </li>
-                        <li>
-                            <a href="#">Discuss CIS 427</a>
-                        </li>
-                        <li>
-                            <a href="#">Discuss CIS 450</a>
+                            <?php foreach ($currDiscussions as $discuss) : ?>
+                            <a href="userDiscussion.php?discussion_id=courseID">
+                                <?php echo $discuss['courseID'];?>
+                            </a>
+                            <?php endforeach; ?>
                         </li>
                     </ul>
                 </li>
+                
                 <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="#tutorSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tutors</a>
+                    <ul class="collapse list-unstyled" id="tutorSubmenu">
+                        <li>
+                            <a href="#">Anna Smith - CIS 350</a>
+                        </li>
+                        <li>
+                            <a href="#">MBaku - CIS 427</a>
+                        </li>
+                        <li>
+                            <a href="#">Shigeru Miyamoto - CIS 450</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
-
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="#" class="download">Sign in</a>
-                </li>
-            </ul>
+            
         </nav>
 
         <!-- Page Content Holder -->
@@ -95,16 +93,20 @@ require('./backend/informationQuery.php');
 
                     <div class="menu">
                         <ul>
-                            <li><a href="site.html">True Advisory</a></li>
-                            <li><a href="site.html">Home</a></li>
-                            <li><a href="#">Courses</a></li>
-                            <li><a href="discussions.php">Discussions</a></li>
-                            <li><a href="#">Tutoring</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Other Resources</a></li>
+                        <li><a href="site.php">True Advisory</a></li>
+                          <li><a href="site.php">Home</a></li>
+                          <li><a href="classes.php">Courses</a></li>
+                          <li><a href="discussions.php">Discussions</a></li>
+                          <li><a href="tutors.php">Tutoring</a></li>
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Other Resources</a></li>
                         </ul>
                         <ul>
-                            <li><b><a href="signin.html" class="login_button">Login</a></b></li>
+                        <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
+                              <a class="login_button" href=".\backend\logout.php" >logout</a>
+                            <?php }else{ ?>
+                              <a class="login_button" href="signin.html">login</a>
+                            <?php } ?></b></li>
                         </ul>
                         </div> 
                 </div>
@@ -156,12 +158,12 @@ require('./backend/informationQuery.php');
                                     
                                     <input type="hidden" id="discussionID" name="discussionID" value=<?php echo $discussions['discussionID']; ?> />
                                     <input type="hidden" id="id" name="id" value=<?php echo $user['id']; ?> />
-                                    <input type="hidden" id="name" name="name" value=<?php $findID = $messageType['id'];
+                                    <input type="hidden" id="name" name="name" value=<?php //$findID = $messageType['id'];
         
-                                                                                            $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
-                                                                                            $stmt->execute([$findID]);
-                                                                                            $_SESSION['name'] = $stmt->fetchColumn();
-                                                                                            echo $_SESSION['name']; ?> />
+                                                                                            //$stmt = $db->prepare('SELECT name FROM user WHERE id=?');
+                                                                                            //$stmt->execute([$findID]);
+                                                                                            //$_SESSION['name'] = $stmt->fetchColumn();
+                                                                                            echo $user['name']; ?> />
                                     <button type="submit" 
                                     style="background-color: #fccc01;" 
                                     name="send" 

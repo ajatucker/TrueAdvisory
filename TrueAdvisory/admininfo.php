@@ -151,15 +151,20 @@ $courseRequestStmt->closeCursor();
 
                     <div class="menu">
                         <ul>
-                            <li><a href="site.html">Home</a></li>
-                            <li><a href="classes.html">Courses</a></li>
-                            <li><a href="discussions.html">Discussions</a></li>
-                            <li><a href="tutors.html">Tutoring</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Other Resources</a></li>
+                        <li><a href="site.php">True Advisory</a></li>
+                          <li><a href="site.php">Home</a></li>
+                          <li><a href="classes.php">Courses</a></li>
+                          <li><a href="discussions.php">Discussions</a></li>
+                          <li><a href="tutors.php">Tutoring</a></li>
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Other Resources</a></li>
                         </ul>
                         <ul>
-                            <li><b><a href="signin.html" class="login_button">Logout</a></b></li>
+                        <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
+                              <a class="login_button" href=".\backend\logout.php" >logout</a>
+                            <?php }else{ ?>
+                              <a class="login_button" href="signin.html">login</a>
+                            <?php } ?></b></li>
                         </ul>
                         </div> 
                 </div>

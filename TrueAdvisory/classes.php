@@ -1,5 +1,41 @@
 <?php
 require('./backend/informationQuery.php');
+
+$course_id = filter_input(INPUT_GET, 'courseID', FILTER_VALIDATE_INT);
+if ($course_id == NULL || $course_id == FALSE) {
+    $course_id = 1;
+}
+
+if (!isset ($_GET['page']) ) {  
+
+  $page_number = 1;  
+
+} else {  
+
+  $page_number = $_GET['page'];  
+
+}
+
+$limit = 4;  
+// get the initial page number
+$initial_page = ($page_number-1) * $limit; 
+
+$getAllCourses = 'SELECT * FROM courses';  
+$statementCourseList = $db->prepare($getAllCourses);
+$statementCourseList->execute();
+$courses = $statementCourseList->fetchAll();
+$statementCourseList->closeCursor();
+// get the result
+ $total_course_rows = $statementCourseList->rowCount(); 
+// get the required number of pages
+$total_course_pages = ceil($total_course_rows / $limit);  
+
+$getQueryCourse = "SELECT * FROM courses LIMIT " . $initial_page . ',' . $limit;  
+$resultCourse = $db->prepare($getQueryCourse);    
+$resultCourse->execute(); 
+$currCourse = $resultCourse->fetchAll();
+$resultCourse->closeCursor();
+
 // Get ID
 
 
@@ -52,16 +88,20 @@ require('./backend/informationQuery.php');
                 <div class="row">
                   <div class="col-xs-1">
                     <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
-                    <ul>
-                      <li><a href="#">True Advisory</a></li>
-                        <li><a href="site.html">Home</a></li>
-                        <li><a href="classes.html">Courses</a></li>
-                        <li><a href="discussions.html">Discussions</a></li>
-                        <li><a href="tutors.html">Tutoring</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Other Resources</a></li>
-                      <li><b><a href="signin.html" class="login_button">Login</a></b></li>
-                    </ul>
+                      <ul>
+                        <li><a href="site.php">True Advisory</a></li>
+                          <li><a href="site.php">Home</a></li>
+                          <li><a href="classes.php">Courses</a></li>
+                          <li><a href="discussions.php">Discussions</a></li>
+                          <li><a href="tutors.php">Tutoring</a></li>
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Other Resources</a></li>
+                          <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
+                              <a class="login_button" href=".\backend\logout.php" >logout</a>
+                            <?php }else{ ?>
+                              <a class="login_button" href="signin.html">login</a>
+                            <?php } ?></b></li>
+                      </ul>
                   </div>
                 </div>
               </div>
@@ -87,6 +127,9 @@ require('./backend/informationQuery.php');
               <div class="btns">
                 <button>Get Started</button>
               </div>
+
+    </div>
+    </div>
             <div class="line"></div>
             <div class="album py-5 bg-light">
             <div class="container">
@@ -106,8 +149,9 @@ require('./backend/informationQuery.php');
                       </div>
                     </div>
                   </div>
+                  <?php endforeach; ?>
                 </div>
-              <?php endforeach; ?>
+              
               </div>
  
               <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
