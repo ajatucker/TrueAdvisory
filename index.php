@@ -1,5 +1,5 @@
 <?php
-define( 'INCLUDE_DIR', dirname( __FILE__ ) . '\TrueAdvisory\\' );
+define( 'INCLUDE_DIR', dirname( __FILE__ ) . '\\TrueAdvisory\\' );
 
 $rules = array( 
    // 'picture'   => "/picture/(?'text'[^/]+)/(?'id'\d+)",    // '/picture/some-text/51'
@@ -7,17 +7,17 @@ $rules = array(
    // 'category'  => "/category/(?'category'[\w\-]+)",        // '/category/category-slug'
    // 'page'      => "/page/(?'page'about|contact)",          // '/page/about', '/page/contact'
    // 'post'      => "/(?'post'[\w\-]+)",                     // '/post-slug'
-    'signin'      => "\signin",
-    'signup'      => "\signup",
-    'site'      => "\\",                                      // '/'
-    'classes'   => "\classes", 
-    'course'    => "\course\\(?'id'\d+)", 
-    'discussions'    => "\discuss\\(?'id'\d+)",
-    'tutors'    => "\\tutors\\(?'id'\d+)"
+    'signin'      => "/signin",
+    'signup'      => "/signup",
+    'site'      => "/",                                      // '/'
+    'classes'   => "/classes", 
+    'course'    => "/course/(?'id'\d+)", 
+    'discussions'    => "/discuss/(?'id'\d+)",
+    'tutors'    => "/tutors/(?'id'\d+)"
 );
 
-$uri = rtrim( dirname($_SERVER["SCRIPT_NAME"]), '\\' );
-$uri = '\\' . trim( str_replace( $uri, '', $_SERVER['REQUEST_URI'] ), '\\' );
+$uri = rtrim( dirname($_SERVER["SCRIPT_NAME"]), '/' );
+$uri = '/' . trim( str_replace($uri, '', $_SERVER['REQUEST_URI'] ), '/' );
 $uri = urldecode( $uri );
 
 foreach ( $rules as $action => $rule ) {
