@@ -1,59 +1,5 @@
 <?php
-require_once('./backend/database.php');
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-	header('Location: signin.php');
-	exit;
-}
-
-$user_id = $_SESSION['id'];
-$email = $_SESSION['email'];
-//$major = $_SESSION['major'];
-
-// We don't have the password or email info stored in sessions so instead we can get the results from the database.
-$queryUser = 'SELECT * FROM user WHERE id = :user_id';
-$statementUser = $db->prepare($queryUser);
-$statementUser->bindValue(':user_id', $user_id);
-$statementUser->execute();
-$user = $statementUser->fetch();
-$statementUser->closeCursor();
-
-
-$discussion_id = filter_input(INPUT_GET, 'discussion_id', FILTER_VALIDATE_INT);
-if ($discussion_id == NULL || $discussion_id == FALSE) {
-    $discussion_id = 00;
-}
-
-$discussion_name = filter_input(INPUT_GET, 'discussionName');
-
-$queryAllCategoriesDiscussions = 'SELECT * FROM discussions WHERE discussionID = :discussion_id';
-$statementDiscussions = $db->prepare($queryAllCategoriesDiscussions);
-$statementDiscussions->bindValue(':discussion_id', $discussion_id);
-$statementDiscussions->execute();
-$discussions = $statementDiscussions->fetch();
-$statementDiscussions->closeCursor();
-
-/*$user_list = filter_input(INPUT_GET, 'name');
-
-$queryAllCategoriesUserList = 'SELECT * FROM user';
-$statementUserList = $db->prepare($queryAllCategoriesUserList);
-$statementUserList->execute();
-$userList = $statementUserList->fetch();
-$statementUserList->closeCursor();*/
-
-$message_id = filter_input(INPUT_GET, 'messageID', FILTER_VALIDATE_INT);
-if ($message_id == NULL || $message_id == FALSE) {
-    $message_id = 0;
-}
-
-$queryAllCategoriesMessages = 'SELECT * FROM messages WHERE discussionID = :discussion_id';
-$discuss = $db->prepare($queryAllCategoriesMessages);
-$discuss->bindValue(':discussion_id', $discussion_id);
-$discuss->execute();
-$message = $discuss->fetchAll();
-$discuss->closeCursor();
+require('./backend/informationQuery.php');
  ?>
 
 <!DOCTYPE html>
@@ -198,25 +144,22 @@ $discuss->closeCursor();
                             </div>
                             <div class = "scroll">
                                 <?php
-                                
                                     foreach ($message as $messageType){
-                                        //if ($messageType['discussionID'] == $discussions['discussionID']){
-                                            $findID = $messageType['id'];
+                                        $findID = $messageType['id'];
 
-                                            $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
-                                            $stmt->execute([$findID]);
-                                            $_SESSION['name'] = $stmt->fetchColumn();
+                                        $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
+                                        $stmt->execute([$findID]);
+                                        $_SESSION['name'] = $stmt->fetchColumn();
 
-                                            
-                                            echo "<div class='group-rom'><div class='first-part odd'>".$_SESSION['name']."</div><div class='second-part'>".$messageType['message']."</div></div> ";
-                                        //}
+                                        
+                                        echo "<div class='group-rom'><div class='first-part odd'>".$_SESSION['name']."</div><div class='second-part'>".$messageType['message']."</div></div> ";
+                                        // echo "";
                                     }
-                                    echo "<div class='group-rom'>
-                                            <div class='first-part odd'><div id='displayData1'></div></div>
-                                            <div class='second-part'><div id='displayData2'></div></div>
-                                          </div>";
                                 ?>
-                                    
+                                    <div class='group-rom'>
+                                            <div class='first-part odd'><div id="displayData1"></div></div>
+                                            <div class='second-part'><div id="displayData2"></div></div>
+                                    </div>
                              </div>
                             <footer>
                                 <form action="./backend/messageSend.php" id="sendMessage" class="form" method="POST">
