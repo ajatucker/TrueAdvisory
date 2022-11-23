@@ -53,8 +53,22 @@ $statementMessages->execute();
 $message = $statementMessages->fetchAll();
 $statementMessages->closeCursor();
 
+$course_id = filter_input(INPUT_GET, 'courseID');
+if ($course_id == NULL || $course_id == FALSE) {
+    $course_id = '0';
+}
     
+$courseStmt = $db->prepare('SELECT * FROM courses WHERE courseID=:course_id');
+$courseStmt->bindValue(':course_id', $course_id);
+$courseStmt->execute();
+$thisCourse = $courseStmt->fetchAll();
+$courseStmt->closeCursor();
 
+$courseTutorsStmt = $db->prepare('SELECT name, email FROM user WHERE id=(SELECT id FROM usercourselist WHERE (courseID=:course_id) AND (doesTutor=1))');
+$courseTutorsStmt->bindValue(':course_id', $course_id);
+$courseTutorsStmt->execute();
+$theseTutors = $courseTutorsStmt->fetchAll();
+$courseTutorsStmt->closeCursor();
 
 
 $userListStmt = $db->prepare('SELECT courseID FROM usercourselist WHERE id = :user_id');

@@ -102,23 +102,19 @@ require('./backend/informationQuery.php');
                     <div class="center">
 
                         <h3 style="text-align:center;">
-                            CIS 3501 <br> Datastructures/Analysis for Software Engineers
+                            <?php echo $course_id?> <br> <?php echo $thisCourse['courseName']?>
                         </h3>
                     </div>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <?php echo $thisCourse['description']?>
                     <br>
                     <div>
                       <p style ="color: black; font-weight: 600; text-align: left; padding-left: 20px; margin-bottom: 3px;">Tutors:</p>
                       <ul>
+                        <?php foreach ($theseTutors as $t) : ?>
                           <li >
-                              <a href="#">John Doe</a>
+                              <a href="#"> <?php echo $t['name']; echo $t['email']?></a>
                           </li>
-                          <li>
-                              <a href="#">Fofana Fernandes</a>
-                          </li>
-                          <li>
-                              <a href="#">Lionel Messi</a>
-                          </li>
+                          <?php endforeach; ?>
                       </ul>
 
                     </div>
