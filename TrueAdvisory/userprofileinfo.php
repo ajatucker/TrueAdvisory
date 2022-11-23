@@ -36,15 +36,8 @@ require_once('./backend/informationQuery.php');
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
                     <ul class="collapse list-unstyled" id="courseSubmenu">
                     <?php foreach ($currCourse as $course) : ?>
-                            <a href="classes.php"> <!--- Where do we want to navigate? --->
-                                <?php 
-                                $findID = $course['courseID'];
-        
-                                $stmt = $db->prepare('SELECT courseName FROM courses WHERE courseID=?');
-                                $stmt->execute([$findID]);
-                                $_SESSION['courseName'] = $stmt->fetchColumn();
-                                
-                                echo $_SESSION['courseName'];?>        
+                            <a href="classes.php">
+                                <?php echo $course['courseID'];?>        
                             </a>
                             <?php endforeach; ?>
                     </ul>
@@ -54,8 +47,8 @@ require_once('./backend/informationQuery.php');
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
                         <li>
                             <?php foreach ($currDiscussions as $discuss) : ?>
-                            <a href="userDiscussion.php?discussion_id=$discuss['courseID']">
-                                <?php echo $discuss['discussionName'];?>
+                            <a href="userDiscussion.php?discussion_id=courseID">
+                                <?php echo $discuss['courseID'];?>
                             </a>
                             <?php endforeach; ?>
                         </li>
@@ -97,7 +90,7 @@ require_once('./backend/informationQuery.php');
 
                     <div class="menu">
                         <ul>
-                            <li><a href="site.html">Home</a></li>
+                        <li><a href="site.html">Home</a></li>
                             <li><a href="classes.php">Courses</a></li>
                             <li><a href="discussions.php">Discussions</a></li>
                             <li><a href="tutors.html">Tutoring</a></li>
@@ -222,7 +215,7 @@ require_once('./backend/informationQuery.php');
                                             <?php echo $course['courseID'];?>
                                         </h5>
                                     <div class="input-group-append">
-                                        <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
+                                        <input action="remove-course.php" type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
                                     </div>
                                 </h5>
                             </div>

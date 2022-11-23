@@ -142,14 +142,16 @@ require('./backend/informationQuery.php');
                                                 echo "<div class='second-part'>".$messageType['message']."</div>";
                                             }
                                         ?>
-                                    </div>
-                                    <div class="first-part odd"><div id='displayData1'></div></div>
+                                        
+                                        <div class='first-part odd'><div id="displayData1"></div></div>
+                                        <div class='second-part'><div id="displayData2"></div></div>
+                                    </div> 
                                 </div>
                             </div>
                             <div id = "sendMessages">
                                 <form action="./backend/messageSend.php" id="sendMessage" class="form" method="POST">
                                     <div class="chat-txt">
-                                        <textarea type="text" name="message" id="message" class="form-control"></textarea>
+                                        <textarea type="text" name="message" id="message" class="form-control" value=''></textarea>
                                     </div>
                                     
                                     <input type="hidden" id="discussionID" name="discussionID" value=<?php echo $discussions['discussionID']; ?> />
@@ -210,20 +212,37 @@ $(document).ready( function() {
                 $varmessage = $('#message').val();
                 $varname = $('#name').val();
 
-                var $name_use = $('<div class="first-part odd">').text($varmessage);
-                var $message_use = $("<div class='second-part'>").text($varname);
+                var $name_use = $('<div>').text($varname);
                 $('#displayData1')
-                    .append($name_use)
-                    .append($message_use);
+                    .append($name_use);
 
+
+                var $message_use = $("<div>").text($varmessage);    
+                $('#displayData2')
+                    .append($message_use);
+                
+
+                const inputs = document.querySelectorAll('#message');
+
+                inputs.forEach(input => {
+                    input.value = '';
+                });
+                
             },  
 
-            error: function(xhr, status, error){
+            error: function(xhr, status, error, formData){
                 console.error(xhr);
+
+                const inputs = document.querySelectorAll('#message');
+
+                inputs.forEach(input => {
+                    input.value = '';
+                });
             }
         });
 
     });
 });
+
 </script>
 </html>

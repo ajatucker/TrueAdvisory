@@ -22,7 +22,7 @@ $id = filter_input(INPUT_POST, 'id');
 $message = filter_input(INPUT_POST, 'message');
 $discussionID = filter_input(INPUT_POST, 'discussionID');
 
-if ($message == null || $id ==null ) {
+if ($message == null || $id ==null || preg_match_all('/^\s*$/', $message) == 1) {
     $error_message = "Enter a message";
     http_response_code( 406 ); 
     echo json_encode( [ 'msg' => $errors ] );
@@ -41,20 +41,8 @@ else {
     $statement->bindValue(':discussionID', $discussionID);
     $statement->execute();
     $statement->closeCursor();
-    header('Location: ../userDiscussion.php');
+    //header('Location: ../userDiscussion.php');
 
 
-    $findID = $id;
-
-    $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
-    $stmt->execute([$findID]);
-    $_SESSION['name'] = $stmt->fetchColumn();
-
-    echo "<div class='first-part odd'>".$_SESSION['name']."</div>";
-    echo "<div class='second-part'>".$message."</div>";
-
-
-    http_response_code( 200 );
-    echo json_encode( [ 'msg' => 'Your registration has successfully done' ] );
 }
 ?>
