@@ -112,7 +112,19 @@ require('./backend/informationQuery.php');
                       <ul>
                         <?php foreach ($theseTutors as $t) : ?>
                           <li >
-                              <a href="#"> <?php echo $t['name']; echo $t['email']?></a>
+                              <a href="#"> 
+                                <?php 
+                                    if(empty($theseTutors))
+                                    {
+                                        echo "There are no tutors for this course.";
+                                    }
+                                    else
+                                    {
+
+                                        echo $t['name']; echo $t['email'];
+                                    }
+                                        ?>
+                                </a>
                           </li>
                           <?php endforeach; ?>
                       </ul>
@@ -122,6 +134,16 @@ require('./backend/informationQuery.php');
                       <button type="button" class="btn btn-default">View CIS 435 Discussion</button>
                       <button type="button" class="btn btn-default">Add to Course List</button>
                       <button type="button" class="btn btn-default">Request Page Updated</button>
+                      <?php 
+                        if($_SESSION['tutorPrivileges'] == 1)
+                        {
+                            echo '<button type="button" class="btn btn-default">Add to Tutor List</button>';
+                        }
+                        if($_SESSION['adminPrivileges'] == 1)
+                        {
+                            echo '<button type="button" class="btn btn-default">Delete Course</button>';
+                        }
+                        ?>
                     </div>
                 </div>
             </form>
