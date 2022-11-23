@@ -25,9 +25,9 @@
                     <ul>
                       <li><a href="#">True Advisory</a></li>
                         <li><a href="site.html">Home</a></li>
-                        <li><a href="classes.html">Courses</a></li>
-                        <li><a href="discussions.html">Discussions</a></li>
-                        <li><a href="tutors.html">Tutoring</a></li>
+                        <li><a href="classes.php">Courses</a></li>
+                        <li><a href="discussions.php">Discussions</a></li>
+                        <li><a href="tutors.php">Tutoring</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Other Resources</a></li>
                       <li><b><a href="signin.html" class="login_button">Login</a></b></li>

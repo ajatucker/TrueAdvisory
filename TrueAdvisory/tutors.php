@@ -85,9 +85,9 @@ $resultTutors->closeCursor();
                     <ul>
                       <li><a href="#">True Advisory</a></li>
                         <li><a href="site.html">Home</a></li>
-                        <li><a href="classes.html">Courses</a></li>
-                        <li><a href="discussions.html">Discussions</a></li>
-                        <li><a href="tutors.html">Tutoring</a></li>
+                        <li><a href="classes.php">Courses</a></li>
+                        <li><a href="discussions.php">Discussions</a></li>
+                        <li><a href="tutors.php">Tutoring</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Other Resources</a></li>
                       <li><b><a href="signin.html" class="login_button">Login</a></b></li>
@@ -109,19 +109,10 @@ $resultTutors->closeCursor();
         <p>Please note that admins have the discretion to delete accounts to punish bad behavior and bad actors. While this is a self-moderating community, any activity going against proper conduct as is defined by the University may result in the deletion of your account.
         </p>
           <p>Want to become a tutor now? Get started, and apply for tutor privileges!</p>
+          <div class="btns">
+                <button>Get Started</button>
+              </div>
         <div class="line"></div>
-        <div class="center">
-          <h2>Available Tutors</h2>
-          <ul>
-            <li><a href="#">Frida Kahlo - ART 201 - fridakahlo@email</a></li>
-            <li><a href="#">Muhammad Ali - MATH 201 - muhammadali@email</a></li>
-            <li><a href="#">Bruno Mars - MATH 250 - brunomars@email</a></li>
-            <li><a href="#">Anna Williams - CIS 200 - annawilliams@email</a></li>
-          </ul>
-        </div>
-        <div class="btns">
-              <button>Get Started</button>
-            </div>
           </div>
         </div>
           <div class="album py-5 bg-light">
