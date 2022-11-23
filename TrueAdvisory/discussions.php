@@ -85,9 +85,9 @@ $resultDiscussions->closeCursor();
                     <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
                     <ul>
                         <li><a href="#">True Advisory</a></li>
-                        <li><a href="site.html">Home</a></li>
-                        <li><a href="classes.php">Courses</a></li>
-                        <li><a href="discussions.php">Discussions</a></li>
+                        <li><a href="home">Home</a></li>
+                        <li><a href="classes">Courses</a></li>
+                        <li><a href="discussions">Discussions</a></li>
                         <li><a href="tutors.php">Tutoring</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Other Resources</a></li>
@@ -139,7 +139,7 @@ $resultDiscussions->closeCursor();
               </div>
  
               <?php for($page_number = 1; $page_number<= $total_pages; $page_number++) {  
-                  echo '<a href = "discussions.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+                  echo '<a href = "discussions?' . $page_number . '">' . $page_number . ' </a>';  }    
               ?>
             </div>
           </div>

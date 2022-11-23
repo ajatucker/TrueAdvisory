@@ -1,5 +1,6 @@
 <?php
 require('./backend/database.php');
+
 // Get ID
 $course_id = filter_input(INPUT_GET, 'courseID', FILTER_VALIDATE_INT);
 if ($course_id == NULL || $course_id == FALSE) {
@@ -87,9 +88,9 @@ $resultCourse->closeCursor();
                     <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
                     <ul>
                       <li><a>True Advisory</a></li>
-                        <li><a href="site.html">Home</a></li>
-                        <li><a href="classes.php">Courses</a></li>
-                        <li><a href="discussions.php">Discussions</a></li>
+                        <li><a href="home">Home</a></li>
+                        <li><a href="classes">Courses</a></li>
+                        <li><a href="discussions">Discussions</a></li>
                         <li><a href="tutors.php">Tutoring</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Other Resources</a></li>
@@ -120,6 +121,8 @@ $resultCourse->closeCursor();
               <div class="btns">
                 <button>Get Started</button>
               </div>
+            </div>
+        </div>
             <div class="line"></div>
             <div class="album py-5 bg-light">
             <div class="container">
@@ -144,7 +147,7 @@ $resultCourse->closeCursor();
               </div>
  
               <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
-                  echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+                  echo '<a href = "classes?' . $page_number . '">' . $page_number . ' </a>';  }    
               ?>
             </div>
           </div>
