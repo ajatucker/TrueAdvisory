@@ -131,17 +131,30 @@ require('./backend/informationQuery.php');
 
                     </div>
                     <div class="center btn-padding">
-                      <button type="button" class="btn btn-default">View CIS 435 Discussion</button>
+                        <button type="button" class="btn btn-default">
+                            <a href="userDiscussion.php?discussion_id=<?php echo $course_id;?>" value="View <? $course_id ?> Discussion"></a>
+                        </button>
                       <button type="button" class="btn btn-default">Add to Course List</button>
                       <button type="button" class="btn btn-default">Request Page Updated</button>
                       <?php 
                         if($_SESSION['tutorPrivileges'] == 1)
                         {
-                            echo '<button type="button" class="btn btn-default">Add to Tutor List</button>';
+                            echo '<form action="./backend/add-tutor.php" method="POST" id="add-tutoring-form">
+                            <div class="input-group-append">
+                                <input type="hidden" id="tutor-uid" name="tutor-c-uid" value="<?=$_SESSION['id'] ?>">
+                                <input type="hidden" id="tutor-cid" name="tutor-c-cid" value="<?=$course_id ?>">
+                                <input type="submit" name="submit" id="submit" class="btn btn-outline-secondary" value="Add to Tutor List"/>
+                            </div>
+                            </form>';
                         }
                         if($_SESSION['adminPrivileges'] == 1)
                         {
-                            echo '<button type="button" class="btn btn-default">Delete Course</button>';
+                            echo '<form action="./backend/delete-course.php" method="POST" id="delete-course-form">
+                                                        <div class="input-group-append">
+                                                            <input type="hidden" id="dc-cid" name="dc-cid" value="<?=$course_id ?>">
+                                                            <input type="submit" name="submit" id="submit" class="btn btn-outline-secondary" value="Delete Course"/>
+                                                        </div>
+                                                        </form>';
                         }
                         ?>
                     </div>
