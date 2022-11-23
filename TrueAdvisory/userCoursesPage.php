@@ -102,30 +102,61 @@ require('./backend/informationQuery.php');
                     <div class="center">
 
                         <h3 style="text-align:center;">
-                            CIS 3501 <br> Datastructures/Analysis for Software Engineers
+                            <?php echo $course_id?> <br> <?php echo $thisCourse['courseName']?>
                         </h3>
                     </div>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <?php echo $thisCourse['description']?>
                     <br>
                     <div>
                       <p style ="color: black; font-weight: 600; text-align: left; padding-left: 20px; margin-bottom: 3px;">Tutors:</p>
                       <ul>
+                        <?php foreach ($theseTutors as $t) : ?>
                           <li >
-                              <a href="#">John Doe</a>
+                              <a href="#"> 
+                                <?php 
+                                    if(empty($theseTutors))
+                                    {
+                                        echo "There are no tutors for this course.";
+                                    }
+                                    else
+                                    {
+
+                                        echo $t['name']; echo $t['email'];
+                                    }
+                                        ?>
+                                </a>
                           </li>
-                          <li>
-                              <a href="#">Fofana Fernandes</a>
-                          </li>
-                          <li>
-                              <a href="#">Lionel Messi</a>
-                          </li>
+                          <?php endforeach; ?>
                       </ul>
 
                     </div>
                     <div class="center btn-padding">
-                      <button type="button" class="btn btn-default">View CIS 435 Discussion</button>
+                        <button type="button" class="btn btn-default">
+                            <a href="userDiscussion.php?discussion_id=<?php echo $course_id;?>" value="View <? $course_id ?> Discussion"></a>
+                        </button>
                       <button type="button" class="btn btn-default">Add to Course List</button>
                       <button type="button" class="btn btn-default">Request Page Updated</button>
+                      <?php 
+                        if($_SESSION['tutorPrivileges'] == 1)
+                        {
+                            echo '<form action="./backend/add-tutor.php" method="POST" id="add-tutoring-form">
+                            <div class="input-group-append">
+                                <input type="hidden" id="tutor-uid" name="tutor-c-uid" value="<?=$_SESSION['id'] ?>">
+                                <input type="hidden" id="tutor-cid" name="tutor-c-cid" value="<?=$course_id ?>">
+                                <input type="submit" name="submit" id="submit" class="btn btn-outline-secondary" value="Add to Tutor List"/>
+                            </div>
+                            </form>';
+                        }
+                        if($_SESSION['adminPrivileges'] == 1)
+                        {
+                            echo '<form action="./backend/delete-course.php" method="POST" id="delete-course-form">
+                                                        <div class="input-group-append">
+                                                            <input type="hidden" id="dc-cid" name="dc-cid" value="<?=$course_id ?>">
+                                                            <input type="submit" name="submit" id="submit" class="btn btn-outline-secondary" value="Delete Course"/>
+                                                        </div>
+                                                        </form>';
+                        }
+                        ?>
                     </div>
                 </div>
             </form>
