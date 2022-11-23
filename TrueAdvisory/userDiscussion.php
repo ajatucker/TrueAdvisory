@@ -1,65 +1,6 @@
 <?php
-require('backend/database.php');
-// Get ID
-$discussion_id = filter_input(INPUT_GET, 'discussion_id', FILTER_VALIDATE_INT);
-if ($discussion_id == NULL || $discussion_id == FALSE) {
-    $discussion_id = 00;
-}
-
-$discussion_name = filter_input(INPUT_GET, 'discussionName');
-
-$queryAllCategoriesDiscussions = 'SELECT * FROM discussions';
-$statementDiscussions = $db->prepare($queryAllCategoriesDiscussions);
-$statementDiscussions->execute();
-$discussions = $statementDiscussions->fetch();
-$statementDiscussions->closeCursor();
-
-/*$user_list = filter_input(INPUT_GET, 'name');
-
-$queryAllCategoriesUserList = 'SELECT * FROM user';
-$statementUserList = $db->prepare($queryAllCategoriesUserList);
-$statementUserList->execute();
-$userList = $statementUserList->fetch();
-$statementUserList->closeCursor();*/
-
-$message_id = filter_input(INPUT_GET, 'messageID', FILTER_VALIDATE_INT);
-if ($message_id == NULL || $message_id == FALSE) {
-    $message_id = 0;
-}
-
-
-$queryAllCategoriesMessages = 'SELECT * FROM messages';
-$statementMessages = $db->prepare($queryAllCategoriesMessages);
-$statementMessages->execute();
-$message = $statementMessages->fetchAll();
-$statementMessages->closeCursor();
-
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-	header('Location: signin.html');
-	exit;
-}
-
-$user_id = $_SESSION['id'];
-$email = $_SESSION['email'];
-
-$queryUser = 'SELECT * FROM user WHERE id = :user_id';
-$statementUser = $db->prepare($queryUser);
-$statementUser->bindValue(':user_id', $user_id);
-$statementUser->execute();
-$user = $statementUser->fetch();
-$statementUser->closeCursor();
-
-// // Get products for selected category
-// $queryProducts = 'SELECT * FROM products WHERE categoryID = :category_id ORDER BY productID';
-// $statement3 = $db->prepare($queryProducts);
-// $statement3->bindValue(':category_id', $category_id);
-// $statement3->execute();
-// $products = $statement3->fetchAll();
-// $statement3->closeCursor();
-// ?>
+require('./backend/informationQuery.php');
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -95,7 +36,7 @@ $statementUser->closeCursor();
 
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="#">Your Home</a>
+                    <a href="userHome.php">Your Home</a>
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
                     <ul class="collapse list-unstyled" id="courseSubmenu">
                         <li>
@@ -196,11 +137,13 @@ $statementUser->closeCursor();
                                                 $stmt->execute([$findID]);
                                                 $_SESSION['name'] = $stmt->fetchColumn();
 
+                                                
                                                 echo "<div class='first-part odd'>".$_SESSION['name']."</div>";
                                                 echo "<div class='second-part'>".$messageType['message']."</div>";
                                             }
                                         ?>
                                     </div>
+                                    <div class="first-part odd"><div id='displayData1'></div></div>
                                 </div>
                             </div>
                             <div id = "sendMessages">
@@ -211,6 +154,12 @@ $statementUser->closeCursor();
                                     
                                     <input type="hidden" id="discussionID" name="discussionID" value=<?php echo $discussions['discussionID']; ?> />
                                     <input type="hidden" id="id" name="id" value=<?php echo $user['id']; ?> />
+                                    <input type="hidden" id="name" name="name" value=<?php $findID = $messageType['id'];
+        
+                                                                                            $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
+                                                                                            $stmt->execute([$findID]);
+                                                                                            $_SESSION['name'] = $stmt->fetchColumn();
+                                                                                            echo $_SESSION['name']; ?> />
                                     <button type="submit" 
                                     style="background-color: #fccc01;" 
                                     name="send" 
@@ -255,9 +204,20 @@ $(document).ready( function() {
             method: "POST",
             url: './backend/messageSend.php',
             data: formData,
-            success: function(response){
-                console.log(response);
-            },
+            success: function(formdata){
+                //console.log(response);
+                //$('.displayData').html(formData);
+                $varmessage = $('#message').val();
+                $varname = $('#name').val();
+
+                var $name_use = $('<div class="first-part odd">').text($varmessage);
+                var $message_use = $("<div class='second-part'>").text($varname);
+                $('#displayData1')
+                    .append($name_use)
+                    .append($message_use);
+
+            },  
+
             error: function(xhr, status, error){
                 console.error(xhr);
             }

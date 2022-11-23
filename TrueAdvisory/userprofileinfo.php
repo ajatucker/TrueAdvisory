@@ -1,46 +1,5 @@
 <?php
-require_once('./backend/database.php');
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-	header('Location: signin.php');
-	exit;
-}
-
-$user_id = $_SESSION['id'];
-$email = $_SESSION['email'];
-//$major = $_SESSION['major'];
-
-// We don't have the password or email info stored in sessions so instead we can get the results from the database.
-$queryUser = 'SELECT * FROM user WHERE id = :user_id';
-$statementUser = $db->prepare($queryUser);
-$statementUser->bindValue(':user_id', $user_id);
-$statementUser->execute();
-$user = $statementUser->fetch();
-$statementUser->closeCursor();
-
-
-$userListStmt = $db->prepare('SELECT courseID FROM usercourselist WHERE id = :user_id');
-$userListStmt->bindValue(':user_id', $user_id);
-$userListStmt->execute();
-$currCourse = $userListStmt->fetchAll();
-$userListStmt->closeCursor();
-
-$userTutoringStmt = $db->prepare('SELECT courseID FROM usercourselist WHERE (id = :user_id)  AND (doesTutor = 1)');
-$userTutoringStmt->bindValue(':user_id', $user_id);
-$userTutoringStmt->execute();
-$currTutoring = $userTutoringStmt->fetchAll();
-$userTutoringStmt->closeCursor();
-
-$sbDiscussStmt = $db->prepare('SELECT * FROM discussions WHERE courseID=(SELECT courseID FROM usercourselist WHERE (id = :user_id))');
-$sbDiscussStmt->bindValue(':user_id', $user_id);
-$sbDiscussStmt->execute();
-$currDiscussions = $sbDiscussStmt->fetchAll();
-$sbDiscussStmt->closeCursor();
-
-#$sbTutorStmt = $db->prepare('SELECT * FROM user WHERE id=(SELECT id FROM usercourselist WHERE (id = :user_id))');
-
+require_once('./backend/informationQuery.php');
 ?>
 
 <!DOCTYPE html>
@@ -77,13 +36,17 @@ $sbDiscussStmt->closeCursor();
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
                     <ul class="collapse list-unstyled" id="courseSubmenu">
                     <?php foreach ($currCourse as $course) : ?>
-                            <a href="#">
-                                <?php echo $course['courseID'];?>        
+                            <a href="classes.php"> <!--- Where do we want to navigate? --->
+                                <?php 
+                                $findID = $course['courseID'];
+        
+                                $stmt = $db->prepare('SELECT courseName FROM courses WHERE courseID=?');
+                                $stmt->execute([$findID]);
+                                $_SESSION['courseName'] = $stmt->fetchColumn();
+                                
+                                echo $_SESSION['courseName'];?>        
                             </a>
                             <?php endforeach; ?>
-                            <a href="#">CIS 350
-                                                        
-                            </a>
                     </ul>
                 </li>
                 <li>
@@ -91,13 +54,10 @@ $sbDiscussStmt->closeCursor();
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
                         <li>
                             <?php foreach ($currDiscussions as $discuss) : ?>
-                            <a href="#">
-                                <?php echo $discuss['courseID'];?>
+                            <a href="userDiscussion.php?discussion_id=$discuss['courseID']">
+                                <?php echo $discuss['discussionName'];?>
                             </a>
                             <?php endforeach; ?>
-                            <a href="#">Discuss CIS 350
-                                                        
-                            </a>
                         </li>
                     </ul>
                 </li>
@@ -138,7 +98,7 @@ $sbDiscussStmt->closeCursor();
                     <div class="menu">
                         <ul>
                             <li><a href="site.html">Home</a></li>
-                            <li><a href="classes.html">Courses</a></li>
+                            <li><a href="classes.php">Courses</a></li>
                             <li><a href="discussions.php">Discussions</a></li>
                             <li><a href="tutors.html">Tutoring</a></li>
                             <li><a href="#">About</a></li>

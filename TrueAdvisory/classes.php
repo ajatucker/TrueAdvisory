@@ -1,40 +1,7 @@
 <?php
-require('./backend/database.php');
+require('./backend/informationQuery.php');
 // Get ID
-$course_id = filter_input(INPUT_GET, 'courseID', FILTER_VALIDATE_INT);
-if ($course_id == NULL || $course_id == FALSE) {
-    $course_id = 1;
-}
 
-if (!isset ($_GET['page']) ) {  
-
-  $page_number = 1;  
-
-} else {  
-
-  $page_number = $_GET['page'];  
-
-}
-
-$limit = 4;  
-// get the initial page number
-$initial_page = ($page_number-1) * $limit; 
-
-$getAllCourses = 'SELECT * FROM courses';  
-$statementCourseList = $db->prepare($getAllCourses);
-$statementCourseList->execute();
-$courses = $statementCourseList->fetchAll();
-$statementCourseList->closeCursor();
-// get the result
- $total_course_rows = $statementCourseList->rowCount(); 
-// get the required number of pages
-$total_course_pages = ceil($total_course_rows / $limit);  
-
-$getQueryCourse = "SELECT * FROM courses LIMIT " . $initial_page . ',' . $limit;  
-$resultCourse = $db->prepare($getQueryCourse);    
-$resultCourse->execute(); 
-$currCourse = $resultCourse->fetchAll();
-$resultCourse->closeCursor();
 
     //display the retrieved result on the webpage  
 
