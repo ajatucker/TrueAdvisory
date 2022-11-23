@@ -17,6 +17,13 @@ $statementUser->bindValue(':sessionid', $_SESSION['id']);
 $statementUser->execute();
 $user = $statementUser->fetch();
 $statementUser->closeCursor();
-header('Location: ../userprofileinfo.php');
+if($_SESSION['adminPrivileges'] == 1)
+{
+	header('Location: ../admininfo.php');
+}
+else
+{
+	header('Location: ../userprofileinfo.php');
+}
 
 ?>

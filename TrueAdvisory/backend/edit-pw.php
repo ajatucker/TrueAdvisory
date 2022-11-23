@@ -8,22 +8,25 @@ if (!isset($_SESSION['loggedin'])) {
 	exit;
 }
 
-//$user_id = $_SESSION['id'];
-//$email = $_SESSION['email'];
-//$major = $_SESSION['major'];
-
 $editpassword = filter_input(INPUT_POST, 'edit-pw');
 $editpassword = password_hash($editpassword, PASSWORD_DEFAULT);
 
 
-$queryUser = 'UPDATE user SET password=:editpassword WHERE id = :sessionid';
-$statementUser = $db->prepare($queryUser);
-$statementUser->bindValue(':sessionid', $_SESSION['id']);
-$statementUser->bindValue(':editpassword', $editpassword);
-$statementUser->execute();
-$user = $statementUser->fetch();
-$statementUser->closeCursor();
-header('Location: ../userprofileinfo.php');
+$queryUpdateUser = 'UPDATE user SET password=:editpassword WHERE id = :sessionid';
+$statementPWUser = $db->prepare($queryUpdateUser);
+$statementPWUser->bindValue(':sessionid', $_SESSION['id']);
+$statementPWUser->bindValue(':editpassword', $editpassword);
+$statementPWUser->execute();
+$user = $statementPWUser->fetch();
+$statementPWUser->closeCursor();
+if($_SESSION['adminPrivileges'] == 1)
+{
+	header('Location: ../admininfo.php');
+}
+else
+{
+	header('Location: ../userprofileinfo.php');
+}
 
 
 ?>

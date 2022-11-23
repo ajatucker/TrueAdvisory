@@ -8,16 +8,18 @@ if (!isset($_SESSION['loggedin'])) {
 	exit;
 }
 
-$editmajor = filter_input(INPUT_POST, 'edit-new-major');
+$u= $_POST['tutor-uid'];
+$c= $_POST['tutor-cid'];
+
+$queryUserCourse = 'UPDATE usercourselist SET doesTutor=0 WHERE id = :u AND courseID = :c';
+$statementUser = $db->prepare($queryUserCourse);
+$statementUser->bindValue(':u', $u);
+$statementUser->bindValue(':c', $c);
+$statementUser->execute();
+$user = $statementUser->fetch();
+$statementUser->closeCursor();
 
 
-$queryUpdateUser = 'UPDATE user SET major = :editmajor WHERE id = :sessionid';
-$statementMajorUser = $db->prepare($queryUpdateUser);
-$statementMajorUser->bindValue(':sessionid', $_SESSION['id']);
-$statementMajorUser->bindValue(':editmajor', $editmajor);
-$statementMajorUser->execute();
-$user = $statementMajorUser->fetch();
-$statementMajorUser->closeCursor();
 if($_SESSION['adminPrivileges'] == 1)
 {
 	header('Location: ../admininfo.php');

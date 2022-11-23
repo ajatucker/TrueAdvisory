@@ -1,5 +1,6 @@
 <?php
 require('./backend/database.php');
+session_start();
 // Get ID
 $discussion_id = filter_input(INPUT_GET, 'discussionID', FILTER_VALIDATE_INT);
 if ($discussion_id == NULL || $discussion_id == FALSE) {
@@ -84,14 +85,18 @@ $resultDiscussions->closeCursor();
                   <div class="col-xs-1">
                     <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
                     <ul>
-                        <li><a href="#">True Advisory</a></li>
-                        <li><a href="site.html">Home</a></li>
-                        <li><a href="classes.html">Courses</a></li>
-                        <li><a href="discussions.html">Discussions</a></li>
-                        <li><a href="tutors.html">Tutoring</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Other Resources</a></li>
-                      <li><b><a href="signin.html" class="login_button">Login</a></b></li>
+                    <li><a href="site.php">True Advisory</a></li>
+                          <li><a href="site.php">Home</a></li>
+                          <li><a href="classes.php">Courses</a></li>
+                          <li><a href="discussions.php">Discussions</a></li>
+                          <li><a href="tutors.php">Tutoring</a></li>
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Other Resources</a></li>
+                      <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
+                              <a class="login_button" href=".\backend\logout.php" >logout</a>
+                            <?php }else{ ?>
+                              <a class="login_button" href="signin.html">login</a>
+                            <?php } ?></b></li>
                     </ul>
                   </div>
                 </div>
