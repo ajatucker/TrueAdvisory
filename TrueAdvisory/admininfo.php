@@ -171,7 +171,7 @@ $courseRequestStmt->closeCursor();
                         <div class="card-body">
                             <p class="card-text">
                                 <h5>
-                                    Email: <?=$email?>
+                                    Email: <h3><?=$email?></h3>
                                 </h5>
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
@@ -264,9 +264,13 @@ $courseRequestStmt->closeCursor();
                                         <h5>
                                             <?php echo $course['courseID'];?>
                                         </h5>
+                                    <form action="./backend/remove-course.php" method="POST" id="delete-course-form">
                                     <div class="input-group-append">
-                                        <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
+                                        <input type="hidden" id="uid" name="uid" value="<?=$user['id'] ?>">
+                                        <input type="hidden" id="cid" name="cid" value="<?=$course['courseID'] ?>">
+                                        <input type="submit" name="remove-course-submit" id="remove-course-submit" class="btn btn-outline-secondary" value="Remove"/>
                                     </div>
+                                    </form>
                                 </h5>
                             </div>
                         </div>
@@ -295,13 +299,19 @@ $courseRequestStmt->closeCursor();
                                                 <div class="row">
                                                     <h5 class="center">
                                                         <h5>
-                                                        
-
-                                                        <?php echo $tutor['courseID'];?>
-                                                        </h5>
-                                                        <div class="input-group-append">
-                                                            <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
+                                                        <div class="col-sm-3">
+                                                            <?php echo $tutor['courseID'];?>
                                                         </div>
+
+                                                        <?php echo $tutor['courseName'];?>
+                                                        </h5>
+                                                        <form action="./backend/stop-tutoring.php" method="POST" id="stop-tutoring-form">
+                                                        <div class="input-group-append">
+                                                            <input type="hidden" id="tutor-uid" name="tutor-uid" value="<?=$user['id'] ?>">
+                                                            <input type="hidden" id="tutor-cid" name="tutor-cid" value="<?=$tutor['courseID'] ?>">
+                                                            <input type="submit" name="stop-submit" id="stop-submit" class="btn btn-outline-secondary" value="Remove"/>
+                                                        </div>
+                                                        </form>
                                                     </h5>
                                                 </div>
                                             </div>     
@@ -332,7 +342,7 @@ $courseRequestStmt->closeCursor();
                                         
                                         <div class="input-group-append">
                                             <button name="admin-accept" id="admin-accept" class="btn btn-outline-secondary" style="background-color:#83ff9e;">
-                                                <a href="./backend/.php?e=<?php echo $c['courseID']?>">></a>
+                                                <a href="userCourses.php?course_id=<?php echo $c['courseID']?>">></a>
                                             </button>
                                         </div>
 
