@@ -1001,7 +1001,7 @@ footer p {
   -webkit-border-radius: 4px 0 0 4px;
 }
 .chat-room .tengah-side {
-  width: 60%;
+  width: 80%;
   background: #fff;
   border-right: 1px solid #e5e8ef;
   border-bottom: 1px solid #e5e8ef;
@@ -1017,8 +1017,10 @@ footer p {
 .chat-room .kiri-side .currUser-head {
   background: #00274C;
   color: #FFFFFF;
+  min-height: 100px;
   max-height: 100px;
   padding: 15px;
+  padding-top: 30px;
 }
 .chat-room .kanan-side .user-head {
   background: #00274C;
@@ -1167,7 +1169,7 @@ ul.chat-user li a:hover{
   background: #f7f8fa;
   padding: 15px;
   height: 235px;
-  width: 60%;
+  width: 80%;
   position: absolute;
   bottom: 0;
  
@@ -1177,7 +1179,7 @@ ul.chat-user li a:hover{
   background: #fff;
   padding: 15px;
   height: 100px;
-  width: 20%;
+  width: 0%;
   position: absolute;
   bottom: 0;
   border-top: 1px solid #E5E8EF;
@@ -1319,7 +1321,7 @@ ul.chat-available-user li i {
 }
 
 .group-rom .first-part.odd {
-  background: #f7f8fa;
+ 
   color: #6a6a6a;
   font-weight: 600;
 }
@@ -1332,6 +1334,20 @@ ul.chat-available-user li i {
   width: 15%;
   color: #d4d3d3;
 }
+
+.group-rom .third-part .btn {
+  background-color: rgb(241, 0, 0);
+  color: white;
+  margin-left: 20px;
+  margin-right: auto;
+} 
+
+.group-rom .third-part .btn:hover {
+  background-color: rgb(211, 0, 0);
+  color: white;
+  margin-left: 20px;
+  margin-right: auto;
+} 
 
 a.guest-on {
   color: #6a6a6a;
@@ -1387,7 +1403,7 @@ a.guest-on i {
 }
 
 .scroll {
-  height: 1050px;
+  height: 1065px;
   overflow-y: scroll;
  
 }
@@ -1420,6 +1436,7 @@ a.guest-on i {
 
 .containera{
   overflow: hidden;
+  margin-top: 100px;
 }
 
 .aboutBox{
@@ -1454,4 +1471,33 @@ a.guest-on i {
 .hehe {
   flex-direction: column;
   color: white;
+  padding: 10px;
+}
+
+.contentBox{
+  min-height: 300px !important;
+  display: flex !important;
+  margin-bottom: 40px;
+  padding: 150px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.contentBox p{
+  all: unset !important;
+  font-size: 1.5rem !important;
+  direction: ltr !important;
+  text-align: left !important;
+  color: #fff !important;
+  display: inline-block !important;; 
+  width: 95% !important;;
+}
+
+.contentBox img{
+  
+  max-width: 100%;
+  width:auto;
+  height: auto;
 }
