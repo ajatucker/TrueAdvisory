@@ -1,7 +1,8 @@
 <?php
 require_once('./backend/database.php');
+require_once('./backend/informationQuery.php');
 // We need to use sessions, so you should always start sessions using the below code.
-session_start();
+
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
 	header('Location: signin.php');
@@ -120,7 +121,7 @@ $discuss->closeCursor();
                         <li>
                             <?php foreach ($currDiscussions as $discuss) : ?>
                             <a href="userDiscussion.php?discussion_id=courseID">
-                                <?php echo $discuss['courseID'];?>
+                                <?php echo $discuss['discussionName'];?>
                             </a>
                             <?php endforeach; ?>
                         </li>
@@ -200,21 +201,28 @@ $discuss->closeCursor();
                                 <?php
                                 
                                     foreach ($message as $messageType){
-                                        //if ($messageType['discussionID'] == $discussions['discussionID']){
-                                            $findID = $messageType['id'];
+                                        $findID = $messageType['id'];
 
-                                            $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
-                                            $stmt->execute([$findID]);
-                                            $_SESSION['name'] = $stmt->fetchColumn();
+                                        $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
+                                        $stmt->execute([$findID]);
+                                        $_SESSION['name'] = $stmt->fetchColumn();
 
-                                            
-                                            echo "<div class='group-rom'><div class='first-part odd'>".$_SESSION['name']."</div><div class='second-part'>".$messageType['message']."</div></div> ";
-                                        //}
-                                    }
-                                    echo "<div class='group-rom'>
-                                            <div class='first-part odd'><div id='displayData1'></div></div>
-                                            <div class='second-part'><div id='displayData2'></div></div>
-                                          </div>";
+                                        
+                                        echo "<div class='group-rom'><div class='first-part odd'>".$_SESSION['name']."</div>
+                                        <div class='second-part'>".$messageType['message']."</div>";
+                                        
+                                        if ($messageType['id'] == $_SESSION['id'] || $_SESSION['adminPrivileges'] == 1 || $_SESSION['tutorPrivileges'] == 1){
+                                            echo "<button>delete</button>";
+                                        }
+                                        echo "</div>";
+                                        
+                                    }  
+                                    
+                                     echo "<div class='group-rom'>
+                                                <div class='first-part odd'><div id='displayData1'></div></div>
+                                                <div class='second-part'><div id='displayData2'></div></div>
+                                                <button>delete</button>
+                                            </div>";
                                 ?>
                                     
                              </div>
@@ -297,7 +305,6 @@ $(document).ready( function() {
                 var $message_use = $("<div>").text($varmessage);    
                 $('#displayData2')
                     .append($message_use);
-                
 
                 const inputs = document.querySelectorAll('#message');
 

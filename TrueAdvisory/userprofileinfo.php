@@ -124,16 +124,24 @@ require_once('./backend/informationQuery.php');
                         </div>
                     </div>
                     <div class="row">
-                            <div class="col-sm-6">
-                            <form action="./backend/request-admin.php" method="POST" id="req-admin-form">
-                                    <input type="submit" name="req-admin" id="req-admin" class="btn btn-default" value="Admin Request"/>
-                            </form>
-                            </div>
-                            <div class="col-sm-6">
-                            <form action="./backend/request-tutor.php" method="POST" id="req-tutor-form">
-                                    <input type="submit" name="req-tutor" id="req-tutor" class="btn btn-default" value="Tutor Request"/>
-                            </form>
-                            </div>
+                    <?php
+                        if($_SESSION['adminPrivileges'] == 0){
+                            
+                            echo '<div class="col-sm-6">
+                                    <form action="./backend/request-admin.php" method="POST" id="req-admin-form">
+                                            <input type="submit" name="req-admin" id="req-admin" class="btn btn-default" value="Admin Request"/>
+                                    </form>
+                                    </div>';
+                        }
+                        if($_SESSION['tutorPrivileges'] == 0){
+                                    echo '<div class="col-sm-6">
+                                    <form action="./backend/request-tutor.php" method="POST" id="req-tutor-form">
+                                            <input type="submit" name="req-tutor" id="req-tutor" class="btn btn-default" value="Tutor Request"/>
+                                    </form>
+                                    </div>';
+                        }
+                    
+                    ?>
                     </div>
                 </div>
                 <div class="col-md-3">
