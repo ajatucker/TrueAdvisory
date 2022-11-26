@@ -151,7 +151,14 @@ $resultCourse->closeCursor();
                   </div>
                   <?php endforeach; ?>
                 </div>
-              
+                <?php 
+                        if($_SESSION['tutorPrivileges'] == 1)
+                        {
+                            echo '<button type="button" class="btn btn-sm btn-outline-secondary">
+                            <a href="newCoursePage.php">Add course</a>
+                            </button>';
+                        }
+                        ?>
               </div>
  
               <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
