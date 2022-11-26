@@ -984,6 +984,7 @@ footer p {
   width: 100%;
   height: 100%;
   position: relative;
+  max-block-size: 1px;
 }
 
 .chat-room aside {
@@ -1387,7 +1388,7 @@ a.guest-on i {
 }
 
 .scroll {
-  height: 1050px;
+  height: 750px;
   overflow-y: scroll;
  
 }
