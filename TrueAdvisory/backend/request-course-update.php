@@ -7,17 +7,15 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: ../signin.html');
 	exit;
 }
-if($_SESSION['adminPrivileges'] == 1)
-{
-    $c= $_POST['dc-cid'];
+
+$c= $_POST['course-c-cid'];
     
-    $queryUserCourse = 'DELETE FROM course WHERE courseID = :c';
-    $statementUser = $db->prepare($queryUserCourse);
-    $statementUser->bindValue(':c', $c);
-    $statementUser->execute();
-    $user = $statementUser->fetch();
-    $statementUser->closeCursor();
-}
+$queryCourse = 'UPDATE course SET needUpdate=1 WHERE courseID = :c';
+$statementCourse = $db->prepare($queryCourse);
+$statementCourse->bindValue(':c', $c);
+$statementCourse->execute();
+$course = $statementCourse->fetch();
+$statementCourse->closeCursor();
 
 header('Location: ../userCoursesPage.php');
 
