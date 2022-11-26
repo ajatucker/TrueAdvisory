@@ -1,5 +1,14 @@
 <?php
-require('./backend/informationQuery.php');
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: ./signin.html');
+	exit;
+}
+if ($_SESSION['adminPrivileges'] != 1) {
+	header('Location: ./site.php');
+	exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +27,23 @@ require('./backend/informationQuery.php');
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: 'textarea#tiny',
+        max_height: 215,
+        max_width: 1200
+            ,plugins: [
+            'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+            'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+            'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+            ],
+            toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
+            'bullist numlist checklist outdent indent | removeformat | code table help'
+      })
+    </script>
 </head>
 
 <body>
@@ -97,41 +122,23 @@ require('./backend/informationQuery.php');
                         </div> 
                 </div>
             </nav>
-            <form action="/action_page.php">
+            <form action="./backend/create-course-discussion.php" method="POST" id="create-course-form">
                 <div class="course">
                     <div class="center">
 
                         <h3 style="text-align:center;">
-                            <?php echo $course_id?> <br> <?php echo $thisCourse['courseName']?>
+                            <input type="text" class="form-control" name="dept" value="Department">
+                            <input type="text" class="form-control" name="c-id" value="Course Identifier (CIS101)">
+                            <input type="text" class="form-control" name="c-name" value="Full Course Name">
                         </h3>
                     </div>
-                        <?php echo $thisCourse['description']?>
-                    <br>
-                    <div>
-                      <p style ="color: black; font-weight: 600; text-align: left; padding-left: 20px; margin-bottom: 3px;">Tutors:</p>
-                      <ul>
-                        <?php foreach ($theseTutors as $t) : ?>
-                          <li >
-                              <a href="#"> 
-                                <?php 
-                                    if(empty($theseTutors))
-                                    {
-                                        echo "There are no tutors for this course.";
-                                    }
-                                    else
-                                    {
-
-                                        echo $t['name']; echo $t['email'];
-                                    }
-                                        ?>
-                                </a>
-                          </li>
-                          <?php endforeach; ?>
-                      </ul>
-
-                    </div>
-                   
+                    <input type="textarea" class="form-control" name="desc" value="Enter Course Information Here">
+                    <br>                   
                 </div>
+                <div class="center btn-padding">
+                    <input type="submit" name="submit" id="submit" class="btn btn-default" value="Create Course"/>
+                </div>
+                
             </form>
 
           

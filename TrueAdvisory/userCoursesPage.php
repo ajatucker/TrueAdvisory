@@ -154,7 +154,7 @@ require('./backend/informationQuery.php');
                             <div class="input-group-append">
                                 <input type="hidden" id="tutor-uid" name="tutor-c-uid" value="<?=$_SESSION['id'] ?>">
                                 <input type="hidden" id="tutor-cid" name="tutor-c-cid" value="<?=$course_id ?>">
-                                <input type="submit" name="submit" id="submit" class="btn btn-outline-secondary" value="Add to Tutor List"/>
+                                <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Tutor List"/>
                             </div>
                             </form>';
                         }
@@ -163,7 +163,7 @@ require('./backend/informationQuery.php');
                             echo '<form action="./backend/delete-course.php" method="POST" id="delete-course-form">
                                                         <div class="input-group-append">
                                                             <input type="hidden" id="dc-cid" name="dc-cid" value="<?=$course_id ?>">
-                                                            <input type="submit" name="submit" id="submit" class="btn btn-outline-secondary" value="Delete Course"/>
+                                                            <input type="submit" name="submit" id="submit" class="btn btn-default" value="Delete Course"/>
                                                         </div>
                                                         </form>';
                         }
