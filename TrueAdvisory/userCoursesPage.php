@@ -34,29 +34,21 @@ require('./backend/informationQuery.php');
                 <li class="active">
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
                     <ul class="collapse list-unstyled" id="courseSubmenu">
-                        <li>
-                            <a href="#">CIS 350</a>
-                        </li>
-                        <li>
-                            <a href="#">CIS 427</a>
-                        </li>
-                        <li>
-                            <a href="#">CIS 450</a>
-                        </li>
+                    <?php foreach ($currCourse as $course) : ?>
+                            <a href="classes.php">
+                                <?php echo $course['courseID'];?>        
+                            </a>
+                            <?php endforeach; ?>
                     </ul>
                 </li>
                 <li>
                     <a href="#discussionSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Discussions</a>
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
-                        <li>
-                            <a href="#">Discuss CIS 350</a>
-                        </li>
-                        <li>
-                            <a href="#">Discuss CIS 427</a>
-                        </li>
-                        <li>
-                            <a href="#">Discuss CIS 450</a>
-                        </li>
+                        <?php foreach ($currDiscussions as $discuss) : ?>
+                            <a href="userDiscussion.php?discussion_id=<?php echo $discuss['discussionID']?>">
+                                <?php echo $discuss['courseID'];?>
+                            </a>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
             </ul>

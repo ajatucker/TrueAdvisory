@@ -91,13 +91,10 @@ $courseRequestStmt->closeCursor();
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
                     <ul class="collapse list-unstyled" id="courseSubmenu">
                     <?php foreach ($currCourse as $course) : ?>
-                            <a href="#">
+                            <a href="course.php">
                                 <?php echo $course['courseID'];?>        
                             </a>
                             <?php endforeach; ?>
-                            <a href="#">CIS 350
-                                                        
-                            </a>
                     </ul>
                 </li>
                 <li>
@@ -105,13 +102,10 @@ $courseRequestStmt->closeCursor();
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
                         <li>
                             <?php foreach ($currDiscussions as $discuss) : ?>
-                            <a href="#">
+                                <a href="userDiscussion.php?discussion_id=<?php echo $discuss['discussionID']?>">
                                 <?php echo $discuss['courseID'];?>
                             </a>
                             <?php endforeach; ?>
-                            <a href="#">Discuss CIS 350
-                                                        
-                            </a>
                         </li>
                     </ul>
                 </li>
