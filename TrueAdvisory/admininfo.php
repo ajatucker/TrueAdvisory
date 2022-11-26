@@ -430,7 +430,14 @@ $courseRequestStmt->closeCursor();
                                 </div>
                             </div>
                         </div>
-                      
+                        <form action="./backend/delete-account.php" method="POST" id="delete-form">
+                                                        <div class="input-group-append">
+                                                            <input type="hidden" id="my-uid" name="my-uid" value="<?=$user['id'] ?>">
+                                                        </div>
+                                                        <div class="center btn-padding">
+                                                            <input type="submit" name="submit" id="submit" class="btn btn-default" value="Delete Account" style="background-color:#ff8282;"/>
+                                                        </div>
+                        </form>
                         
         </div>
     </div>

@@ -232,7 +232,7 @@ require_once('./backend/informationQuery.php');
                                     <div class="input-group-append">
                                         <input type="hidden" id="uid" name="uid" value="<?=$user['id'] ?>">
                                         <input type="hidden" id="cid" name="cid" value="<?=$course['courseID'] ?>">
-                                        <input type="submit" name="remove-course-submit" id="remove-course-submit" class="btn btn-outline-secondary" value="Remove"/>
+                                        <input type="submit" name="remove-course-submit" id="remove-course-submit" class="btn btn-outline-secondary" value="Remove" style="background-color:#ff8282;"/>
                                     </div>
                                     </form>
                                 </h5>
@@ -275,7 +275,7 @@ require_once('./backend/informationQuery.php');
                                                         <div class="input-group-append">
                                                             <input type="hidden" id="tutor-uid" name="tutor-uid" value="<?=$user['id'] ?>">
                                                             <input type="hidden" id="tutor-cid" name="tutor-cid" value="<?=$tutor['courseID'] ?>">
-                                                            <input type="submit" name="stop-submit" id="stop-submit" class="btn btn-outline-secondary" value="Remove"/>
+                                                            <input type="submit" name="stop-submit" id="stop-submit" class="btn btn-outline-secondary" value="Remove" style="background-color:#ff8282;"/>
                                                         </div>
                                                         </form>
                                                     </h5>
@@ -287,6 +287,17 @@ require_once('./backend/informationQuery.php');
                                 </div>
                             </div>
                         </div>
+
+                        <form action="./backend/delete-account.php" method="POST" id="delete-form">
+                                                        <div class="input-group-append">
+                                                            <input type="hidden" id="my-uid" name="my-uid" value="<?=$user['id'] ?>">
+                                                        </div>
+                                                        <div class="center btn-padding">
+                                                            <input type="submit" name="submit" id="submit" class="btn btn-default" value="Delete Account" style="background-color:#ff8282;"/>
+                                                        </div>
+                        </form>
+                
+                
         </div>
     </div>
     <div class="footer">
