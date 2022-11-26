@@ -55,7 +55,7 @@ $discuss->bindValue(':discussion_id', $discussion_id);
 $discuss->execute();
 $message = $discuss->fetchAll();
 $discuss->closeCursor();
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -212,20 +212,22 @@ $discuss->closeCursor();
                                         <div class='second-part'>".$messageType['message']."</div>";
                                         
                                         if ($messageType['id'] == $_SESSION['id'] || $_SESSION['adminPrivileges'] == 1 || $_SESSION['tutorPrivileges'] == 1){
-                                            echo "<button>delete</button>";
+                                            echo '
+                                            <form method="POST" action = "./backend/remove-message.php" id ="deleteForm">
+                                                <div class="input-group-append">
+                                                    <input type="hidden" id="cid" name="cid" value='.$messageType["messageID"].'>
+                                                    <input type="hidden" id="aid" name="aid" value='.$messageType["discussionID"].'>
+                                                    <input type="submit" name="remove-course-submit" id="Btn" class="btn btn-outline-secondary" value="Remove"/>
+                                                </div>
+                                            </form>
+                                            ';
                                         }
                                         echo "</div>";
                                         
-                                    }  
-                                    
-                                     echo "<div class='group-rom'>
-                                                <div class='first-part odd'><div id='displayData1'></div></div>
-                                                <div class='second-part'><div id='displayData2'></div></div>
-                                                <button>delete</button>
-                                            </div>";
+                                     } 
                                 ?>
-                                    
-                             </div>
+                                <div id='displayData1'></div>
+                            </div>
                             <footer>
                                 <form action="./backend/messageSend.php" id="sendMessage" class="form" method="POST">
                                     <div class="chat-txt">
@@ -285,6 +287,7 @@ $(document).ready( function() {
 
     $('#send').click( function(e) {
         e.preventDefault();
+        //e.stopPropagation();
         let formData = $('#sendMessage').serialize();
  
         $.ajax({
@@ -292,19 +295,31 @@ $(document).ready( function() {
             url: './backend/messageSend.php',
             data: formData,
             success: function(formdata){
-                //console.log(response);
+                //console.log('success');
                 //$('.displayData').html(formData);
                 $varmessage = $('#message').val();
                 $varname = $('#name').val();
 
-                var $name_use = $('<div>').text($varname);
-                $('#displayData1')
-                    .append($name_use);
+                //var $name_use = $('<div>').text($varname);
+
+                var rows = "<div class='group-rom'>"
+                + "<div class='first-part odd'>" + $varname + "</div>"
+                + "<div class='second-part'>" + $varmessage + "</div>"
+                    + "<form method='POST' action = './backend/remove-message.php' id ='deleteForm'><div class='input-group-append'>" +
+                        //"<input type='hidden' id='uid' name='uid' value=$messageType['id']>" +
+                        "<input type='hidden' id='cid' name='cid' value=$messageType['messageID']>" +
+                        "<input type='hidden' id='aid' name='aid' value=$messageType['discussionID']>" +
+                        "<input type='submit' name='remove-course-submit' id='Btn' class='btn btn-outline-secondary' value='Remove'/>" +
+                    "</div>" +
+                "</form>"
+                + "</div>";
+
+                $('#displayData1').append(rows);
 
 
-                var $message_use = $("<div>").text($varmessage);    
-                $('#displayData2')
-                    .append($message_use);
+                //var $message_use = $("<div>").text($varmessage);    
+                //$('#displayData2')
+                    //.append($message_use);
 
                 const inputs = document.querySelectorAll('#message');
 
@@ -322,11 +337,38 @@ $(document).ready( function() {
                 inputs.forEach(input => {
                     input.value = '';
                 });
+                
             }
-        });
+            //return false;
+    });    
+        
+});
 
+$('#Btn').click( function(e){
+        e.preventDefault();
+        let formData = $('#deleteForm').serialize();
+        $.ajax({
+                // url of the data to be delete
+                method: 'POST',
+                url : './backend/remove-message.php',
+                data : formdata,
+                type : 'DELETE',
+                success : function ( formData ) {
+                    
+                    console.log('success');
+                    $( "p" ).append( "Delete request is Success." );
+                },
+                error : function ( jqXhr, textStatus, errorMessage ) {
+                    console.log('fail');
+                    $( "p" ).append( "Delete request is Fail.");
+                }
+
+        });
     });
+
 });
 
 </script>
+
+
 </html>
