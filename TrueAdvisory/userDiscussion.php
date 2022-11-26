@@ -236,12 +236,9 @@ $discuss->closeCursor();
                                     
                                     <input type="hidden" id="discussionID" name="discussionID" value=<?php echo $discussions['discussionID']; ?> />
                                     <input type="hidden" id="id" name="id" value=<?php echo $user['id']; ?> />
-                                    <input type="hidden" id="name" name="name" value=<?php //$findID = $messageType['id'];
-        
-                                                                                            //$stmt = $db->prepare('SELECT name FROM user WHERE id=?');
-                                                                                            //$stmt->execute([$findID]);
-                                                                                            //$_SESSION['name'] = $stmt->fetchColumn();
-                                                                                            echo $user['name']; ?> />
+                                    
+                                                                                                     
+                                    <input type="hidden" id="name" name="name" value=<?php echo $user['name']; ?> />       
                                     <button type="submit" 
                                     style="background-color: #fccc01;" 
                                     name="send" 
@@ -299,6 +296,8 @@ $(document).ready( function() {
                 //$('.displayData').html(formData);
                 $varmessage = $('#message').val();
                 $varname = $('#name').val();
+                $varmessageid = $('#messageID').val();
+                $vardiscussionid = $('#discussionID').val();
 
                 //var $name_use = $('<div>').text($varname);
 
@@ -306,11 +305,11 @@ $(document).ready( function() {
                 + "<div class='first-part odd'>" + $varname + "</div>"
                 + "<div class='second-part'>" + $varmessage + "</div>"
                     + "<form method='POST' action = './backend/remove-message.php' id ='deleteForm'><div class='input-group-append'>" +
-                        //"<input type='hidden' id='uid' name='uid' value=$messageType['id']>" +
-                        "<input type='hidden' id='cid' name='cid' value=$messageType['messageID']>" +
-                        "<input type='hidden' id='aid' name='aid' value=$messageType['discussionID']>" +
+                        "<input type='hidden' id='uid' name='uid' value=$messageType['id']>" +
+                        "<input type='hidden' id='cid' name='cid' value="+$varmessageid+">" +
+                        "<input type='hidden' id='aid' name='aid' value="+$vardiscussionid+">" +  
                         "<input type='submit' name='remove-course-submit' id='Btn' class='btn btn-outline-secondary' value='Remove'/>" +
-                    "</div>" +
+                    "</div>" + 
                 "</form>"
                 + "</div>";
 
@@ -339,22 +338,20 @@ $(document).ready( function() {
                 });
                 
             }
-            //return false;
+            
     });    
-        
 });
 
-$('#Btn').click( function(e){
+/*$('#Btn').click( function(e){
         e.preventDefault();
         let formData = $('#deleteForm').serialize();
         $.ajax({
                 // url of the data to be delete
                 method: 'POST',
                 url : './backend/remove-message.php',
-                data : formdata,
+
                 type : 'DELETE',
-                success : function ( formData ) {
-                    
+                success : function ( data ) {
                     console.log('success');
                     $( "p" ).append( "Delete request is Success." );
                 },
@@ -364,7 +361,7 @@ $('#Btn').click( function(e){
                 }
 
         });
-    });
+    });*/
 
 });
 
