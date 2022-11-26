@@ -77,13 +77,13 @@ $userListStmt->execute();
 $currCourse = $userListStmt->fetchAll();
 $userListStmt->closeCursor();
 
-$userTutoringStmt = $db->prepare('SELECT courseID FROM usercourselist WHERE (id = :user_id)  AND (doesTutor = 1)');
+$userTutoringStmt = $db->prepare( 'SELECT * FROM courses WHERE courseID =(SELECT courseID FROM usercourselist WHERE (id = :user_id)  AND (doesTutor = 1))');
 $userTutoringStmt->bindValue(':user_id', $user_id);
 $userTutoringStmt->execute();
 $currTutoring = $userTutoringStmt->fetchAll();
 $userTutoringStmt->closeCursor();
 
-$sbDiscussStmt = $db->prepare('SELECT * FROM discussions WHERE courseID=(SELECT courseID FROM usercourselist WHERE (id = :user_id))');
+$sbDiscussStmt = $db->prepare('SELECT * FROM usercourselist WHERE id = :user_id');
 $sbDiscussStmt->bindValue(':user_id', $user_id);
 $sbDiscussStmt->execute();
 $currDiscussions = $sbDiscussStmt->fetchAll();

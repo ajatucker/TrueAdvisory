@@ -120,8 +120,8 @@ $discuss->closeCursor();
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
                         <li>
                             <?php foreach ($currDiscussions as $discuss) : ?>
-                            <a href="userDiscussion.php?discussion_id=courseID">
-                                <?php echo $discuss['discussionName'];?>
+                                <a href="userDiscussion.php?discussion_id=<?php echo $discuss['discussionID']?>">
+                                <?php echo $discuss['courseID'];?>
                             </a>
                             <?php endforeach; ?>
                         </li>

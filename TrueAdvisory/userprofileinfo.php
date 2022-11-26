@@ -47,7 +47,8 @@ require_once('./backend/informationQuery.php');
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
                         <li>
                             <?php foreach ($currDiscussions as $discuss) : ?>
-                            <a href="userDiscussion.php?discussion_id=courseID">
+                            <a href="userDiscussion.php?discussion_id=<?php echo $discuss['discussionID']?>">
+                                
                                 <?php echo $discuss['courseID'];?>
                             </a>
                             <?php endforeach; ?>
@@ -267,7 +268,8 @@ require_once('./backend/informationQuery.php');
                                                             <?php echo $tutor['courseID'];?>
                                                         </div>
 
-                                                        <?php echo $tutor['courseName'];?>
+                                                        <?php 
+                                                        echo $tutor['courseName'];?>
                                                         </h5>
                                                         <form action="./backend/stop-tutoring.php" method="POST" id="stop-tutoring-form">
                                                         <div class="input-group-append">
