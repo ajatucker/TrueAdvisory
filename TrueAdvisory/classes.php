@@ -157,8 +157,12 @@ $resultCourse->closeCursor();
                   </div>
                 </div>
                   <?php endforeach; ?>
-                </div>
-                
+                  
+              </div>
+              <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
+                echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+                ?>
+                <br>
                 <?php 
                     if($_SESSION['loggedin'] == true)
                     {
@@ -170,10 +174,8 @@ $resultCourse->closeCursor();
                         }
                     }
                         ?>
+                
               </div>
-              <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
-                  echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
-              ?>
             </div>
           </div>
   </body>
