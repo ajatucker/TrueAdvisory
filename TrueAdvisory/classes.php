@@ -152,20 +152,22 @@ $resultCourse->closeCursor();
                   </div>
                 </div>
                   <?php endforeach; ?>
-                </div>
-                
+                  
+              </div>
+              <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
+                echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+                ?>
+                <br>
                 <?php 
-                        if($_SESSION['tutorPrivileges'] == 1)
+                        if($_SESSION['adminPrivileges'] == 1)
                         {
                             echo '<button type="button" class="btn btn-sm btn-outline-secondary">
                             <a href="newCoursePage.php">Add course</a>
                             </button>';
                         }
                         ?>
+                
               </div>
-              <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
-                  echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
-              ?>
             </div>
           </div>
   </body>
