@@ -156,6 +156,11 @@ $resultCourse->closeCursor();
                 </div>
                   <?php endforeach; ?>
                   
+              </div>
+              <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
+                echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+                ?>
+                <br>
                 <?php 
                         if($_SESSION['adminPrivileges'] == 1)
                         {
@@ -164,10 +169,6 @@ $resultCourse->closeCursor();
                             </button>';
                         }
                         ?>
-              </div>
-              <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
-                  echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
-              ?>
                 
               </div>
             </div>

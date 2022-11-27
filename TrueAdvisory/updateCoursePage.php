@@ -1,4 +1,6 @@
 <?php
+require_once('./backend/database.php');
+
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
@@ -10,6 +12,13 @@ if ($_SESSION['adminPrivileges'] != 1) {
 	exit;
 }
 
+$ucid = filter_input(INPUT_GET, 'update_cid');
+
+$courseStmt = $db->prepare('SELECT * FROM courses WHERE courseID=:ucid');
+$courseStmt->bindValue(':ucid', $ucid);
+$courseStmt->execute();
+$uCourse = $courseStmt->fetch();
+$courseStmt->closeCursor();
 
 ?>
 
@@ -124,21 +133,23 @@ if ($_SESSION['adminPrivileges'] != 1) {
                         </div> 
                 </div>
             </nav>
-            <form action="./backend/create-course-discussion.php" method="POST" id="create-course-form">
+            <h5 class="course center">
+                Course Identifier: <?=$ucid ?>
+            </h5>
+            <form action="./backend/update-course.php" method="POST" id="update-course-form">
                 <div class="course">
                     <div class="center">
-
                         <h3 style="text-align:center;">
-                            <input type="text" class="form-control" name="dept" value="Department">
-                            <input type="text" class="form-control" name="c-id" value="Course Identifier (CIS101)">
-                            <input type="text" class="form-control" name="c-name" value="Full Course Name">
+                            <input type="hidden" class="form-control" name="cid" value="<?= $ucid ?>">
+                            <input type="text" class="form-control" name="n_dept" value="<?=$uCourse['department'] ?>">
+                            <input type="text" class="form-control" name="n_c_name" value="<?=$uCourse['courseName'] ?>">
                         </h3>
                     </div>
-                    <input type="textarea" class="form-control" name="desc" value="Enter Course Information Here">
+                    <input type="textarea" class="form-control" name="n_desc" value="<?=$uCourse['description'] ?>">
                     <br>                   
                 </div>
                 <div class="center btn-padding">
-                    <input type="submit" name="submit" id="submit" class="btn btn-default" value="Create Course"/>
+                    <input type="submit" name="submit" id="submit" class="btn btn-default" value="Update Course"/>
                 </div>
                 
             </form>
