@@ -139,11 +139,15 @@ $resultCourse->closeCursor();
                   <div class="card mb-4 box-shadow">
                     <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
                     <div class="card-body">
-                      <p class="card-text"><?php echo $course['courseName'];?></p>
+                      <p class="card-text">
+                        <?php echo $course['courseID'];?>
+                        <br>
+                        <?php echo $course['courseName'];?>
+                      </p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">
-                              <a href="userCourse.php?course_id=<?php echo $course['courseID'];?>" >View</a>
+                          <button type="button" class="btn btn-default">
+                              <a href="userCoursesPage.php?course_id=<?php echo $course['courseID'];?>" >View</a>
                             </button>
                         </div>
                       </div>
@@ -151,10 +155,9 @@ $resultCourse->closeCursor();
                   </div>
                 </div>
                   <?php endforeach; ?>
-                </div>
-                
+                  
                 <?php 
-                        if($_SESSION['tutorPrivileges'] == 1)
+                        if($_SESSION['adminPrivileges'] == 1)
                         {
                             echo '<button type="button" class="btn btn-sm btn-outline-secondary">
                             <a href="newCoursePage.php">Add course</a>
@@ -165,6 +168,8 @@ $resultCourse->closeCursor();
               <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
                   echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
               ?>
+                
+              </div>
             </div>
           </div>
    

@@ -89,12 +89,12 @@ require('./backend/informationQuery.php');
                         </div> 
                 </div>
             </nav>
-            <form action="/action_page.php">
+
                 <div class="course">
                     <div class="center">
 
                         <h3 style="text-align:center;">
-                            <?php echo $course_id?> <br> <?php echo $thisCourse['courseName']?>
+                            <?php echo $user_course_id?> <br> <?php echo $thisCourse['courseName']?>
                         </h3>
                     </div>
                         <?php echo $thisCourse['description']?>
@@ -102,67 +102,90 @@ require('./backend/informationQuery.php');
                     <div>
                       <p style ="color: black; font-weight: 600; text-align: left; padding-left: 20px; margin-bottom: 3px;">Tutors:</p>
                       <ul>
+                        <?php
+                          if(empty($theseTutors))
+                          {
+                              echo "There are no tutors for this course.";
+                          }
+                          ?>
                         <?php foreach ($theseTutors as $t) : ?>
                           <li >
-                              <a href="#"> 
+                              <a href=""> 
                                 <?php 
-                                    if(empty($theseTutors))
-                                    {
-                                        echo "There are no tutors for this course.";
-                                    }
-                                    else
-                                    {
-
                                         echo $t['name']; echo $t['email'];
-                                    }
-                                        ?>
+                                ?>
                                 </a>
                           </li>
                           <?php endforeach; ?>
                       </ul>
 
                     </div>
+
+                    <div class="row">
                     <div class="center btn-padding">
+                        
+                        <div class="col-sm-3">
                         <button type="button" class="btn btn-default">
-                            <a href="userDiscussion.php?discussion_id=<?php echo $course_id;?>" value="View <? $course_id ?> Discussion"></a>
+                            <a href="userDiscussion.php?discussion_id=<?=$user_course_id?>">
+                            View <? $user_course_id ?> Discussion
+                            </a>
                         </button>
+                        </div>
+
+                        <div class="col-sm-3">
                         <form action="./backend/add-courselist.php" method="POST" id="add-to-courselist-form">
-                            <div class="input-group-append">
+                            <div class="input-group">
                                 <input type="hidden" id="course-c-uid" name="course-c-uid" value="<?=$_SESSION['id'] ?>">
-                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$course_id ?>">
+                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
                                 <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Course List"/>
                             </div>
                         </form>
+                        <div>
+                        
+                        
                         <form action="./backend/request-course-update.php" method="POST" id="request-update-form">
-                            <div class="input-group-append">
-                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$course_id ?>">
-                                <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Course List"/>
+                            <div class="input-group">
+                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
+                                <input type="submit" name="submit" id="submit" class="btn btn-default" value="Update Course"/>
                             </div>
                         </form>
+                       
+
                       <?php 
                         if($_SESSION['tutorPrivileges'] == 1)
                         {
-                            echo '<form action="./backend/add-tutor.php" method="POST" id="add-tutoring-form">
-                            <div class="input-group-append">
+                        ?>
+                            <div class="col-sm-3">
+                            <form action="./backend/add-tutor.php" method="POST" id="add-tutoring-form">
+                            <div class="input-group">
                                 <input type="hidden" id="tutor-uid" name="tutor-c-uid" value="<?=$_SESSION['id'] ?>">
-                                <input type="hidden" id="tutor-cid" name="tutor-c-cid" value="<?=$course_id ?>">
+                                <input type="hidden" id="tutor-cid" name="tutor-c-cid" value="<?=$user_course_id ?>">
                                 <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Tutor List"/>
                             </div>
-                            </form>';
-                        }
-                        if($_SESSION['adminPrivileges'] == 1)
-                        {
-                            echo '<form action="./backend/delete-course.php" method="POST" id="delete-course-form">
-                                                        <div class="input-group-append">
-                                                            <input type="hidden" id="dc-cid" name="dc-cid" value="<?=$course_id ?>">
-                                                            <input type="submit" name="submit" id="submit" class="btn btn-default" value="Delete Course"/>
-                                                        </div>
-                                                        </form>';
+                            </form>
+                            </div>
+                    <?php 
                         }
                         ?>
+                    <?php 
+                        if($_SESSION['adminPrivileges'] == 1)
+                        {
+                    ?>      
+                            <div class="col-sm-3">
+                            <form action="./backend/delete-course.php" method="POST" id="delete-course-form">
+                                <div class="input-group-append">
+                                    <input type="hidden" id="dc-cid" name="dc-cid" value="<?=$user_course_id ?>">
+                                    <input type="submit" name="submit" id="submit" class="btn btn-default" value="Delete Course"/>
+                                </div>
+                            </form>
+                            </div>
+                        <?php
+                        }
+                    ?>
                     </div>
+                  
                 </div>
-            </form>
+            </div>
 
           
         </div>
