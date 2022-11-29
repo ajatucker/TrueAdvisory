@@ -132,19 +132,19 @@ $courseStmt->closeCursor();
                         </div> 
                 </div>
             </nav>
-            <h5 class="course center">
+            <h5 class="course">
                 Course Identifier: <?=$ucid ?>
             </h5>
             <form action="./backend/update-course.php" method="POST" id="update-course-form">
                 <div class="course">
-                    <div class="center">
+                    <div style= "width: 50%;">
                         <h3 style="text-align:center;">
                             <input type="hidden" class="form-control" name="cid" value="<?= $ucid ?>">
                             <input type="text" class="form-control" name="n_dept" value="<?=$uCourse['department'] ?>">
                             <input type="text" class="form-control" name="n_c_name" value="<?=$uCourse['courseName'] ?>">
                         </h3>
                     </div>
-                    <input type="textarea" class="form-control" name="n_desc" value="<?=$uCourse['description'] ?>">
+                    <input type="textarea" class="form-control" style = "height: 100px;" name="n_desc" value="<?=$uCourse['description'] ?>">
                     <br>                   
                 </div>
                 <div class="center btn-padding">
@@ -152,12 +152,10 @@ $courseStmt->closeCursor();
                 </div>
                 
             </form>
+            <userCredits class = "center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
 
           
         </div>
-    </div>
-    <div class="footer">
-        Powered by the University of Michigan - Dearborn and learning in CIS 435
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->

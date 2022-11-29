@@ -143,11 +143,11 @@ if ($_SESSION['adminPrivileges'] != 1) {
                 
             </form>
 
+            <userCredits class = "center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
+
+
           
         </div>
-    </div>
-    <div class="footer">
-        Powered by the University of Michigan - Dearborn and learning in CIS 435
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
