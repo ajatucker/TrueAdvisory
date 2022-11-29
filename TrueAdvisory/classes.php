@@ -1,5 +1,5 @@
 <?php
-require('./backend/informationQuery.php');
+require('./backend/database.php');
 session_start();
 
 if (!isset($_SESSION['loggedin'])) {
@@ -7,10 +7,6 @@ if (!isset($_SESSION['loggedin'])) {
   $_SESSION['adminPrivileges'] = 0;
 }
 
-$course_id = filter_input(INPUT_GET, 'courseID', FILTER_VALIDATE_INT);
-if ($course_id == NULL || $course_id == FALSE) {
-    $course_id = 1;
-}
 
 if (!isset ($_GET['page']) ) {  
 
