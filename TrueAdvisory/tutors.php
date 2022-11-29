@@ -120,7 +120,7 @@ $resultTutors->closeCursor();
         <div class="line"></div>
           </div>
         </div>
-          <div class="album py-5 bg-light">
+          <div class="album">
             <div class="container">
               <div class="row">
                 <?php foreach ($currTutors as $tutor) : ?>

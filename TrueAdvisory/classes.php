@@ -1,5 +1,6 @@
 <?php
-require('./backend/informationQuery.php');
+require('./backend/database.php');
+session_start();
 
 $course_id = filter_input(INPUT_GET, 'courseID', FILTER_VALIDATE_INT);
 if ($course_id == NULL || $course_id == FALSE) {
@@ -131,7 +132,7 @@ $resultCourse->closeCursor();
     </div>
     </div>
             <div class="line"></div>
-            <div class="album py-5 bg-light">
+            <div class="album">
             <div class="container">
               <div class="row">
                 <?php foreach ($currCourse as $course) : ?>
@@ -162,7 +163,7 @@ $resultCourse->closeCursor();
                 ?>
                 <br>
                 <?php 
-                        if($_SESSION['adminPrivileges'] == 1)
+                        if(isset($_SESSION['adminPrivileges']) && $_SESSION['adminPrivileges'] == 1)
                         {
                             echo '<button type="button" class="btn btn-sm btn-outline-secondary">
                             <a href="newCoursePage.php">Add course</a>
