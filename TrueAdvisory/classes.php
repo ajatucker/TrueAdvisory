@@ -1,5 +1,11 @@
 <?php
-require('./backend/informationQuery.php');
+require('./backend/database.php');
+session_start();
+
+if (!isset($_SESSION['loggedin'])) {
+	$_SESSION['loggedin'] = false;
+  $_SESSION['adminPrivileges'] = 0;
+}
 
 $course_id = filter_input(INPUT_GET, 'courseID', FILTER_VALIDATE_INT);
 if ($course_id == NULL || $course_id == FALSE) {
@@ -143,7 +149,7 @@ $resultCourse->closeCursor();
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary">
-                              <a href="userCourse.php?course_id=<?php echo $course['courseID'];?>" >View</a>
+                              <a href="userCourse.php?course_id=<?=$course['courseID']?>" >View</a>
                             </button>
                         </div>
                       </div>
@@ -151,20 +157,25 @@ $resultCourse->closeCursor();
                   </div>
                 </div>
                   <?php endforeach; ?>
-                </div>
-                
+                  
+              </div>
+              <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
+                echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+                ?>
+                <br>
                 <?php 
-                        if($_SESSION['tutorPrivileges'] == 1)
+                    if($_SESSION['loggedin'] == true)
+                    {
+                        if($_SESSION['adminPrivileges'] == 1)
                         {
                             echo '<button type="button" class="btn btn-sm btn-outline-secondary">
                             <a href="newCoursePage.php">Add course</a>
                             </button>';
                         }
+                    }
                         ?>
+                
               </div>
-              <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
-                  echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
-              ?>
             </div>
           </div>
   </body>

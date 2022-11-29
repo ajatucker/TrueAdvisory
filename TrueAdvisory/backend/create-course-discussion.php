@@ -11,15 +11,15 @@ if ($cid == null || $desc == null)
     header('Location: ../newCoursePage.php');
 } else 
 {
-    // Add course into the database
-    // $queryCreateCourse = "INSERT INTO `courses` (`courseID`, `courseName`, `department`, `description`)  VALUES (:cid, :cname, :dept, :desc)";
-    // $statementC = $db->prepare($queryCreateCourse);
-    // $statementC->bindValue(':cid', $cid);
-    // $statementC->bindValue(':cname', $cname);
-    // $statementC->bindValue(':dept', $dept);
-    // $statementC->bindValue(':desc', $desc);
-    // $statementC->execute();
-    // $statementC->closeCursor();
+    Add course into the database
+    $queryCreateCourse = "INSERT INTO `courses` (`courseID`, `courseName`, `department`, `description`)  VALUES (:cid, :cname, :dept, :desc)";
+    $statementC = $db->prepare($queryCreateCourse);
+    $statementC->bindValue(':cid', $cid);
+    $statementC->bindValue(':cname', $cname);
+    $statementC->bindValue(':dept', $dept);
+    $statementC->bindValue(':desc', $desc);
+    $statementC->execute();
+    $statementC->closeCursor();
 
      $dname = 'Discuss';
      $dname .= $cname;

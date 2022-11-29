@@ -9,6 +9,8 @@ if ($_SESSION['adminPrivileges'] != 1) {
 	header('Location: ./site.php');
 	exit;
 }
+
+
 ?>
 
 <!DOCTYPE html>

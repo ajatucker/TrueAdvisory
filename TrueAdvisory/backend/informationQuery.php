@@ -4,8 +4,9 @@ require_once('database.php');
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: ./signin.html');
-	exit;
+    $_SESSION['loggedin'] == false;
+	//header('Location: ./signin.html');
+	//exit;
 }
 
 $user_id = $_SESSION['id'];
@@ -57,9 +58,14 @@ $course_id = filter_input(INPUT_GET, 'courseID');
 if ($course_id == NULL || $course_id == FALSE) {
     $course_id = '0';
 }
+
+$user_course_id = filter_input(INPUT_GET, 'course_id');
+if ($user_course_id == NULL || $user_course_id == FALSE) {
+    $user_course_id = '0';
+}
     
 $courseStmt = $db->prepare('SELECT * FROM courses WHERE courseID=:course_id');
-$courseStmt->bindValue(':course_id', $course_id);
+$courseStmt->bindValue(':course_id', $user_course_id);
 $courseStmt->execute();
 $thisCourse = $courseStmt->fetchAll();
 $courseStmt->closeCursor();
