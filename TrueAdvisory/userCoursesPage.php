@@ -134,7 +134,7 @@ require('./backend/informationQuery.php');
                         <form action="./backend/add-courselist.php" method="POST" id="add-to-courselist-form">
                             <div class="input-group-append">
                                 <input type="hidden" id="course-c-uid" name="course-c-uid" value="<?=$_SESSION['id'] ?>">
-                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$course_id ?>">
+                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
                                 <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Course List"/>
                             </div>
                         </form>
