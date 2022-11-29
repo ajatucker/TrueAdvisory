@@ -7,7 +7,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color:#00274C;
-    font-size: 13px;
+    font-size: 500px !important;
     line-height: 1.8;
     color: #222;
     font-weight: 400;
@@ -23,13 +23,14 @@ p {
 
 a, a:hover, a:focus{
     color: inherit;
-    
+    font-size: 100px;
     text-decoration: none;
     transition: all 0.3s;
 }
 
 a, a:link{
   color: #0000EE;
+  font-size: 100px;
   text-decoration: underline;
 }
 
@@ -40,6 +41,13 @@ a, a:visited{
 
 .rounded {
     border-radius:.45rem!important
+}
+
+
+.pages {
+  font-size: 40px;
+  margin: 20px;
+
 }
 
 .navbar {

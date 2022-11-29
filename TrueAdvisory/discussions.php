@@ -126,7 +126,7 @@ $resultDiscussions->closeCursor();
             </div>
           </div>
           <div class="album ">
-            <div class="container" style = "margin-top: 20px; margin-bottom: 40px; padding: 20px;">
+            <div class="container" style = "margin-top: 20px; margin-bottom: 40px; padding: 60px;">
               <div class="row">
                 <?php foreach ($currDiscussions as $discussion) : ?>
                   
@@ -140,7 +140,7 @@ $resultDiscussions->closeCursor();
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "MATH")) 
                         { ?>
-                        <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="Images/schoolpics_05.png" alt="Card image cap" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
@@ -197,11 +197,12 @@ $resultDiscussions->closeCursor();
                 </div>
               <?php endforeach; ?>
               </div>
- 
+            <div class = "pages">            
               <?php for($page_number = 1; $page_number<= $total_pages; $page_number++) {  
-                  echo '<a href = "discussions.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+                  echo '<a href  style = "font-size: 20px; margin: 125px; color: inherit; text-decoration: none;" = "discussions.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
               ?>
             </div>
-          </div> 
-  </body>
+          </div>
+        </div> 
+</body>
 </html>
