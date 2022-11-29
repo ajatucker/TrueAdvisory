@@ -64,7 +64,7 @@ if ($user_course_id == NULL || $user_course_id == FALSE) {
 }
     
 $courseStmt = $db->prepare('SELECT * FROM courses WHERE courseID=:course_id');
-$courseStmt->bindValue(':course_id', $course_id);
+$courseStmt->bindValue(':course_id', $user_course_id);
 $courseStmt->execute();
 $thisCourse = $courseStmt->fetchAll();
 $courseStmt->closeCursor();
