@@ -11,7 +11,7 @@ if ($cid == null || $cid == false || $desc == null || $desc == false)
     header('Location: ../newCoursePage.php');
 } else 
 {
-    Add course into the database
+   // Add course into the database
     $queryCreateCourse = "INSERT INTO `courses` (`courseID`, `courseName`, `department`, `description`)  VALUES (:cid, :cname, :dept, :desc)";
     $statementC = $db->prepare($queryCreateCourse);
     $statementC->bindValue(':cid', $cid);
