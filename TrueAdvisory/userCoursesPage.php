@@ -94,7 +94,7 @@ require('./backend/informationQuery.php');
                     <div class="center">
 
                         <h3 style="text-align:center;">
-                            <?php echo $course_id?> <br> <?php echo $thisCourse['courseName']?>
+                            <?php echo $user_course_id?> <br> <?php echo $thisCourse['courseName']?>
                         </h3>
                     </div>
                         <?php echo $thisCourse['description']?>
@@ -134,13 +134,13 @@ require('./backend/informationQuery.php');
                         <form action="./backend/add-courselist.php" method="POST" id="add-to-courselist-form">
                             <div class="input-group-append">
                                 <input type="hidden" id="course-c-uid" name="course-c-uid" value="<?=$_SESSION['id'] ?>">
-                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$course_id ?>">
+                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
                                 <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Course List"/>
                             </div>
                         </form>
                         <form action="./backend/request-course-update.php" method="POST" id="request-update-form">
                             <div class="input-group-append">
-                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$course_id ?>">
+                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
                                 <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Course List"/>
                             </div>
                         </form>
@@ -152,7 +152,7 @@ require('./backend/informationQuery.php');
                             <form action="./backend/add-tutor.php" method="POST" id="add-tutoring-form">
                             <div class="input-group">
                                 <input type="hidden" id="tutor-uid" name="tutor-c-uid" value="<?=$_SESSION['id'] ?>">
-                                <input type="hidden" id="tutor-cid" name="tutor-c-cid" value="<?=$course_id ?>">
+                                <input type="hidden" id="tutor-cid" name="tutor-c-cid" value="<?=$user_course_id ?>">
                                 <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Tutor List"/>
                             </div>
                             </form>
