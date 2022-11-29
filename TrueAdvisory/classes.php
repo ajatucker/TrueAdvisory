@@ -144,7 +144,7 @@ $resultCourse->closeCursor();
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary">
-                              <a href="userCourse.php?course_id=<?=$course['courseID']?>" >View</a>
+                              <a href="userCoursesPage.php?course_id=<?php echo $course['courseID'];?>" >View</a>
                             </button>
                         </div>
                       </div>
