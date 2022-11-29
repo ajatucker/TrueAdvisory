@@ -59,7 +59,7 @@ session_start();
               <img src="Images/logo.png" alt="UMD logo" class="classordisimg center" style="width:288px;height:355px;margin-top:20px;" >
             
             <div class="btns">
-              <button><a href="signup.html">Get Started</a></button>
+              <button><a href="signup.php">Get Started</a></button>
             </div>
             <p class = "center" style ="display: block; width: 75%;">True Advisory is a one-stop shop for tutoring and course discussion. Add your courses to your course list, 
               and you can see the course discussion and available resources for that course. Users can submit updates to 

@@ -127,7 +127,7 @@ $resultCourse->closeCursor();
             </div>
               <p style= "font-weight: 800;">Want to view available courses at the University of Michigan - Dearborn? View the course listing below or get started now!</p>
             <div class="btns">
-              <button><a href="signup.html">Get Started</a></button>
+              <button><a href="signup.php">Get Started</a></button>
             </div>
             <credits class="center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
         </div>

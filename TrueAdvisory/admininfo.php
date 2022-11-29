@@ -129,8 +129,7 @@ $courseRequestStmt->closeCursor();
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content" style ="background-color: white;">
-
+        <div id="userContent" style ="background-color: white;">
             <nav class="navbar navbar-expand-lg rounded">
                 <div class="container-fluid">
 
@@ -139,11 +138,11 @@ $courseRequestStmt->closeCursor();
                         <span></span>
                         <span></span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        &ZeroWidthSpace;<i class="fas fa-align-justify"></i>
                     </button>
 
-                    <div class="menu">
+                    <div class="menu w-100 order-1 order-md-0">
                         <ul>
                         <li><a href="site.php">True Advisory</a></li>
                           <li><a href="site.php">Home</a></li>
@@ -151,13 +150,13 @@ $courseRequestStmt->closeCursor();
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
                           <li><a href="#">About</a></li>
-                          <li><a href="#">Other Resources</a></li>
+                          <li><a href="#">Resources</a></li>
                         </ul>
                         <ul>
                         <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
-                              <a class="login_button" href=".\backend\logout.php" >logout</a>
+                              <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
                             <?php }else{ ?>
-                              <a class="login_button" href="signin.html">login</a>
+                              <a class="login_button" href="signin.html">Sign In</a>
                             <?php } ?></b></li>
                         </ul>
                         </div> 

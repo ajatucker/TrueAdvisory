@@ -250,12 +250,13 @@ a.article, a.article:hover {
 
 #userContent  {
   max-width: auto;
-  width: 100%;
-  width: 100%;
   padding: 20px;
   min-height: 100vh;
   transition: all 0.3s;
   min-width: 1570px;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
 }
 
 #userContent .center{

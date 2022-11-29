@@ -99,8 +99,7 @@ $courseStmt->closeCursor();
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content" style ="background-color: white;">
-
+        <div id="userContent" style ="background-color: white;">
             <nav class="navbar navbar-expand-lg rounded">
                 <div class="container-fluid">
 
@@ -113,7 +112,7 @@ $courseStmt->closeCursor();
                         &ZeroWidthSpace;<i class="fas fa-align-justify"></i>
                     </button>
 
-                    <div class="menu">
+                    <div class="menu w-100 order-1 order-md-0">
                         <ul>
                         <li><a href="site.php">True Advisory</a></li>
                           <li><a href="site.php">Home</a></li>
@@ -121,14 +120,14 @@ $courseStmt->closeCursor();
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
                           <li><a href="#">About</a></li>
-                          <li><a href="#">Other Resources</a></li>
+                          <li><a href="#">Resources</a></li>
                         </ul>
                         <ul>
-                            <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
-                                <a class="login_button" href=".\backend\logout.php" >logout</a>
-                              <?php }else{ ?>
-                                <a class="login_button" href="signin.html">login</a>
-                              <?php } ?></b></li>
+                        <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
+                              <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
+                            <?php }else{ ?>
+                              <a class="login_button" href="signin.html">Sign In</a>
+                            <?php } ?></b></li>
                         </ul>
                         </div> 
                 </div>

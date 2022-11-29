@@ -75,8 +75,7 @@ require_once('./backend/informationQuery.php');
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content" style ="background-color: white;">
-
+        <div id="userContent" style ="background-color: white;">
             <nav class="navbar navbar-expand-lg rounded">
                 <div class="container-fluid">
 
@@ -85,11 +84,11 @@ require_once('./backend/informationQuery.php');
                         <span></span>
                         <span></span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        &ZeroWidthSpace;<i class="fas fa-align-justify"></i>
                     </button>
 
-                    <div class="menu">
+                    <div class="menu w-100 order-1 order-md-0">
                         <ul>
                         <li><a href="site.php">True Advisory</a></li>
                           <li><a href="site.php">Home</a></li>
@@ -97,13 +96,13 @@ require_once('./backend/informationQuery.php');
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
                           <li><a href="#">About</a></li>
-                          <li><a href="#">Other Resources</a></li>
+                          <li><a href="#">Resources</a></li>
                         </ul>
                         <ul>
                         <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
-                              <a class="login_button" href=".\backend\logout.php" >logout</a>
+                              <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
                             <?php }else{ ?>
-                              <a class="login_button" href="signin.html">login</a>
+                              <a class="login_button" href="signin.html">Sign In</a>
                             <?php } ?></b></li>
                         </ul>
                         </div> 
@@ -225,14 +224,14 @@ require_once('./backend/informationQuery.php');
                                 <div class="card-body">     
                                 <div class="row">
                                 <h5 class="center">
-                                        <h5>
+                                        
                                             <?php echo $course['courseID'];?>
                                         </h5>
                                     <form action="./backend/remove-course.php" method="POST" id="delete-course-form">
-                                    <div class="input-group-append">
+                                    <div class="input-group-append" style = "margin-right:20px">
                                         <input type="hidden" id="uid" name="uid" value="<?=$user['id'] ?>">
                                         <input type="hidden" id="cid" name="cid" value="<?=$course['courseID'] ?>">
-                                        <input type="submit" name="remove-course-submit" id="remove-course-submit" class="btn btn-outline-secondary" value="Remove" style="background-color:#ff8282;"/>
+                                        <input type="submit" name="remove-course-submit" id="remove-course-submit" class="btn btn-outline-secondary" value="Remove" style="background-color:#E90000; color: white"/>
                                     </div>
                                     </form>
                                 </h5>
@@ -261,9 +260,9 @@ require_once('./backend/informationQuery.php');
                                     <?php foreach ($currTutoring as $tutor) : ?>
                                     <div class="card mb-4 box-shadow">
                                         <div class="card-body">     
-                                            <div class="row">
-                                                    <h5 class="center">
-                                                        <h5>
+                                            <div class="row" style = "width: full">
+                                                    <h5>
+                                                        
                                                         <div class="col-sm-3">
                                                             <?php echo $tutor['courseID'];?>
                                                         </div>
@@ -271,11 +270,11 @@ require_once('./backend/informationQuery.php');
                                                         <?php 
                                                         echo $tutor['courseName'];?>
                                                         </h5>
-                                                        <form action="./backend/stop-tutoring.php" method="POST" id="stop-tutoring-form">
-                                                        <div class="input-group-append">
+                                                        <form action="./backend/stop-tutoring.php" method="POST" id="stop-tutoring-form" style= " margin-left: 280px; right: 10&">
+                                                        <div class="input-group-append" style = " margin-top: 20px; margin-bottom:auto">
                                                             <input type="hidden" id="tutor-uid" name="tutor-uid" value="<?=$user['id'] ?>">
                                                             <input type="hidden" id="tutor-cid" name="tutor-cid" value="<?=$tutor['courseID'] ?>">
-                                                            <input type="submit" name="stop-submit" id="stop-submit" class="btn btn-outline-secondary" value="Remove" style="background-color:#ff8282;"/>
+                                                            <input type="submit" name="stop-submit" id="stop-submit" class="btn btn-outline-secondary" value="Remove" style="background-color:#E90000; color: white">
                                                         </div>
                                                         </form>
                                                     </h5>
@@ -293,16 +292,15 @@ require_once('./backend/informationQuery.php');
                                                             <input type="hidden" id="my-uid" name="my-uid" value="<?=$user['id'] ?>">
                                                         </div>
                                                         <div class="center btn-padding">
-                                                            <input type="submit" name="submit" id="submit" class="btn btn-default" value="Delete Account" style="background-color:#E90000; color: white; font-size: 25px;"/>
+                                                            <input type="submit" name="submit" id="submit" class="btn btn-default center" value="Delete Account" style="background-color:#E90000; width: 50%; color: white; font-size: 25px;"/>
                                                         </div>
                         </form>
-                
+                        <userCredits class = "center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
                 
         </div>
     </div>
-    <div class="footer">
-        Powered by the University of Michigan - Dearborn and learning in CIS 435
-    </div>
+
+
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
