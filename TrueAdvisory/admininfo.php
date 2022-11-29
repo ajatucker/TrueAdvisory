@@ -87,7 +87,7 @@ $courseRequestStmt->closeCursor();
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="#">Your Home</a>
+                    <a href="userprofileinfo.php">Your Home</a>
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
                     <ul class="collapse list-unstyled" id="courseSubmenu">
                     <?php foreach ($currCourse as $course) : ?>
@@ -145,7 +145,11 @@ $courseRequestStmt->closeCursor();
                     <div class="menu w-100 order-1 order-md-0">
                         <ul>
                         <li><a href="site.php">True Advisory</a></li>
+                        <?php if(isset($_SESSION['loggedin'])){ ?>
+                            <li><a href="userprofileinfo.php">Home</a></li>
+                        <?php }else{ ?>
                           <li><a href="site.php">Home</a></li>
+                        <?php } ?></b></li>
                           <li><a href="classes.php">Courses</a></li>
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>

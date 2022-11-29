@@ -28,7 +28,11 @@
                             <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
                             <ul>
                             <li><a href="#">True Advisory</a></li>
-                            <li><a href="site.html">Home</a></li>
+                            <?php if(isset($_SESSION['loggedin'])){ ?>
+                            <li><a href="userprofileinfo.php">Home</a></li>
+                        <?php }else{ ?>
+                          <li><a href="site.php">Home</a></li>
+                        <?php } ?></b></li>
                             <li><a href="courses.html">Courses</a></li>
                             <li><a href="discussions.html">Discussions</a></li>
                             <li><a href="tutors.html">Tutoring</a></li>

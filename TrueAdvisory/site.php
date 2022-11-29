@@ -36,7 +36,11 @@ session_start();
                       <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
                       <ul>
                       <li><a href="site.php">True Advisory</a></li>
+                          <?php if(isset($_SESSION['loggedin'])){ ?>
+                            <li><a href="userprofileinfo.php">Home</a></li>
+                        <?php }else{ ?>
                           <li><a href="site.php">Home</a></li>
+                        <?php } ?></b></li>
                           <li><a href="classes.php">Courses</a></li>
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
