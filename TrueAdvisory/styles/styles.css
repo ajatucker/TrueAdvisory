@@ -308,6 +308,14 @@ width: 50%;
   list-style-position: inside;
   }
 
+  #content .newCourseInfo {
+    width: 50%;
+  }
+
+  #content .courseInformation {
+    margin-bottom: 30px;
+  }
+
 #content image {
   margin-top: 20px;
   position: relative;

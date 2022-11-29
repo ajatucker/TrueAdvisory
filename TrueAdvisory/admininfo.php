@@ -435,7 +435,7 @@ $courseRequestStmt->closeCursor();
                                                             <input type="hidden" id="my-uid" name="my-uid" value="<?=$user['id'] ?>">
                                                         </div>
                                                         <div class="center btn-padding">
-                                                            <input type="submit" name="submit" id="submit" class="btn btn-default" value="Delete Account" style="background-color:#ff8282;"/>
+                                                            <input type="submit" name="submit" id="submit" class="btn btn-default" value="Delete Account" style="background-color:#E90000; color: white; font-size: 25px;"/>
                                                         </div>
                         </form>
                         
