@@ -94,7 +94,7 @@ require('./backend/informationQuery.php');
                     <div class="center">
 
                         <h3 style="text-align:center;">
-                            <?php echo $course_id?> <br> <?php echo $thisCourse['courseName']?>
+                            <?php echo $user_course_id?> <br> <?php echo $thisCourse['courseName']?>
                         </h3>
                     </div>
                         <?php echo $thisCourse['description']?>
@@ -129,7 +129,7 @@ require('./backend/informationQuery.php');
                         
                         <div class="col-sm-3">
                         <button type="button" class="btn btn-default">
-                            <a href="userDiscussion.php?discussion_id=<?php echo $course_id;?>" value="View <? $course_id ?> Discussion"></a>
+                            <a href="userDiscussion.php?discussion_id=<?php echo $user_course_id;?>" value="View <? $user_course_id ?> Discussion"></a>
                         </button>
                         <form action="./backend/add-courselist.php" method="POST" id="add-to-courselist-form">
                             <div class="input-group-append">

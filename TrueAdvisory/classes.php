@@ -1,5 +1,5 @@
 <?php
-require('./backend/database.php');
+require('./backend/informationQuery.php');
 session_start();
 
 if (!isset($_SESSION['loggedin'])) {

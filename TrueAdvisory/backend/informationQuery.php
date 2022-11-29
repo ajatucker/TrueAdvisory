@@ -4,8 +4,9 @@ require_once('database.php');
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: ./signin.html');
-	exit;
+    $_SESSION['loggedin'] == false;
+	//header('Location: ./signin.html');
+	//exit;
 }
 
 $user_id = $_SESSION['id'];
