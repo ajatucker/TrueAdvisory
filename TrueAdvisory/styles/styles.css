@@ -19,6 +19,7 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
+    color: #999;
 }
 
 a, a:hover, a:focus{
@@ -34,7 +35,7 @@ a, a:link{
 }
 
 a, a:visited{
-  color: #8235ca; 
+  color: #551A8B; 
   text-decoration: underline;
 }
 
@@ -245,24 +246,6 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-
-#userContent  {
-  max-width: auto;
-  width: 100%;
-  width: 100%;
-  padding: 20px;
-  min-height: 100vh;
-  transition: all 0.3s;
-  min-width: 1570px;
-}
-
-#userContent .center{
-display: block;
-margin-left: auto;
-margin-right: auto;
-width: 50%;
-}
-
 #content  {
   max-width: auto;
   width: 100%;
@@ -325,8 +308,8 @@ width: 50%;
   }
 
 #content p{
-  margin-top: 100px;
-  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 20px;
   color: #fff;
   font-size: 25px;
   font-weight: 300;
@@ -347,8 +330,7 @@ width: 50%;
   }
 
 #content .btns{
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: 40px;
   top: 25%;
   width: 100%;
   padding: 0 20px;
@@ -414,7 +396,7 @@ credits {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-userCredits {
+  userCredits {
   margin-top: 60px;
   margin-bottom: 20px;
   background-color: #00274C;
@@ -586,7 +568,10 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   figure {
     margin: 0; }
   
- 
+  p {
+    margin-bottom: 0px;
+    font-size: 15px;
+    color: #777; }
   
   h2 {
     line-height: 1.66;
@@ -999,7 +984,6 @@ footer p {
   width: 100%;
   height: 100%;
   position: relative;
-  border: 1px solid #e5e8ef;
 }
 
 .chat-room aside {
@@ -1017,7 +1001,7 @@ footer p {
   -webkit-border-radius: 4px 0 0 4px;
 }
 .chat-room .tengah-side {
-  width: 80%;
+  width: 60%;
   background: #fff;
   border-right: 1px solid #e5e8ef;
   border-bottom: 1px solid #e5e8ef;
@@ -1030,18 +1014,16 @@ footer p {
   border-bottom: 1px solid #e5e8ef;
 }
 
-.chat-room .currUser-head {
+.chat-room .kiri-side .currUser-head {
   background: #00274C;
   color: #FFFFFF;
-  min-height: 100px;
   max-height: 100px;
-  padding: 5px;
+  padding: 15px;
 }
 .chat-room .kanan-side .user-head {
   background: #00274C;
   color: #FFFFFF;
   min-height: 100px;
-  max-height: 100px;
   padding: 10px;
   border-left: 1px solid #00274C;
   margin-left: -1px;
@@ -1062,8 +1044,9 @@ footer p {
 }
 
 .chat-room .currUser-head h3 {
-  padding: 25px 0;
-  margin-left: 2px;
+  margin: 6px 0 0 0;
+  font-weight: 500;
+  letter-spacing: 1px;
  
 }
 
@@ -1071,13 +1054,12 @@ footer p {
   background: #00274C;
   color: #FFFFFF;
   min-height: 100px;
-  max-height: 100px;
   padding: 30px;
+  
 }
 
 .chat-room-head h3 {
-  padding-bottom: 27px;
-  margin-bottom: 10px;
+  margin: 5px 0 0;
   font-weight: 500;
   letter-spacing: 1px;
   display: inline-block;
@@ -1171,11 +1153,11 @@ ul.chat-user li a:hover{
   color: #6a6a6a;
 }
 
-.chat-room  footer {
+.chat-room .kiri-side footer {
   background: #d5d7de;
-  padding: 40px;
-  height: 350px;
-  width: 100%;
+  padding: 15px;
+  height: 100px;
+  width: 20%;
   position: absolute;
   bottom: 0;
   
@@ -1185,7 +1167,7 @@ ul.chat-user li a:hover{
   background: #f7f8fa;
   padding: 15px;
   height: 235px;
-  width: 80%;
+  width: 60%;
   position: absolute;
   bottom: 0;
  
@@ -1195,7 +1177,7 @@ ul.chat-user li a:hover{
   background: #fff;
   padding: 15px;
   height: 100px;
-  width: 0%;
+  width: 20%;
   position: absolute;
   bottom: 0;
   border-top: 1px solid #E5E8EF;
@@ -1337,23 +1319,19 @@ ul.chat-available-user li i {
 }
 
 .group-rom .first-part.odd {
- 
+  background: #f7f8fa;
   color: #6a6a6a;
   font-weight: 600;
 }
 
 .group-rom .second-part{
   width: 60%;
-  word-wrap: break-word;
-  color: black;
 }
 
 .group-rom .third-part{
   width: 15%;
   color: #d4d3d3;
 }
-
-
 
 a.guest-on {
   color: #6a6a6a;
@@ -1370,61 +1348,16 @@ a.guest-on i {
   margin-right: 5px;
 }
 
-input[type=submit].btn.delete{
-  padding:5px 15px; 
-  margin: auto;
-  margin-top: 7px;
-  width: 100px;
-  background:rgb(233, 0, 0); 
-  color: white;
-  border:0 none;
-  cursor:pointer;
-  -webkit-border-radius: 5px;
-  border-radius: 5px; 
-}
-
-input[type=submit].Btn.btn.delete.btn-outline-seconday{
-  padding:5px 15px; 
-  margin: auto;
-  margin-top: 7px;
-  width: 70%;
-  background:rgb(233, 0, 0); 
-  color: white;
-  border:0 none;
-  cursor:pointer;
-  -webkit-border-radius: 5px;
-  border-radius: 5px; 
-}
-
-input[type=submit].btn.delete:hover {
-  background:rgb(189, 21, 21); 
-}
-
-input[type=submit].btn.delete:active {
-  background:rgb(170, 23, 23); 
-}
-
-.chat-room footer .btn.send{
+.chat-room .tengah-side footer .btn.send{
   background-color: #fccc01; 
-  font-size: 40px;
-  font-weight: 600;
-  color:white;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-  border-radius: 25px;
   position: absolute; 
-  top: 50%;left: 84%;
+  top: 60%;left: 84%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  
 }
 
-.chat-room footer .btn.send:hover{
-  background-color: #ecc100;
-  opacity: 1;
-}
-
-.chat-room footer .btn.send:active{
-  background-color: #cea907;
+.chat-room .tengah-side footer .btn.send:hover{
+  background: #ecc100;
 }
 
 .chat-txt {
@@ -1454,7 +1387,7 @@ input[type=submit].btn.delete:active {
 }
 
 .scroll {
-  height: 750px;
+  height: 1050px;
   overflow-y: scroll;
  
 }

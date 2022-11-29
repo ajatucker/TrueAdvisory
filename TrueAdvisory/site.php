@@ -1,5 +1,5 @@
 <?php
-session_start();
+require('./backend/informationQuery.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,12 +40,12 @@ session_start();
                           <li><a href="classes.php">Courses</a></li>
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
-                          <li><a href="aboutUs.html">About</a></li>
-                          <li><a href="otherResources.html">Resources</a></li>
-                        <li><b style="position:absolute; right:0;top:1;margin-right: 80px; margin-left:40px"><?php if(isset($_SESSION['loggedin'])){ ?>
-                          <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Other Resources</a></li>
+                        <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
+                          <a class="login_button" href=".\backend\logout.php" >logout</a>
                         <?php }else{ ?>
-                          <a class="login_button" href="signin.html">Sign In</a>
+                          <a class="login_button" href="signin.html">login</a>
                         <?php } ?></b></li>
                       </ul>
                     </div>
@@ -61,14 +61,15 @@ session_start();
             <div class="btns">
               <button><a href="signup.html">Get Started</a></button>
             </div>
-            <p class = "center" style ="display: block; width: 75%;">True Advisory is a one-stop shop for tutoring and course discussion. Add your courses to your course list, 
+            <p>True Advisory is a one-stop shop for tutoring and course discussion. Add your courses to your course list, 
               and you can see the course discussion and available resources for that course. Users can submit updates to 
               the page if the information is outdated, especially so students can stay up-to-date with what they need to 
               succeed. There are a few problems that True Advisory seeks to solve. Currently important resources are scattered 
               around the main UMD website. Depending on the major, there is often a lack of resources. Tutoring is scarce, 
               and it can be hard to find help.</p>
 
-            <credits class="center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
+            <credits style="color:white;">Powered by the University of Michigan - Dearborn and learning in CIS 435</credits>
+        </div>
       </div>
 </body>
 

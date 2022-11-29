@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
 
-    <title>True Advisory - Home</title>
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="signupandsignin/fonts/material-icon/css/material-design-iconic-font.min.css">
 
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
+    <!-- Main css -->
     <link rel="stylesheet" href="./styles/styles.css">
-
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
 <body>
    
     <div class="wrapper">
         <div id="content">
             <nav class="navbar navbar-expand-lg rounded">
-                <div class="container-fluid">
-                    <div class="menu">
-                        <div class="row">
-                        <div class="col-xs-1">
-                            <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
-                            <ul>
-                            <li><a href="#">True Advisory</a></li>
-                            <li><a href="site.html">Home</a></li>
-                            <li><a href="courses.html">Courses</a></li>
-                            <li><a href="discussions.html">Discussions</a></li>
-                            <li><a href="tutors.html">Tutoring</a></li>
-                            <li><a href="aboutUs.html">About</a></li>
-                            <li><a href="otherResources.html">Resources</a></li>
-                            <li><b style="position:absolute; right:0;top:1;margin-right: 80px; margin-left:40px"><a href="signin.html" class="login_button">Sign In</a></b></li>
-                            </ul>
-                        </div>
-                        </div>
-                    </div>
+            <div class="container-fluid">
+              <div class="menu">
+                <div class="row">
+                  <div class="col-xs-1">
+                    <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
+                    <ul>
+                    <li><a href="site.php">True Advisory</a></li>
+                          <li><a href="site.php">Home</a></li>
+                          <li><a href="classes.php">Courses</a></li>
+                          <li><a href="discussions.php">Discussions</a></li>
+                          <li><a href="tutors.php">Tutoring</a></li>
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Other Resources</a></li>
+                        <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
+                          <a class="login_button" href=".\backend\logout.php" >logout</a>
+                        <?php }else{ ?>
+                          <a class="login_button" href="signin.html">login</a>
+                        <?php } ?></b></li>
+                    </ul>
                 </div>
-            </nav>
+                </div>
+              </div>
+            </div>
+          </nav>
         
         <!-- Sign up form -->
         <section class="signup">

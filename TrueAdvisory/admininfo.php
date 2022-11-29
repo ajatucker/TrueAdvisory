@@ -91,10 +91,13 @@ $courseRequestStmt->closeCursor();
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
                     <ul class="collapse list-unstyled" id="courseSubmenu">
                     <?php foreach ($currCourse as $course) : ?>
-                            <a href="course.php">
+                            <a href="#">
                                 <?php echo $course['courseID'];?>        
                             </a>
                             <?php endforeach; ?>
+                            <a href="#">CIS 350
+                                                        
+                            </a>
                     </ul>
                 </li>
                 <li>
@@ -102,10 +105,13 @@ $courseRequestStmt->closeCursor();
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
                         <li>
                             <?php foreach ($currDiscussions as $discuss) : ?>
-                                <a href="userDiscussion.php?discussion_id=<?php echo $discuss['discussionID']?>">
+                            <a href="#">
                                 <?php echo $discuss['courseID'];?>
                             </a>
                             <?php endforeach; ?>
+                            <a href="#">Discuss CIS 350
+                                                        
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -430,14 +436,7 @@ $courseRequestStmt->closeCursor();
                                 </div>
                             </div>
                         </div>
-                        <form action="./backend/delete-account.php" method="POST" id="delete-form">
-                                                        <div class="input-group-append">
-                                                            <input type="hidden" id="my-uid" name="my-uid" value="<?=$user['id'] ?>">
-                                                        </div>
-                                                        <div class="center btn-padding">
-                                                            <input type="submit" name="submit" id="submit" class="btn btn-default" value="Delete Account" style="background-color:#ff8282;"/>
-                                                        </div>
-                        </form>
+                      
                         
         </div>
     </div>

@@ -47,8 +47,7 @@ require_once('./backend/informationQuery.php');
                     <ul class="collapse list-unstyled" id="discussionSubmenu">
                         <li>
                             <?php foreach ($currDiscussions as $discuss) : ?>
-                            <a href="userDiscussion.php?discussion_id=<?php echo $discuss['discussionID']?>">
-                                
+                            <a href="userDiscussion.php?discussion_id=courseID">
                                 <?php echo $discuss['courseID'];?>
                             </a>
                             <?php endforeach; ?>
@@ -125,24 +124,16 @@ require_once('./backend/informationQuery.php');
                         </div>
                     </div>
                     <div class="row">
-                    <?php
-                        if($_SESSION['adminPrivileges'] == 0){
-                            
-                            echo '<div class="col-sm-6">
-                                    <form action="./backend/request-admin.php" method="POST" id="req-admin-form">
-                                            <input type="submit" name="req-admin" id="req-admin" class="btn btn-default" value="Admin Request"/>
-                                    </form>
-                                    </div>';
-                        }
-                        if($_SESSION['tutorPrivileges'] == 0){
-                                    echo '<div class="col-sm-6">
-                                    <form action="./backend/request-tutor.php" method="POST" id="req-tutor-form">
-                                            <input type="submit" name="req-tutor" id="req-tutor" class="btn btn-default" value="Tutor Request"/>
-                                    </form>
-                                    </div>';
-                        }
-                    
-                    ?>
+                            <div class="col-sm-6">
+                            <form action="./backend/request-admin.php" method="POST" id="req-admin-form">
+                                    <input type="submit" name="req-admin" id="req-admin" class="btn btn-default" value="Admin Request"/>
+                            </form>
+                            </div>
+                            <div class="col-sm-6">
+                            <form action="./backend/request-tutor.php" method="POST" id="req-tutor-form">
+                                    <input type="submit" name="req-tutor" id="req-tutor" class="btn btn-default" value="Tutor Request"/>
+                            </form>
+                            </div>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -218,7 +209,7 @@ require_once('./backend/informationQuery.php');
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
                             <div class="row">
-                                <h3 class="center">Registered Course Listing</h3>
+                                <h3 class="center">Your Course Listing</h3>
                             </div>
                             <?php foreach ($currCourse as $course) : ?>
                             <div class="card mb-4 box-shadow">
@@ -228,13 +219,9 @@ require_once('./backend/informationQuery.php');
                                         <h5>
                                             <?php echo $course['courseID'];?>
                                         </h5>
-                                    <form action="./backend/remove-course.php" method="POST" id="delete-course-form">
                                     <div class="input-group-append">
-                                        <input type="hidden" id="uid" name="uid" value="<?=$user['id'] ?>">
-                                        <input type="hidden" id="cid" name="cid" value="<?=$course['courseID'] ?>">
-                                        <input type="submit" name="remove-course-submit" id="remove-course-submit" class="btn btn-outline-secondary" value="Remove" style="background-color:#ff8282;"/>
+                                        <input action="remove-course.php" type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
                                     </div>
-                                    </form>
                                 </h5>
                             </div>
                         </div>
@@ -264,20 +251,11 @@ require_once('./backend/informationQuery.php');
                                             <div class="row">
                                                     <h5 class="center">
                                                         <h5>
-                                                        <div class="col-sm-3">
-                                                            <?php echo $tutor['courseID'];?>
-                                                        </div>
-
-                                                        <?php 
-                                                        echo $tutor['courseName'];?>
+                                                        <?php echo $tutor['courseID'];?>
                                                         </h5>
-                                                        <form action="./backend/stop-tutoring.php" method="POST" id="stop-tutoring-form">
                                                         <div class="input-group-append">
-                                                            <input type="hidden" id="tutor-uid" name="tutor-uid" value="<?=$user['id'] ?>">
-                                                            <input type="hidden" id="tutor-cid" name="tutor-cid" value="<?=$tutor['courseID'] ?>">
-                                                            <input type="submit" name="stop-submit" id="stop-submit" class="btn btn-outline-secondary" value="Remove" style="background-color:#ff8282;"/>
+                                                            <input type="submit" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Remove"/>
                                                         </div>
-                                                        </form>
                                                     </h5>
                                                 </div>
                                             </div>     
@@ -287,17 +265,6 @@ require_once('./backend/informationQuery.php');
                                 </div>
                             </div>
                         </div>
-
-                        <form action="./backend/delete-account.php" method="POST" id="delete-form">
-                                                        <div class="input-group-append">
-                                                            <input type="hidden" id="my-uid" name="my-uid" value="<?=$user['id'] ?>">
-                                                        </div>
-                                                        <div class="center btn-padding">
-                                                            <input type="submit" name="submit" id="submit" class="btn btn-default" value="Delete Account" style="background-color:#ff8282;"/>
-                                                        </div>
-                        </form>
-                
-                
         </div>
     </div>
     <div class="footer">

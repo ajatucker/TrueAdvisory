@@ -41,8 +41,7 @@ else {
     $statement->bindValue(':discussionID', $discussionID);
     $statement->execute();
     $statement->closeCursor();
-
-    header('Location: ../userDiscussion.php?discussion_id='.$discussionID);
+    //header('Location: ../userDiscussion.php');
 
 
 }
