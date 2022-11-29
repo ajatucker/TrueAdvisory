@@ -7,7 +7,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color:#00274C;
-    font-size: 500px !important;
+    font-size: 13px;
     line-height: 1.8;
     color: #222;
     font-weight: 400;
@@ -23,14 +23,13 @@ p {
 
 a, a:hover, a:focus{
     color: inherit;
-    font-size: 100px;
+    
     text-decoration: none;
     transition: all 0.3s;
 }
 
 a, a:link{
   color: #0000EE;
-  font-size: 100px;
   text-decoration: underline;
 }
 
@@ -43,13 +42,6 @@ a, a:visited{
     border-radius:.45rem!important
 }
 
-
-.pages {
-  font-size: 40px;
-  margin: 20px;
-
-}
-
 .navbar {
     max-width: auto;
     width: 100%;
@@ -59,6 +51,7 @@ a, a:visited{
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
     min-width: 100%;
+    margin-bottom: 150px;
 }
 
 .navbar-btn {
@@ -622,7 +615,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -webkit-border-radius: 20px;
     -o-border-radius: 20px;
     border-radius: 20px; 
-    margin-top: 50px;
+    margin-top: 200px;
   }
 
   .container-fluid{
@@ -956,7 +949,6 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   max-width: auto;  
   width: 100%; 
   padding-top: 1px !important; 
-  background-color: white;
 }
 
 :root {
