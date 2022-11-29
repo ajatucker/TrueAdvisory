@@ -126,7 +126,7 @@ if ($_SESSION['adminPrivileges'] != 1) {
             </nav>
             <form action="./backend/create-course-discussion.php" method="POST" id="create-course-form">
                 <div class="course">
-                    <div class="center">
+                    <div class="newCourseInfo">
 
                         <h3 style="text-align:center;">
                             <input type="text" class="form-control" name="dept" value="Department">
@@ -134,7 +134,8 @@ if ($_SESSION['adminPrivileges'] != 1) {
                             <input type="text" class="form-control" name="c-name" value="Full Course Name">
                         </h3>
                     </div>
-                    <input type="textarea" class="form-control" name="desc" value="Enter Course Information Here">
+
+                    <input type="textarea" class="form-control" name="desc" value="Enter Course Information Here" style = "height: 100px; word-wrap: break-word;">
                     <br>                   
                 </div>
                 <div class="center btn-padding">
