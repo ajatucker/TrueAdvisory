@@ -165,7 +165,7 @@ $resultCourse->closeCursor();
                             <a href="newCoursePage.php">Add course</a>
                             </button>';
                         }
-                    }
+                    
                         ?>
                 
               </div>
