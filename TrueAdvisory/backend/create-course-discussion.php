@@ -5,7 +5,7 @@ $cid = filter_input(INPUT_POST, 'c-id');
 $cname = filter_input(INPUT_POST, 'c-name');
 $desc = filter_input(INPUT_POST, 'desc');
 
-if ($cid == null || $desc == null) 
+if ($cid == null || $cid == false || $desc == null || $desc == false) 
 {
     $error_message = "Invalid data. Check all fields and try again.";
     header('Location: ../newCoursePage.php');
