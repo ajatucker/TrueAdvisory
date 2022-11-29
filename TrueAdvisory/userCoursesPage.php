@@ -89,7 +89,7 @@ require('./backend/informationQuery.php');
                         </div> 
                 </div>
             </nav>
-
+            <form action="/action_page.php">
                 <div class="course">
                     <div class="center">
 
@@ -102,18 +102,20 @@ require('./backend/informationQuery.php');
                     <div>
                       <p style ="color: black; font-weight: 600; text-align: left; padding-left: 20px; margin-bottom: 3px;">Tutors:</p>
                       <ul>
-                        <?php
-                          if(empty($theseTutors))
-                          {
-                              echo "There are no tutors for this course.";
-                          }
-                          ?>
                         <?php foreach ($theseTutors as $t) : ?>
                           <li >
-                              <a href=""> 
+                              <a href="#"> 
                                 <?php 
+                                    if(empty($theseTutors))
+                                    {
+                                        echo "There are no tutors for this course.";
+                                    }
+                                    else
+                                    {
+
                                         echo $t['name']; echo $t['email'];
-                                ?>
+                                    }
+                                        ?>
                                 </a>
                           </li>
                           <?php endforeach; ?>
@@ -127,31 +129,21 @@ require('./backend/informationQuery.php');
                         
                         <div class="col-sm-3">
                         <button type="button" class="btn btn-default">
-                            <a href="userDiscussion.php?discussion_id=<?=$user_course_id?>">
-                            View <? $user_course_id ?> Discussion
-                            </a>
+                            <a href="userDiscussion.php?discussion_id=<?php echo $user_course_id;?>" value="View <? $user_course_id ?> Discussion"></a>
                         </button>
-                        </div>
-
-                        <div class="col-sm-3">
                         <form action="./backend/add-courselist.php" method="POST" id="add-to-courselist-form">
-                            <div class="input-group">
+                            <div class="input-group-append">
                                 <input type="hidden" id="course-c-uid" name="course-c-uid" value="<?=$_SESSION['id'] ?>">
                                 <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
                                 <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Course List"/>
                             </div>
                         </form>
-                        <div>
-                        
-                        
                         <form action="./backend/request-course-update.php" method="POST" id="request-update-form">
-                            <div class="input-group">
+                            <div class="input-group-append">
                                 <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
-                                <input type="submit" name="submit" id="submit" class="btn btn-default" value="Update Course"/>
+                                <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Course List"/>
                             </div>
                         </form>
-                       
-
                       <?php 
                         if($_SESSION['tutorPrivileges'] == 1)
                         {
@@ -167,8 +159,6 @@ require('./backend/informationQuery.php');
                         
                     <?php 
                         }
-                        ?>
-                    <?php 
                         if($_SESSION['adminPrivileges'] == 1)
                         {
                     ?>      
@@ -189,9 +179,8 @@ require('./backend/informationQuery.php');
                         
                         <?php
                         }
-                    ?>
+                        ?>
                     </div>
-                  
                 </div>
             
 

@@ -83,72 +83,68 @@ $resultCourse->closeCursor();
 
         <!-- Page Content Holder -->
         <div id="content">
-          <nav class="navbar navbar-expand-lg rounded">
-            <div class="container-fluid">
-              <div class="menu">
-                <div class="row">
-                  <div class="col-xs-1">
-                    <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
+            <nav class="navbar navbar-expand-lg rounded">
+              <div class="container-fluid">
+                <div class="menu">
+                  <div class="row">
+                    <div class="col-xs-1">
+                      <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
                       <ul>
-                        <li><a href="site.php">True Advisory</a></li>
+                      <li><a href="site.php">True Advisory</a></li>
                           <li><a href="site.php">Home</a></li>
                           <li><a href="classes.php">Courses</a></li>
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
-                          <li><a href="#">About</a></li>
-                          <li><a href="#">Other Resources</a></li>
-                          <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
-                              <a class="login_button" href=".\backend\logout.php" >logout</a>
-                            <?php }else{ ?>
-                              <a class="login_button" href="signin.html">login</a>
-                            <?php } ?></b></li>
+                          <li><a href="aboutUs.html">About</a></li>
+                          <li><a href="otherResources.html">Resources</a></li>
+                        <li><b style="position:absolute; right:0;top:1;margin-right: 80px; margin-left:40px"><?php if(isset($_SESSION['loggedin'])){ ?>
+                          <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
+                        <?php }else{ ?>
+                          <a class="login_button" href="signin.html">Sign In</a>
+                        <?php } ?></b></li>
                       </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </nav>
+            </nav>
             
             <h1>TRUE ADVISORY COURSES</h1>
-            <img src="Images/classespic.png" alt="UMD logo" style="width:288px;height:355px;margin-top:20px;" class="umdlogo center">
-            <p>
-              <p>Have you been frustrated trying to find information on a class you’re considering registering for? 
-            </p>
-            <div class="line"></div>
-            <p>Look no further - True Advisory Course views can help you access basic course information and overviews to make better enrollment decisions. Each course page, other than featuring a course overview, will display a list of tutors and a link to the class discussion. This information should be relatively up-to-date. 
-
-              Students can request information updates often that way information is as up-to-date as possible. To become an arbiter of information for the site, you must request admin access to help keep the site updated for future students. 
-              
-              Have any issues with the information provided in the course overview? Request to change it, and the admins will be notified. They will review the information and add any additional information at their discretion.
-              
-              Please note that admins have the discretion to delete accounts to punish bad behavior and bad actors. While this is a self-moderating community, any activity going against proper conduct as is defined by the University may result in the deletion of your account.
-            
-              </p>
-              <p>Want to view available courses at the University of Michigan - Dearborn? View the course listing below or get started now!</p>
-              <div class="btns">
-                <button>Get Started</button>
+            <div class="containera">   
+              <div class="contentBox right">
+                <img src="Images/classespic.png" alt="" style="width:288px;height:355px;margin-top:20px; margin-left: 100px">
+                <div class="hehe">
+                  <h3>Have you been frustrated trying to find information on a class you're considering registering for? &lrm;</h3>
+                  <br>
+                  <br>
+                  <br>
+                  <p>Look no further - True Advisory Course views can help you access basic course information and overviews to make better enrollment decisions. Each course page, other than featuring a course overview, will display a list of tutors and a link to the class discussion. This information should be relatively up-to-date.  
+                    Students can request information updates often that way information is as up-to-date as possible. To become an arbiter of information for the site, you must request admin access to help keep the site updated for future students.  
+                    Have any issues with the information provided in the course overview? Request to change it, and the admins will be notified. They will review the information and add any additional information at their discretion.</p>
+                  <p> Please note that admins have the discretion to delete accounts to punish bad behavior and bad actors. While this is a self-moderating community, any activity going against proper conduct as is defined by the University may result in the deletion of your account.</p>
+                  </div>
               </div>
-
+            </div>
+              <p style= "font-weight: 800;">Want to view available courses at the University of Michigan - Dearborn? View the course listing below or get started now!</p>
+            <div class="btns">
+              <button><a href="signup.html">Get Started</a></button>
+            </div>
+            <credits class="center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
+        </div>
     </div>
-    </div>
-            <div class="line"></div>
-            <div class="album">
-            <div class="container">
+            <div class="album ">
+            <div class="container" style = "margin-top: 20px; margin-bottom: 40px; padding: 60px;">
               <div class="row">
                 <?php foreach ($currCourse as $course) : ?>
                 <div class="col-md-3">
                   <div class="card mb-4 box-shadow">
                     <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
                     <div class="card-body">
-                      <p class="card-text">
-                        <?php echo $course['courseID'];?>
-                        <br>
-                        <?php echo $course['courseName'];?>
-                      </p>
+                      <p class="card-text"><?php echo $course['courseName'];?></p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <button type="button" class="btn btn-default">
-                              <a href="userCoursesPage.php?course_id=<?php echo $course['courseID'];?>" >View</a>
+                          <button type="button" class="btn btn-sm btn-outline-secondary">
+                              <a href="userCourse.php?course_id=<?=$course['courseID']?>" >View</a>
                             </button>
                         </div>
                       </div>
@@ -169,16 +165,11 @@ $resultCourse->closeCursor();
                             <a href="newCoursePage.php">Add course</a>
                             </button>';
                         }
+                    }
                         ?>
                 
               </div>
             </div>
           </div>
-   
-                <!-- Page Content Holder -->
-              <div id="content">
-                  <footer>Powered by the University of Michigan - Dearborn and learning in CIS 435</footer>
-              </div>
-            
   </body>
 </html>
