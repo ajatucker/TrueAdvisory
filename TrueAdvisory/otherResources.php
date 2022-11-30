@@ -65,7 +65,10 @@ session_start();
                 <li><a href="https://umdearborn.edu/students">University of Michigan - Dearborn Student Portal</a></li>
                 <li><a href="https://umdearborn.edu/academic-advising">University of Michigan - Dearborn Advising</a></li>
               </ul>
-              <img src="images/goblue.png" alt="The university picture" class="classordisimg center" style="width:288px;height:355px;margin-top:20px;" >
+              <br>
+              <br>
+              <br>
+              <img src="images/campus.jpg" alt="UMD campus" class="classordisimg center" style="width:793px;height:417px;margin-top:20px; border-radius: 10%" >
               <credits>Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
             </div>
         </div>
