@@ -14,12 +14,16 @@ body {
     font-family: Poppins
 }
 
+h5 {
+  font-size: 25px;
+}
+
+
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
 }
 
 a, a:hover, a:focus{
@@ -35,7 +39,7 @@ a, a:link{
 }
 
 a, a:visited{
-  color: #551A8B; 
+  color: #8235ca; 
   text-decoration: underline;
 }
 
@@ -52,6 +56,7 @@ a, a:visited{
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
     min-width: 100%;
+    margin-bottom: 100px;
 }
 
 .navbar-btn {
@@ -65,6 +70,19 @@ a, a:visited{
     height: 1px;
     border-bottom: 2.5px solid #ddd;
     margin: 40px 0;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin:auto;
+  }
+
+.btn a{
+  text-decoration: none;
+  color: inherit;
 }
 
 .menu{
@@ -137,6 +155,7 @@ a, a:visited{
     align-items: stretch;
     perspective: 1500px;
     padding: 0px; 
+    min-width: 1570px;
 }
 
 
@@ -246,9 +265,31 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
+
+#userContent  {
+  max-width: auto;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  min-width: 1570px;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+
+#userContent .center{
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+}
+
+.user-form {
+  margin-top: 15px;
+}
+
 #content  {
   max-width: auto;
-  width: 100%;
   width: 100%;
   padding: 20px;
   min-height: 100vh;
@@ -290,6 +331,14 @@ a.article, a.article:hover {
   list-style-position: inside;
   }
 
+  #content .newCourseInfo {
+    width: 50%;
+  }
+
+  #content .courseInformation {
+    margin-bottom: 30px;
+  }
+
 #content image {
   margin-top: 20px;
   position: relative;
@@ -308,8 +357,8 @@ a.article, a.article:hover {
   }
 
 #content p{
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 100px;
+  margin-bottom: 40px;
   color: #fff;
   font-size: 25px;
   font-weight: 300;
@@ -330,7 +379,8 @@ a.article, a.article:hover {
   }
 
 #content .btns{
-  margin-top: 40px;
+  margin-top: 80px;
+  margin-bottom: 80px;
   top: 25%;
   width: 100%;
   padding: 0 20px;
@@ -396,7 +446,7 @@ credits {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-  userCredits {
+userCredits {
   margin-top: 60px;
   margin-bottom: 20px;
   background-color: #00274C;
@@ -568,10 +618,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   figure {
     margin: 0; }
   
-  p {
-    margin-bottom: 0px;
-    font-size: 15px;
-    color: #777; }
+ 
   
   h2 {
     line-height: 1.66;
@@ -928,6 +975,12 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
 /*---------------------------------------------------
     Album Feature
 -----------------------------------------------------*/
+.album{
+  min-width: 1570px; 
+  max-width: auto;  
+  width: 100%; 
+  padding-top: 1px !important; 
+}
 
 :root {
   --jumbotron-padding-y: 3rem;
@@ -984,6 +1037,7 @@ footer p {
   width: 100%;
   height: 100%;
   position: relative;
+  border: 1px solid #e5e8ef;
 }
 
 .chat-room aside {
@@ -1001,7 +1055,7 @@ footer p {
   -webkit-border-radius: 4px 0 0 4px;
 }
 .chat-room .tengah-side {
-  width: 60%;
+  width: 80%;
   background: #fff;
   border-right: 1px solid #e5e8ef;
   border-bottom: 1px solid #e5e8ef;
@@ -1014,16 +1068,18 @@ footer p {
   border-bottom: 1px solid #e5e8ef;
 }
 
-.chat-room .kiri-side .currUser-head {
+.chat-room .currUser-head {
   background: #00274C;
   color: #FFFFFF;
+  min-height: 100px;
   max-height: 100px;
-  padding: 15px;
+  padding: 5px;
 }
 .chat-room .kanan-side .user-head {
   background: #00274C;
   color: #FFFFFF;
   min-height: 100px;
+  max-height: 100px;
   padding: 10px;
   border-left: 1px solid #00274C;
   margin-left: -1px;
@@ -1044,9 +1100,8 @@ footer p {
 }
 
 .chat-room .currUser-head h3 {
-  margin: 6px 0 0 0;
-  font-weight: 500;
-  letter-spacing: 1px;
+  padding: 25px 0;
+  margin-left: 2px;
  
 }
 
@@ -1054,12 +1109,13 @@ footer p {
   background: #00274C;
   color: #FFFFFF;
   min-height: 100px;
+  max-height: 100px;
   padding: 30px;
-  
 }
 
 .chat-room-head h3 {
-  margin: 5px 0 0;
+  padding-bottom: 27px;
+  margin-bottom: 10px;
   font-weight: 500;
   letter-spacing: 1px;
   display: inline-block;
@@ -1153,11 +1209,11 @@ ul.chat-user li a:hover{
   color: #6a6a6a;
 }
 
-.chat-room .kiri-side footer {
+.chat-room  footer {
   background: #d5d7de;
-  padding: 15px;
-  height: 100px;
-  width: 20%;
+  padding: 40px;
+  height: 350px;
+  width: 100%;
   position: absolute;
   bottom: 0;
   
@@ -1167,7 +1223,7 @@ ul.chat-user li a:hover{
   background: #f7f8fa;
   padding: 15px;
   height: 235px;
-  width: 60%;
+  width: 80%;
   position: absolute;
   bottom: 0;
  
@@ -1177,7 +1233,7 @@ ul.chat-user li a:hover{
   background: #fff;
   padding: 15px;
   height: 100px;
-  width: 20%;
+  width: 0%;
   position: absolute;
   bottom: 0;
   border-top: 1px solid #E5E8EF;
@@ -1319,19 +1375,23 @@ ul.chat-available-user li i {
 }
 
 .group-rom .first-part.odd {
-  background: #f7f8fa;
+ 
   color: #6a6a6a;
   font-weight: 600;
 }
 
 .group-rom .second-part{
   width: 60%;
+  word-wrap: break-word;
+  color: black;
 }
 
 .group-rom .third-part{
   width: 15%;
   color: #d4d3d3;
 }
+
+
 
 a.guest-on {
   color: #6a6a6a;
@@ -1348,16 +1408,61 @@ a.guest-on i {
   margin-right: 5px;
 }
 
-.chat-room .tengah-side footer .btn.send{
-  background-color: #fccc01; 
-  position: absolute; 
-  top: 60%;left: 84%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+input[type=submit].btn.delete{
+  padding:5px 15px; 
+  margin: auto;
+  margin-top: 7px;
+  width: 100px;
+  background:rgb(233, 0, 0); 
+  color: white;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
 }
 
-.chat-room .tengah-side footer .btn.send:hover{
-  background: #ecc100;
+input[type=submit].Btn.btn.delete.btn-outline-seconday{
+  padding:5px 15px; 
+  margin: auto;
+  margin-top: 7px;
+  width: 70%;
+  background:rgb(233, 0, 0); 
+  color: white;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+}
+
+input[type=submit].btn.delete:hover {
+  background:rgb(189, 21, 21); 
+}
+
+input[type=submit].btn.delete:active {
+  background:rgb(170, 23, 23); 
+}
+
+.chat-room footer .btn.send{
+  background-color: #fccc01; 
+  font-size: 40px;
+  font-weight: 600;
+  color:white;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+  position: absolute; 
+  top: 50%;left: 84%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  
+}
+
+.chat-room footer .btn.send:hover{
+  background-color: #ecc100;
+  opacity: 1;
+}
+
+.chat-room footer .btn.send:active{
+  background-color: #cea907;
 }
 
 .chat-txt {
@@ -1387,7 +1492,7 @@ a.guest-on i {
 }
 
 .scroll {
-  height: 1050px;
+  height: 750px;
   overflow-y: scroll;
  
 }
@@ -1420,6 +1525,7 @@ a.guest-on i {
 
 .containera{
   overflow: hidden;
+  margin-top: 100px;
 }
 
 .aboutBox{
@@ -1454,4 +1560,33 @@ a.guest-on i {
 .hehe {
   flex-direction: column;
   color: white;
+  padding: 10px;
+}
+
+.contentBox{
+  min-height: 300px !important;
+  display: flex !important;
+  margin-bottom: 40px;
+  padding: 150px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.contentBox p{
+  all: unset !important;
+  font-size: 1.5rem !important;
+  direction: ltr !important;
+  text-align: left !important;
+  color: #fff !important;
+  display: inline-block !important;; 
+  width: 95% !important;;
+}
+
+.contentBox img{
+  
+  max-width: 100%;
+  width:auto;
+  height: auto;
 }

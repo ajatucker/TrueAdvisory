@@ -99,8 +99,7 @@ $courseStmt->closeCursor();
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content" style ="background-color: white;">
-
+        <div id="userContent" style ="background-color: white;">
             <nav class="navbar navbar-expand-lg rounded">
                 <div class="container-fluid">
 
@@ -113,39 +112,43 @@ $courseStmt->closeCursor();
                         &ZeroWidthSpace;<i class="fas fa-align-justify"></i>
                     </button>
 
-                    <div class="menu">
+                    <div class="menu w-100 order-1 order-md-0">
                         <ul>
                         <li><a href="site.php">True Advisory</a></li>
+                        <?php if(isset($_SESSION['loggedin'])){ ?>
+                            <li><a href="userprofileinfo.php">Home</a></li>
+                        <?php }else{ ?>
                           <li><a href="site.php">Home</a></li>
+                        <?php } ?></b></li>
                           <li><a href="classes.php">Courses</a></li>
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
                           <li><a href="#">About</a></li>
-                          <li><a href="#">Other Resources</a></li>
+                          <li><a href="#">Resources</a></li>
                         </ul>
                         <ul>
-                            <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
-                                <a class="login_button" href=".\backend\logout.php" >logout</a>
-                              <?php }else{ ?>
-                                <a class="login_button" href="signin.html">login</a>
-                              <?php } ?></b></li>
+                        <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
+                              <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
+                            <?php }else{ ?>
+                              <a class="login_button" href="signin.html">Sign In</a>
+                            <?php } ?></b></li>
                         </ul>
                         </div> 
                 </div>
             </nav>
-            <h5 class="course center">
+            <h5 class="course">
                 Course Identifier: <?=$ucid ?>
             </h5>
             <form action="./backend/update-course.php" method="POST" id="update-course-form">
                 <div class="course">
-                    <div class="center">
+                    <div style= "width: 50%;">
                         <h3 style="text-align:center;">
                             <input type="hidden" class="form-control" name="cid" value="<?= $ucid ?>">
                             <input type="text" class="form-control" name="n_dept" value="<?=$uCourse['department'] ?>">
                             <input type="text" class="form-control" name="n_c_name" value="<?=$uCourse['courseName'] ?>">
                         </h3>
                     </div>
-                    <input type="textarea" class="form-control" name="n_desc" value="<?=$uCourse['description'] ?>">
+                    <input type="textarea" class="form-control" style = "height: 100px;" name="n_desc" value="<?=$uCourse['description'] ?>">
                     <br>                   
                 </div>
                 <div class="center btn-padding">
@@ -153,12 +156,10 @@ $courseStmt->closeCursor();
                 </div>
                 
             </form>
+            <userCredits class = "center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
 
           
         </div>
-    </div>
-    <div class="footer">
-        Powered by the University of Michigan - Dearborn and learning in CIS 435
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->

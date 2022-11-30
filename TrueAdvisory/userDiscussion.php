@@ -79,23 +79,24 @@ $discuss->closeCursor();
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/h4q44g5dcbtjoz0xm3jwlzejtvv39ixmrzziivdtex66c6ke/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
       tinymce.init({
-        selector: 'textarea#tiny',
-        max_height: 215,
+        selector: 'textarea#message',
+
+        max_height: 275,
         max_width: 1200
             ,plugins: [
-            'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+            'textcolor','a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
             'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
             'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
             ],
-            toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
+            toolbar: 'forecolor backcolor| undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
             'bullist numlist checklist outdent indent | removeformat | code table help'
       })
     </script>
 </head>
-    
+
 
 <body>
 
@@ -113,7 +114,7 @@ $discuss->closeCursor();
                     <ul class="collapse list-unstyled" id="courseSubmenu">
                     <?php foreach ($currCourse as $course) : ?>
                             <a href="classes.php">
-                                <?php echo $course['courseID'];?>        
+                                <?php echo $course['courseID'];?>
                             </a>
                             <?php endforeach; ?>
                     </ul>
@@ -130,7 +131,7 @@ $discuss->closeCursor();
                         </li>
                     </ul>
                 </li>
-                
+
                 <li>
                     <a href="#tutorSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tutors</a>
                     <ul class="collapse list-unstyled" id="tutorSubmenu">
@@ -146,11 +147,11 @@ $discuss->closeCursor();
                     </ul>
                 </li>
             </ul>
-            
+
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content" style ="background-color: white;">
+        <div id="userContent" style ="background-color: white;">
             <nav class="navbar navbar-expand-lg rounded">
                 <div class="container-fluid">
 
@@ -163,24 +164,28 @@ $discuss->closeCursor();
                         &ZeroWidthSpace;<i class="fas fa-align-justify"></i>
                     </button>
 
-                    <div class="menu">
+                    <div class="menu w-100 order-1 order-md-0">
                         <ul>
                         <li><a href="site.php">True Advisory</a></li>
+                        <?php if(isset($_SESSION['loggedin'])){ ?>
+                            <li><a href="userprofileinfo.php">Home</a></li>
+                        <?php }else{ ?>
                           <li><a href="site.php">Home</a></li>
+                        <?php } ?></b></li>
                           <li><a href="classes.php">Courses</a></li>
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
                           <li><a href="#">About</a></li>
-                          <li><a href="#">Other Resources</a></li>
+                          <li><a href="#">Resources</a></li>
                         </ul>
                         <ul>
                         <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
-                              <a class="login_button" href=".\backend\logout.php" >logout</a>
+                              <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
                             <?php }else{ ?>
-                              <a class="login_button" href="signin.html">login</a>
+                              <a class="login_button" href="signin.html">Sign In</a>
                             <?php } ?></b></li>
                         </ul>
-                        </div> 
+                        </div>
                 </div>
             </nav>
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -190,10 +195,10 @@ $discuss->closeCursor();
                  <!-- start:chat room -->
                     <div class="box ">
                         <div class="chat-room rounded"  style = "height: 1400px;" >
-                        
-                   
+
+
                         <!-- start:aside tengah chat room -->
-                        
+
                             <div class="chat-room-head">
                                 <h3><?php echo $discussions['discussionName'];?></h3>
                                 <form action="#" class="pull-right position">
@@ -209,10 +214,10 @@ $discuss->closeCursor();
                                         $stmt->execute([$findID]);
                                         $_SESSION['name'] = $stmt->fetchColumn();
 
-                                        
+
                                         echo "<div class='group-rom'><div class='first-part odd'>".$_SESSION['name']."</div>
                                         <div class='second-part'>".$messageType['message']."</div>";
-                                        
+
                                         if ($messageType['id'] == $_SESSION['id'] || $_SESSION['adminPrivileges'] == 1 || $_SESSION['tutorPrivileges'] == 1){
                                             echo '
                                             <form method="POST" action = "./backend/remove-message.php" id ="deleteForm">
@@ -225,8 +230,8 @@ $discuss->closeCursor();
                                             ';
                                         }
                                         echo "</div>";
-                                        
-                                     } 
+
+                                     }
                                 ?>
                                 <div id='displayData1'></div>
                             </div>
@@ -235,31 +240,85 @@ $discuss->closeCursor();
                                     <div class="chat-txt">
                                         <textarea type="text" name="message" id="message" class="form-control" value=''></textarea>
                                     </div>
-                                    
+
                                     <input type="hidden" id="discussionID" name="discussionID" value=<?php echo $discussions['discussionID']; ?> />
                                     <input type="hidden" id="id" name="id" value=<?php echo $user['id']; ?> />
-                                    
-                                                                                                     
-                                    <input type="hidden" id="name" name="name" value=<?php echo $user['name']; ?> />       
-                                    <button type="submit" 
-                                    style="background-color: #fccc01;" 
-                                    name="send" 
-                                    id="send" 
+
+
+                                    <input type="hidden" id="name" name="name" value=<?php echo $user['name']; ?> />
+                                    <button type="submit"
+                                    style="background-color: #fccc01;"
+                                    name="send"
+                                    id="send"
                                     class="btn send">Send</button>
                                 </form>
                             </footer>
-                        
-                        <!-- end:aside tengah chat room -->
+
+                                <!-- start:aside tengah chat room -->
+
+                                    <div class="chat-room-head">
+                                        <h3><?php echo $discussions['discussionName'];?></h3>
+                                    </div>
+                                    <div class = "scroll">
+                                        <?php
+
+                                            foreach ($message as $messageType){
+                                                $findID = $messageType['id'];
+
+                                                $stmt = $db->prepare('SELECT name FROM user WHERE id=?');
+                                                $stmt->execute([$findID]);
+                                                $_SESSION['name'] = $stmt->fetchColumn();
+
+
+                                                echo "<div class='group-rom'><div class='first-part odd'>".$_SESSION['name']."</div>
+                                                <div class='second-part'>".$messageType['message']."</div>";
+
+                                                if ($messageType['id'] == $_SESSION['id'] || $_SESSION['adminPrivileges'] == 1 || $_SESSION['tutorPrivileges'] == 1){
+                                                    echo '
+                                                    <form method="POST" action = "./backend/remove-message.php" id ="deleteForm">
+                                                        <div class="input-group-append">
+                                                            <input type="hidden" id="cid" name="cid" value='.$messageType["messageID"].'>
+                                                            <input type="hidden" id="aid" name="aid" value='.$messageType["discussionID"].'>
+                                                            <input type="submit" name="remove-course-submit" id="Btn" class="btn delete"
+                                                            value="Remove"/>
+                                                        </div>
+                                                    </form>
+                                                    ';
+                                                }
+                                                echo "</div>";
+
+                                            }
+                                        ?>
+                                        <div id='displayData1'></div>
+                                    </div>
+                                    <footer>
+                                        <form action="./backend/messageSend.php" id="sendMessage" class="form" method="POST">
+                                            <div class="chat-txt">
+                                                <textarea type="text" name="message" id="message" class="form-control" value=''></textarea>
+                                            </div>
+
+                                            <input type="hidden" id="discussionID" name="discussionID" value=<?php echo $discussions['discussionID']; ?> />
+                                            <input type="hidden" id="id" name="id" value=<?php echo $user['id']; ?> />
+
+
+                                            <input type="hidden" id="name" name="name" value=<?php echo $user['name']; ?> />
+                                            <button type="submit"
+                                            name="send"
+                                            id="send"
+                                            class="btn send">Send</button>
+                                        </form>
+                                    </footer>
+
+                                <!-- end:aside tengah chat room -->
+                                </div>
+                            </div>
+                            <!-- end:chat room -->
                         </div>
                     </div>
-                    <!-- end:chat room -->
                 </div>
-                </div>
-            </div>
             <userCredits class = "center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
         </div>
-       
-</div>
+    </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -280,7 +339,7 @@ $discuss->closeCursor();
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    
+
 <script>
 
 setInterval(function() {
@@ -299,13 +358,13 @@ $(document).ready( function() {
             });
 
         // specify the server/url you want to load data from
-        
+
         $.ajax({
-            
+
             method: "POST",
             url: './backend/messageSend.php',
             data: formData,
-            
+
             success: function(formdata){
                 //console.log('success');
                 //$('.displayData').html(formData);
@@ -323,16 +382,16 @@ $(document).ready( function() {
                     + "<form method='POST' action = './backend/remove-message.php' id ='deleteForm'><div class='input-group-append'>" +
                         "<input type='hidden' id='uid' name='uid' value=$messageType['id']>" +
                         "<input type='hidden' id='cid' name='cid' value="+$varmessageid+">" +
-                        "<input type='hidden' id='aid' name='aid' value="+$vardiscussionid+">" +  
-                        "<input type='submit' name='remove-course-submit' id='Btn' class='btn btn-outline-secondary' value='Remove'/>" +
-                    "</div>" + 
+                        "<input type='hidden' id='aid' name='aid' value="+$vardiscussionid+">" +
+                        "<input type='submit' name='remove-course-submit' id='Btn' class='btn delete' value='Remove'/>" +
+                    "</div>" +
                 "</form>"
                 + "</div>";
 
                 $('#displayData1').append(rows);
 
 
-                //var $message_use = $("<div>").text($varmessage);    
+                //var $message_use = $("<div>").text($varmessage);
                 //$('#displayData2')
                     //.append($message_use);
 
@@ -341,8 +400,8 @@ $(document).ready( function() {
                 inputs.forEach(input => {
                     input.value = '';
                 });
-                
-            },  
+
+            },
 
             error: function(xhr, status, error, formData){
                 console.error(xhr);
@@ -352,11 +411,11 @@ $(document).ready( function() {
                 inputs.forEach(input => {
                     input.value = '';
                 });
-                
-            }
-            
 
-    });    
+            }
+
+
+    });
 });
 
 /*$('#Btn').click( function(e){

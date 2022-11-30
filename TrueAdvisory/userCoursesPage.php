@@ -55,8 +55,7 @@ require('./backend/informationQuery.php');
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content" style ="background-color: white;">
-
+        <div id="userContent" style ="background-color: white;">
             <nav class="navbar navbar-expand-lg rounded">
                 <div class="container-fluid">
 
@@ -69,27 +68,31 @@ require('./backend/informationQuery.php');
                         &ZeroWidthSpace;<i class="fas fa-align-justify"></i>
                     </button>
 
-                    <div class="menu">
+                    <div class="menu w-100 order-1 order-md-0">
                         <ul>
                         <li><a href="site.php">True Advisory</a></li>
+                        <?php if(isset($_SESSION['loggedin'])){ ?>
+                            <li><a href="userprofileinfo.php">Home</a></li>
+                        <?php }else{ ?>
                           <li><a href="site.php">Home</a></li>
+                        <?php } ?></b></li>
                           <li><a href="classes.php">Courses</a></li>
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
                           <li><a href="#">About</a></li>
-                          <li><a href="#">Other Resources</a></li>
+                          <li><a href="#">Resources</a></li>
                         </ul>
                         <ul>
-                            <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
-                                <a class="login_button" href=".\backend\logout.php" >logout</a>
-                              <?php }else{ ?>
-                                <a class="login_button" href="signin.html">login</a>
-                              <?php } ?></b></li>
+                        <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
+                              <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
+                            <?php }else{ ?>
+                              <a class="login_button" href="signin.html">Sign In</a>
+                            <?php } ?></b></li>
                         </ul>
                         </div> 
                 </div>
             </nav>
-
+            <form action="/action_page.php">
                 <div class="course">
                     <div class="center">
 
@@ -102,18 +105,20 @@ require('./backend/informationQuery.php');
                     <div>
                       <p style ="color: black; font-weight: 600; text-align: left; padding-left: 20px; margin-bottom: 3px;">Tutors:</p>
                       <ul>
-                        <?php
-                          if(empty($theseTutors))
-                          {
-                              echo "There are no tutors for this course.";
-                          }
-                          ?>
                         <?php foreach ($theseTutors as $t) : ?>
                           <li >
-                              <a href=""> 
+                              <a href="#"> 
                                 <?php 
+                                    if(empty($theseTutors))
+                                    {
+                                        echo "There are no tutors for this course.";
+                                    }
+                                    else
+                                    {
+
                                         echo $t['name']; echo $t['email'];
-                                ?>
+                                    }
+                                        ?>
                                 </a>
                           </li>
                           <?php endforeach; ?>
@@ -127,31 +132,21 @@ require('./backend/informationQuery.php');
                         
                         <div class="col-sm-3">
                         <button type="button" class="btn btn-default">
-                            <a href="userDiscussion.php?discussion_id=<?=$user_course_id?>">
-                            View <? $user_course_id ?> Discussion
-                            </a>
+                            <a href="userDiscussion.php?discussion_id=<?php echo $user_course_id;?>" value="View <? $user_course_id ?> Discussion"></a>
                         </button>
-                        </div>
-
-                        <div class="col-sm-3">
                         <form action="./backend/add-courselist.php" method="POST" id="add-to-courselist-form">
-                            <div class="input-group">
-                                <input type="hidden" id="course-c-uid" name="course-c-uid" value="<?=$_SESSION['id'] ?>">
-                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
+                            <div class="input-group-append">
+                                <input type="hidden" id="course-c-uid" name="course-c-uid" value="<?$_SESSION['id'] ?>">
+                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?$user_course_id ?>">
                                 <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Course List"/>
                             </div>
                         </form>
-                        <div>
-                        
-                        
                         <form action="./backend/request-course-update.php" method="POST" id="request-update-form">
-                            <div class="input-group">
-                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
+                            <div class="input-group-append">
+                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<? $user_course_id ?>">
                                 <input type="submit" name="submit" id="submit" class="btn btn-default" value="Update Course"/>
                             </div>
                         </form>
-                       
-
                       <?php 
                         if($_SESSION['tutorPrivileges'] == 1)
                         {
@@ -167,8 +162,6 @@ require('./backend/informationQuery.php');
                         
                     <?php 
                         }
-                        ?>
-                    <?php 
                         if($_SESSION['adminPrivileges'] == 1)
                         {
                     ?>      
@@ -189,18 +182,17 @@ require('./backend/informationQuery.php');
                         
                         <?php
                         }
-                    ?>
+                        ?>
                     </div>
-                  
                 </div>
             
 
                 
         </div>
+        <userCredits class = "center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
+
     </div>
-    <div class="footer">
-        Powered by the University of Michigan - Dearborn and learning in CIS 435
-    </div>
+
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

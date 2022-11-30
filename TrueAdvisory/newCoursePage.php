@@ -90,8 +90,7 @@ if ($_SESSION['adminPrivileges'] != 1) {
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content" style ="background-color: white;">
-
+        <div id="userContent" style ="background-color: white;">
             <nav class="navbar navbar-expand-lg rounded">
                 <div class="container-fluid">
 
@@ -104,37 +103,42 @@ if ($_SESSION['adminPrivileges'] != 1) {
                         &ZeroWidthSpace;<i class="fas fa-align-justify"></i>
                     </button>
 
-                    <div class="menu">
+                    <div class="menu w-100 order-1 order-md-0">
                         <ul>
                         <li><a href="site.php">True Advisory</a></li>
+                        <?php if(isset($_SESSION['loggedin'])){ ?>
+                            <li><a href="userprofileinfo.php">Home</a></li>
+                        <?php }else{ ?>
                           <li><a href="site.php">Home</a></li>
+                        <?php } ?></b></li>
                           <li><a href="classes.php">Courses</a></li>
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
                           <li><a href="#">About</a></li>
-                          <li><a href="#">Other Resources</a></li>
+                          <li><a href="#">Resources</a></li>
                         </ul>
                         <ul>
-                            <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
-                                <a class="login_button" href=".\backend\logout.php" >logout</a>
-                              <?php }else{ ?>
-                                <a class="login_button" href="signin.html">login</a>
-                              <?php } ?></b></li>
+                        <li><b><?php if(isset($_SESSION['loggedin'])){ ?>
+                              <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
+                            <?php }else{ ?>
+                              <a class="login_button" href="signin.html">Sign In</a>
+                            <?php } ?></b></li>
                         </ul>
                         </div> 
                 </div>
             </nav>
             <form action="./backend/create-course-discussion.php" method="POST" id="create-course-form">
                 <div class="course">
-                    <div class="center">
+                    <div class="newCourseInfo">
 
                         <h3 style="text-align:center;">
-                            <input type="text" class="form-control" name="dept" value="Department">
-                            <input type="text" class="form-control" name="c-id" value="Course Identifier (CIS101)">
-                            <input type="text" class="form-control" name="c-name" value="Full Course Name">
+                            <input type="text" class="form-control user-form" name="dept" value="Department">
+                            <input type="text" class="form-control user-form" name="c-id" value="Course Identifier (CIS101)">
+                            <input type="text" class="form-control user-form" name="c-name" value="Full Course Name">
                         </h3>
                     </div>
-                    <input type="textarea" class="form-control" name="desc" value="Enter Course Information Here">
+
+                    <input type="textarea" class="form-control user-form" name="desc" value="Enter Course Information Here" style = "height: 100px; word-wrap: break-word;">
                     <br>                   
                 </div>
                 <div class="center btn-padding">
@@ -143,11 +147,11 @@ if ($_SESSION['adminPrivileges'] != 1) {
                 
             </form>
 
+            <userCredits class = "center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
+
+
           
         </div>
-    </div>
-    <div class="footer">
-        Powered by the University of Michigan - Dearborn and learning in CIS 435
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
