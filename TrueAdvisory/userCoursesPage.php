@@ -136,15 +136,15 @@ require('./backend/informationQuery.php');
                         </button>
                         <form action="./backend/add-courselist.php" method="POST" id="add-to-courselist-form">
                             <div class="input-group-append">
-                                <input type="hidden" id="course-c-uid" name="course-c-uid" value="<?=$_SESSION['id'] ?>">
-                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
+                                <input type="hidden" id="course-c-uid" name="course-c-uid" value="<?$_SESSION['id'] ?>">
+                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?$user_course_id ?>">
                                 <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Course List"/>
                             </div>
                         </form>
                         <form action="./backend/request-course-update.php" method="POST" id="request-update-form">
                             <div class="input-group-append">
-                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<?=$user_course_id ?>">
-                                <input type="submit" name="submit" id="submit" class="btn btn-default" value="Add to Course List"/>
+                                <input type="hidden" id="course-c-cid" name="course-c-cid" value="<? $user_course_id ?>">
+                                <input type="submit" name="submit" id="submit" class="btn btn-default" value="Update Course"/>
                             </div>
                         </form>
                       <?php 

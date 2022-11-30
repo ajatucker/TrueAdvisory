@@ -1,5 +1,2 @@
 RewriteEngine On
-RewriteRule ^home?$ site.html
-RewriteRule ^classes?$ classes.php
-RewriteRule ^discussions?$ discussions.php
-RewriteRule ^tutors?$ tutors.php
+RewriteRule ^?/([0-9]+)$ /classes.php?page=$1
