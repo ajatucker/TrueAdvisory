@@ -110,7 +110,7 @@ $resultDiscussions->closeCursor();
             <h1>TRUE ADVISORY DISCUSSIONS</h1>
             <div class="containera">
                 <div class="contentBox left">
-                  <img src="Images/discussionspic.png" alt="" style="width:464px;height:338px; margin: 10px; margin-right: 100px;">
+                  <img src="Images/discussionspic.png" alt="Discussions icon" style="width:464px;height:338px; margin: 10px; margin-right: 100px;">
                   <div class="hehe">
                     <h3>Have you been trying to get assistance for a class, but there were no tutors available?</h3>
                     <br>
@@ -138,37 +138,37 @@ $resultDiscussions->closeCursor();
                       <div class="card mb-4 box-shadow">
                         <?php if (str_contains ($discussion['courseID'], "CIS")) 
                         { ?>
-                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/CIS.png"  class = "center" alt="CIS icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "MATH")) 
                         { ?>
-                        <img src="images/MATH.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/MATH.png" class = "center" alt="Math icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "ACC")) 
                         { ?>
-                        <img src="images/ACC.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/ACC.png" class = "center" alt="Accounting icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "ENGR")) 
                         { ?>
-                        <img src="images/ENG.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/ENG.png" class = "center" alt="Eng icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "CHEM")) 
                         { ?>
-                        <img src="images/CHEM.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/CHEM.png" class = "center" alt="Chem icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "COMP")) 
                         { ?>
-                        <img src="images/COMP.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/COMP.png" class = "center" alt="Writing icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>

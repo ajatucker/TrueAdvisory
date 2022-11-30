@@ -139,25 +139,25 @@ $resultTutors->closeCursor();
                       <div class="card mb-4 box-shadow">
                         <?php if (str_contains ($tutor['name'], "Jackie")) 
                         { ?>
-                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/CIS.png"  class = "center" alt="Tutors icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($tutor['name'], "Alexis")) 
                         { ?>
-                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/CIS.png"  class = "center" alt="Tutors icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($tutor['name'], "Andrew")) 
                         { ?>
-                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/CIS.png"  class = "center" alt="Tutors icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($tutor['name'], "Omar")) 
                         { ?>
-                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/CIS.png"  class = "center" alt="Tutors icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
