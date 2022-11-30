@@ -21,7 +21,7 @@ if ($cid == null || $cid == false || $desc == null || $desc == false)
     $statementC->execute();
     $statementC->closeCursor();
 
-     $dname = 'Discuss';
+     $dname = 'Discuss ';
      $dname .= $cname;
     // $did = $cid;
 

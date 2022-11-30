@@ -135,10 +135,34 @@ $resultTutors->closeCursor();
             <div class="container" style = "margin-top: 20px; margin-bottom: 40px; padding: 60px;">
               <div class="row">
                 <?php foreach ($currTutors as $tutor) : ?>
-                <div class="col-md-3">
-                  <div class="card mb-4 box-shadow">
+                  <div class="col-md-3" style = "margin-top: 20px">
+                      <div class="card mb-4 box-shadow">
+                        <?php if (str_contains ($tutor['name'], "Jackie")) 
+                        { ?>
+                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <?php
+                        }
+                        ?>
+                         <?php if (str_contains ($tutor['name'], "Alexis")) 
+                        { ?>
+                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <?php
+                        }
+                        ?>
+                         <?php if (str_contains ($tutor['name'], "Andrew")) 
+                        { ?>
+                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <?php
+                        }
+                        ?>
+                         <?php if (str_contains ($tutor['name'], "Omar")) 
+                        { ?>
+                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <?php
+                        }
+                        ?>
+
                     <div class="card-body">
-                      <img src="Images/schoolpics_161.png" alt="Card image tutors" style="width:166px;height:200px;">
                       <p class="card-text">
                         <?php echo $tutor['name'];?>
                         <?php echo $tutor['email'];?>
@@ -157,7 +181,7 @@ $resultTutors->closeCursor();
               </div>
  
               <?php for($page_number = 1; $page_number<= $total_pages; $page_number++) {  
-                  echo '<a href = "tutors.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+                  echo '<a href style = "text-decoration:none; color: inherit" = "tutors.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
               ?>
             </div>
           </div>

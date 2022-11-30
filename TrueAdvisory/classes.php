@@ -140,14 +140,49 @@ $resultCourse->closeCursor();
             <div class="container" style = "margin-top: 20px; margin-bottom: 40px; padding: 60px;">
               <div class="row">
                 <?php foreach ($currCourse as $course) : ?>
-                <div class="col-md-3">
-                  <div class="card mb-4 box-shadow">
-                    <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
+                  <div class="col-md-3" style = "margin-top: 20px">
+                      <div class="card mb-4 box-shadow">
+                        <?php if (str_contains ($course['courseID'], "CIS")) 
+                        { ?>
+                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <?php
+                        }
+                        ?>
+                         <?php if (str_contains ($course['courseID'], "MATH")) 
+                        { ?>
+                        <img src="images/MATH.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <?php
+                        }
+                        ?>
+                         <?php if (str_contains ($course['courseID'], "ACC")) 
+                        { ?>
+                        <img src="images/ACC.png" class = "center"alt="Card image cap" style="width:240px;height:240px;">
+                        <?php
+                        }
+                        ?>
+                         <?php if (str_contains ($course['courseID'], "ENGR")) 
+                        { ?>
+                        <img src="images/ENG.png" class = "center"alt="Card image cap" style="width:240px;height:240px;">
+                        <?php
+                        }
+                        ?>
+                         <?php if (str_contains ($course['courseID'], "CHEM")) 
+                        { ?>
+                        <img src="images/CHEM.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <?php
+                        }
+                        ?>
+                         <?php if (str_contains ($course['courseID'], "COMP")) 
+                        { ?>
+                        <img src="images/COMP.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <?php
+                        }
+                        ?>
                     <div class="card-body">
-                      <p class="card-text"><?php echo $course['courseName'];?></p>
+                      <p class="card-text center" style = "text-align:center"><?php echo $course['courseName'];?></p>
                       <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">
+                        <div class="btn-group center">
+                          <button type="button" class="btn btn-sm btn-outline-secondary center">
                               <a href="userCoursesPage.php?course_id=<?php echo $course['courseID'];?>" >View</a>
                             </button>
                         </div>
@@ -159,13 +194,13 @@ $resultCourse->closeCursor();
                   
               </div>
               <?php for($page_number = 1; $page_number<= $total_course_pages; $page_number++) {  
-                echo '<a href = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+                echo '<a href style = "text-decoration:none; color: inherit" = "classes.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
                 ?>
                 <br>
                 <?php 
                         if(isset($_SESSION['adminPrivileges']) && $_SESSION['adminPrivileges'] == 1)
                         {
-                            echo '<button type="button" class="btn btn-sm btn-outline-secondary">
+                            echo '<button type="button" class="btn btn-sm btn-outline-secondary center" style = "width:20%">
                             <a href="newCoursePage.php">Add course</a>
                             </button>';
                         }

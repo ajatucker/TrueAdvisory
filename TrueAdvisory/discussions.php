@@ -138,52 +138,41 @@ $resultDiscussions->closeCursor();
                       <div class="card mb-4 box-shadow">
                         <?php if (str_contains ($discussion['courseID'], "CIS")) 
                         { ?>
-                        <img src="Images/schoolpics_03.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "MATH")) 
                         { ?>
-                        <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/MATH.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "ACC")) 
                         { ?>
-                        <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/ACC.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "ENGR")) 
                         { ?>
-                        <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/ENG.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "CHEM")) 
                         { ?>
-                        <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
-                        <?php
-                        }
-                        ?>
-                         <?php if (str_contains ($discussion['courseID'], "ENG")) 
-                        { ?>
-                        <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/CHEM.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($discussion['courseID'], "COMP")) 
                         { ?>
-                        <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/COMP.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
-                         <?php if (str_contains ($discussion['courseID'], "ACC")) 
-                        { ?>
-                        <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
-                        <?php
-                        }
-                        ?>
+                   
 
 
                         <div class="card-body">
@@ -203,7 +192,7 @@ $resultDiscussions->closeCursor();
               </div>
  
               <?php for($page_number = 1; $page_number<= $total_pages; $page_number++) {  
-                  echo '<a href = "discussions.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
+                  echo '<a href  style = "text-decoration:none; color: inherit" = "discussions.php?page=' . $page_number . '">' . $page_number . ' </a>';  }    
               ?>
             </div>
           </div> 
