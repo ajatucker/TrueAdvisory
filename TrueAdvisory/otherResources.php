@@ -44,8 +44,8 @@ session_start();
                         <li><a href="classes.php">Courses</a></li>
                         <li><a href="discussions.php">Discussions</a></li>
                         <li><a href="tutors.php">Tutoring</a></li>
-                        <li><a href="aboutUs.html">About</a></li>
-                        <li><a href="otherResources.html">Resources</a></li>
+                        <li><a href="aboutUs.php">About</a></li>
+                        <li><a href="otherResources.php">Resources</a></li>
                       <li><b style="position:absolute; right:0;top:1;margin-right: 80px; margin-left:40px"><?php if(isset($_SESSION['loggedin'])){ ?>
                         <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
                       <?php }else{ ?>
@@ -65,7 +65,7 @@ session_start();
                 <li><a href="https://umdearborn.edu/students">University of Michigan - Dearborn Student Portal</a></li>
                 <li><a href="https://umdearborn.edu/academic-advising">University of Michigan - Dearborn Advising</a></li>
               </ul>
-              <img src="images/goblue.png" alt="UMD logo" class="classordisimg center" style="width:288px;height:355px;margin-top:20px;" >
+              <img src="images/goblue.png" alt="The university picture" class="classordisimg center" style="width:288px;height:355px;margin-top:20px;" >
               <credits>Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
             </div>
         </div>

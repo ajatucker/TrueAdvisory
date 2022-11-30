@@ -36,8 +36,8 @@
                             <li><a href="courses.html">Courses</a></li>
                             <li><a href="discussions.html">Discussions</a></li>
                             <li><a href="tutors.html">Tutoring</a></li>
-                            <li><a href="aboutUs.html">About</a></li>
-                            <li><a href="otherResources.html">Resources</a></li>
+                            <li><a href="aboutUs.php">About</a></li>
+                            <li><a href="otherResources.php">Resources</a></li>
                             <li><b style="position:absolute; right:0;top:1;margin-right: 80px; margin-left:40px"><a href="signin.html" class="login_button">Sign In</a></b></li>
                             </ul>
                         </div>

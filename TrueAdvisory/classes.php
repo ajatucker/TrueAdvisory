@@ -99,8 +99,8 @@ $resultCourse->closeCursor();
                           <li><a href="classes.php">Courses</a></li>
                           <li><a href="discussions.php">Discussions</a></li>
                           <li><a href="tutors.php">Tutoring</a></li>
-                          <li><a href="aboutUs.html">About</a></li>
-                          <li><a href="otherResources.html">Resources</a></li>
+                          <li><a href="aboutUs.php">About</a></li>
+                          <li><a href="otherResources.php">Resources</a></li>
                         <li><b style="position:absolute; right:0;top:1;margin-right: 80px; margin-left:40px"><?php if(isset($_SESSION['loggedin'])){ ?>
                           <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
                         <?php }else{ ?>
@@ -116,7 +116,7 @@ $resultCourse->closeCursor();
             <h1>TRUE ADVISORY COURSES</h1>
             <div class="containera">   
               <div class="contentBox right">
-                <img src="Images/classespic.png" alt="" style="width:288px;height:355px;margin-top:20px; margin-left: 100px">
+                <img src="Images/classespic.png" alt="Classes Icon" style="width:288px;height:355px;margin-top:20px; margin-left: 100px">
                 <div class="hehe">
                   <h3>Have you been frustrated trying to find information on a class you're considering registering for? &lrm;</h3>
                   <br>
@@ -144,37 +144,37 @@ $resultCourse->closeCursor();
                       <div class="card mb-4 box-shadow">
                         <?php if (str_contains ($course['courseID'], "CIS")) 
                         { ?>
-                        <img src="images/CIS.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/CIS.png"  class = "center" alt="Computer Science icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($course['courseID'], "MATH")) 
                         { ?>
-                        <img src="images/MATH.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/MATH.png" class = "center" alt="Math icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($course['courseID'], "ACC")) 
                         { ?>
-                        <img src="images/ACC.png" class = "center"alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/ACC.png" class = "center"alt="Accounting icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($course['courseID'], "ENGR")) 
                         { ?>
-                        <img src="images/ENG.png" class = "center"alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/ENG.png" class = "center"alt="Engr icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($course['courseID'], "CHEM")) 
                         { ?>
-                        <img src="images/CHEM.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/CHEM.png" class = "center" alt="Chem icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
                          <?php if (str_contains ($course['courseID'], "COMP")) 
                         { ?>
-                        <img src="images/COMP.png" class = "center" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="images/COMP.png" class = "center" alt="Writing icon" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
