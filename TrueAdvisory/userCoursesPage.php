@@ -128,12 +128,10 @@ require('./backend/informationQuery.php');
         
                     </div>
                     <div class="row">
-                        <div class="center btn-padding">
+                        <div class="center btn-padding" style="display: flex !important;">
                         
-                        <div class="col-sm-3">
-                        <button type="button" class="btn btn-default">
-                            <a href="userDiscussion.php?discussion_id=<?php echo $user_course_id;?>" value="View <? $user_course_id ?> Discussion"></a>
-                        </button>
+                        
+
                         <form action="./backend/add-courselist.php" method="POST" id="add-to-courselist-form">
                             <div class="input-group-append">
                                 <input type="hidden" id="course-c-uid" name="course-c-uid" value="<?=$_SESSION['id'] ?>">
@@ -187,9 +185,9 @@ require('./backend/informationQuery.php');
                 </div>
             
 
-                
+                <userCredits class = "center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
+
         </div>
-        <userCredits class = "center">Powered by the University of Michigan - Dearborn and Learning in CIS 435</credits>
 
     </div>
 

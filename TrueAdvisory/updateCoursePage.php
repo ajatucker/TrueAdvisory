@@ -28,7 +28,7 @@ $courseStmt->closeCursor();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>True Advisory - User Home</title>
+    <title>True Advisory - Update Course</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -40,18 +40,19 @@ $courseStmt->closeCursor();
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/h4q44g5dcbtjoz0xm3jwlzejtvv39ixmrzziivdtex66c6ke/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
       tinymce.init({
-        selector: 'textarea#tiny',
-        max_height: 215,
+        selector: 'textarea#message',
+        
+        max_height: 275,
         max_width: 1200
             ,plugins: [
-            'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+            'textcolor','a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
             'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
             'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
             ],
-            toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
+            toolbar: 'forecolor backcolor| undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
             'bullist numlist checklist outdent indent | removeformat | code table help'
       })
     </script>
@@ -120,11 +121,11 @@ $courseStmt->closeCursor();
                         <?php }else{ ?>
                           <li><a href="site.php">Home</a></li>
                         <?php } ?></b></li>
-                          <li><a href="classes.php">Courses</a></li>
-                          <li><a href="discussions.php">Discussions</a></li>
-                          <li><a href="tutors.php">Tutoring</a></li>
-                          <li><a href="#">About</a></li>
-                          <li><a href="#">Resources</a></li>
+                            <li><a href="classes.php">Courses</a></li>
+                            <li><a href="discussions.php">Discussions</a></li>
+                            <li><a href="tutors.php">Tutoring</a></li>
+                            <li><a href="aboutUs.php">About</a></li>
+                            <li><a href="otherResources.php">Resources</a></li>
                         </ul>
                         <ul>
                         <li><b><?php if(isset($_SESSION['loggedin'])){ ?>

@@ -63,7 +63,7 @@ $courseRequestStmt->closeCursor();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>True Advisory - User Home</title>
+    <title>True Advisory - Admin Home</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -150,11 +150,11 @@ $courseRequestStmt->closeCursor();
                         <?php }else{ ?>
                           <li><a href="site.php">Home</a></li>
                         <?php } ?></b></li>
-                          <li><a href="classes.php">Courses</a></li>
-                          <li><a href="discussions.php">Discussions</a></li>
-                          <li><a href="tutors.php">Tutoring</a></li>
-                          <li><a href="#">About</a></li>
-                          <li><a href="#">Resources</a></li>
+                        <li><a href="classes.php">Courses</a></li>
+                        <li><a href="discussions.php">Discussions</a></li>
+                        <li><a href="tutors.php">Tutoring</a></li>
+                        <li><a href="aboutUs.php">About</a></li>
+                        <li><a href="otherResources.php">Resources</a></li>
                         </ul>
                         <ul>
                         <li><b><?php if(isset($_SESSION['loggedin'])){ ?>

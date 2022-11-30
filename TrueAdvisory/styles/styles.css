@@ -447,7 +447,7 @@ credits {
 }
 
 userCredits {
-  margin-top: 60px;
+  margin-top: 80px;
   margin-bottom: 20px;
   background-color: #00274C;
   color: #fff;
@@ -1046,26 +1046,6 @@ footer p {
   height: 100%;
   padding: 0;
   vertical-align: top;
-}
-
-.chat-room .kiri-side {
-  width: 20%;
-  background: #e5e8ef;
-  border-radius: 4px 0 0 4px;
-  -webkit-border-radius: 4px 0 0 4px;
-}
-.chat-room .tengah-side {
-  width: 80%;
-  background: #fff;
-  border-right: 1px solid #e5e8ef;
-  border-bottom: 1px solid #e5e8ef;
-}
-
-.chat-room .kanan-side {
-  width: 20%;
-  background: #fff;
-  border-right: 1px solid #e5e8ef;
-  border-bottom: 1px solid #e5e8ef;
 }
 
 .chat-room .currUser-head {

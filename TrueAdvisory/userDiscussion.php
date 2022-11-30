@@ -186,7 +186,7 @@ $discuss->closeCursor();
                 </div>
             </nav>
                 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-                <div class="container-fluid bootstrap snippets bootdey.com " style = " max-width: auto; width: 95%;  margin-left: auto; margin-right: auto;">
+                <div class="container-fluid bootstrap snippets bootdey.com " style = " max-width: auto; width: 95%;  margin-left: auto; margin-right: auto; margin-bottom: 50px;">
                     <div class="row " >
                         <div class="col-md-18"  >
                         <!-- start:chat room -->
