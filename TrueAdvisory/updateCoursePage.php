@@ -142,14 +142,14 @@ $courseStmt->closeCursor();
             </h5>
             <form action="./backend/update-course.php" method="POST" id="update-course-form">
                 <div class="course">
-                    <div style= "width: 50%;">
+                    <div style= "width: 60%;">
                         <h3 style="text-align:center;">
-                            <input type="hidden" class="form-control" name="cid" value="<?= $ucid ?>">
-                            <input type="text" class="form-control" name="n_dept" value="<?=$uCourse['department'] ?>">
-                            <input type="text" class="form-control" name="n_c_name" value="<?=$uCourse['courseName'] ?>">
+                            <input type="hidden" class="form-control user-form" name="cid" value="<?= $ucid ?>">
+                            <input type="text" class="form-control user-form" name="n_dept" value="<?=$uCourse['department'] ?>">
+                            <input type="text" class="form-control user-form" name="n_c_name" value="<?=$uCourse['courseName'] ?>">
                         </h3>
                     </div>
-                    <input type="textarea" class="form-control" style = "height: 100px;" name="n_desc" value="<?=$uCourse['description'] ?>">
+                    <input type="textarea" class="form-control" style = "height: 100px; width: 80%;" name="n_desc" value="<?=$uCourse['description'] ?>">
                     <br>                   
                 </div>
                 <div class="center btn-padding">
