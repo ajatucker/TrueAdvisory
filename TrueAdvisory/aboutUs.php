@@ -1,3 +1,10 @@
+<?php
+require('./backend/database.php');
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +43,11 @@
                           <li><a href="tutors.php">Tutoring</a></li>
                           <li><a href="aboutUs.html">About</a></li>
                           <li><a href="otherResources.html">Resources</a></li>
-                      <li><b style="position:absolute; right:0;top:1;margin-right: 80px; margin-left:40px"><a href="signin.html" class="login_button">Sign In</a></b></li>
+                          <li><b style="position:absolute; right:0;top:1;margin-right: 80px; margin-left:40px"><?php if(isset($_SESSION['loggedin'])){ ?>
+                          <a class="login_button" href=".\backend\logout.php" >Sign Out</a>
+                        <?php }else{ ?>
+                          <a class="login_button" href="signin.html">Sign In</a>
+                        <?php } ?></b></li>
                     </ul>
                   </div>
                 </div>
