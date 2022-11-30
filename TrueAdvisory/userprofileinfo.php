@@ -154,7 +154,7 @@ require_once('./backend/informationQuery.php');
                             </p>
                             <form action="./backend/edit-name.php" method="POST" id="edit-name-form">
                                 <div class="d-flex justify-content-between align-items-center">
-                                <label for="edit-name" class="input-group" style = "margin-top: 15px;">
+                                <label for="edit-name" class="input-group user-form" >
                                 <input type="text" style = "margin-top:10px" class="form-control" name="edit-name" value="<?=$user['name'] ?>">
                                     <div class="input-group-append">
                                         <input type="submit" style = "margin-top:10px" name="name-submit" id="name-submit" class="btn btn-outline-secondary" value="Edit"/>                                                
@@ -178,7 +178,7 @@ require_once('./backend/informationQuery.php');
                             </p>
                             <form action="./backend/edit-pw.php" method="POST" id="edit-password-form">
                                 <div class="d-flex justify-content-between align-items-center">
-                                <label for="password" class="input-group" style = "margin-top: 15px;">
+                                <label for="password" class="input-group user-form">
                                 <input type="password" style = "margin-top:10px" class="form-control" name="edit-pw" value="******************************">
                                             <div class="input-group-append">
                                                 <input type="submit" style = "margin-top:10px" name="pw-submit" id="pw-submit" class="btn btn-outline-secondary" value="Edit"/>
@@ -200,7 +200,7 @@ require_once('./backend/informationQuery.php');
                             </p>
                             <form action="./backend/edit-major.php" method="POST" id="edit-major-form">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <label for="edit-new-major" class="input-group" style = "margin-top: 10px;">
+                                    <label for="edit-new-major" class="input-group user-form" style = "margin-top: 10px;">
                                             <input type="text" style = "margin-top:10px" class="form-control" name="edit-new-major" value="<?=$user['major']?>">
                                             <div class="input-group-append">
                                                 <input type="submit" style = "margin-top:10px" name="major-submit" id="major-submit" class="btn btn-outline-secondary" value="Edit"/>

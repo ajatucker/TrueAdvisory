@@ -128,13 +128,13 @@ if ($_SESSION['adminPrivileges'] != 1) {
                     <div class="newCourseInfo">
 
                         <h3 style="text-align:center;">
-                            <input type="text" class="form-control" name="dept" value="Department">
-                            <input type="text" class="form-control" name="c-id" value="Course Identifier (CIS101)">
-                            <input type="text" class="form-control" name="c-name" value="Full Course Name">
+                            <input type="text" class="form-control user-form" name="dept" value="Department">
+                            <input type="text" class="form-control user-form" name="c-id" value="Course Identifier (CIS101)">
+                            <input type="text" class="form-control user-form" name="c-name" value="Full Course Name">
                         </h3>
                     </div>
 
-                    <input type="textarea" class="form-control" name="desc" value="Enter Course Information Here" style = "height: 100px; word-wrap: break-word;">
+                    <input type="textarea" class="form-control user-form" name="desc" value="Enter Course Information Here" style = "height: 100px; word-wrap: break-word;">
                     <br>                   
                 </div>
                 <div class="center btn-padding">

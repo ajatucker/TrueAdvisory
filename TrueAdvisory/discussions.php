@@ -134,7 +134,7 @@ $resultDiscussions->closeCursor();
                       <div class="card mb-4 box-shadow">
                         <?php if (str_contains ($discussion['courseID'], "CIS")) 
                         { ?>
-                        <img src="Images/schoolpics_03.png" alt="Card image cap" style="width:240px;height:240px;">
+                        <img src="Images/schoolpics_03.png"  class = "center" alt="Card image cap" style="width:240px;height:240px;">
                         <?php
                         }
                         ?>
@@ -183,10 +183,10 @@ $resultDiscussions->closeCursor();
 
 
                         <div class="card-body">
-                          <p class="card-text"><?php echo $discussion['discussionName'];?></p>
+                          <p class="card-text center" style = " text-align: center" ><?php echo $discussion['discussionName'];?></p>
                           <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary">
+                            <div class="btn-group center">
+                              <button type="button" class="btn btn-sm btn-outline-secondary center">
                                   <a href="userDiscussion.php?discussion_id=<?php echo $discussion['discussionID'];?>" >View</a>
                                 </button>
                         </div>

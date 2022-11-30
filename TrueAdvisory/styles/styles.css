@@ -72,6 +72,13 @@ a, a:visited{
     margin: 40px 0;
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  }
+
 .menu{
   width:auto;
   display: flex;
@@ -269,6 +276,10 @@ display: block;
 margin-left: auto;
 margin-right: auto;
 width: 50%;
+}
+
+.user-form {
+  margin-top: 15px;
 }
 
 #content  {

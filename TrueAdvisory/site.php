@@ -13,7 +13,7 @@ session_start();
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -33,7 +33,7 @@ session_start();
                 <div class="menu">
                   <div class="row">
                     <div class="col-xs-1">
-                      <img src="Images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
+                      <img src="images/UMDLOGO.png" alt="UMD logo" class=" umdlogo">
                       <ul>
                       <li><a href="site.php">True Advisory</a></li>
                           <li><a href="site.php">Home</a></li>
