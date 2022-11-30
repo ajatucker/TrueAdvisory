@@ -55,6 +55,10 @@ $discuss->bindValue(':discussion_id', $discussion_id);
 $discuss->execute();
 $message = $discuss->fetchAll();
 $discuss->closeCursor();
+
+
+//$url1=$_SERVER['REQUEST_URI'];
+//header("Refresh: 5; URL=$url1");
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +96,6 @@ $discuss->closeCursor();
     </script>
 </head>
     
-
 
 <body>
 
@@ -197,9 +200,8 @@ $discuss->closeCursor();
                                     <input type="text" placeholder="Search" class="form-control search-btn" style="background-color: #fccc01;">
                                 </form>
                             </div>
-                            <div class = "scroll">
+                            <div class = "scroll" id='div1'>
                                 <?php
-                                
                                     foreach ($message as $messageType){
                                         $findID = $messageType['id'];
 
@@ -280,17 +282,30 @@ $discuss->closeCursor();
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     
 <script>
+
+setInterval(function() {
+$("#div1").load(location.href+" #div1>*","");
+}, 100);
+
 $(document).ready( function() {
 
     $('#send').click( function(e) {
         e.preventDefault();
         //e.stopPropagation();
         let formData = $('#sendMessage').serialize();
- 
+
+        $.ajaxSetup ({
+                 cache: false
+            });
+
+        // specify the server/url you want to load data from
+        
         $.ajax({
+            
             method: "POST",
             url: './backend/messageSend.php',
             data: formData,
+            
             success: function(formdata){
                 //console.log('success');
                 //$('.displayData').html(formData);
@@ -298,6 +313,7 @@ $(document).ready( function() {
                 $varname = $('#name').val();
                 $varmessageid = $('#messageID').val();
                 $vardiscussionid = $('#discussionID').val();
+                //var url = "http://trueadvisory.fall2022web.tech/userDiscussion.php?discussion_id="+$vardiscussionid;
 
                 //var $name_use = $('<div>').text($varname);
 
@@ -339,6 +355,7 @@ $(document).ready( function() {
                 
             }
             
+
     });    
 });
 
