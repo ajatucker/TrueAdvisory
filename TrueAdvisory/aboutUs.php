@@ -60,7 +60,7 @@ session_start();
             <div class="containera">
               
               <div class="aboutBox right">
-                  <img src="./images/Alexis.HEIC" alt="Alexis Picture" class="center">
+                  <img src="./images/Alexis.HEIC" alt="" class="center">
                   <div class="hehe">
                     <h3>Alexis Tucker</h3>
                   
@@ -84,9 +84,9 @@ session_start();
               <div class="line"></div>
 
               <div class="aboutBox left">
-                  <img src="./images/Omar.jpg" alt="Andrew Picture" class="center">
+                  <img src="./images/Omar.jpg" alt="" class="center">
                   <div class="hehe">
-                    <h3>Andrew Pearson</h3>
+                    <h3>Omar Alabdali</h3>
                   
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum delectus harum quisquam v
                       ero fuga in saepe iste reprehenderit aspernatur? Dolorem, quibusdam?
@@ -108,9 +108,9 @@ session_start();
               <div class="line"></div>
 
               <div class="aboutBox right">
-                <img src="./images/Alexis.HEIC" alt="Jacquelyn Picture" class="center">
+                <img src="./images/Alexis.HEIC" alt="" class="center">
                 <div class="hehe">
-                  <h3>Jacquelyn Dutzy</h3>
+                  <h3>Alexis Tucker</h3>
                 
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum delectus harum quisquam v
                     ero fuga in saepe iste reprehenderit aspernatur? Dolorem, quibusdam?
@@ -132,7 +132,7 @@ session_start();
             <div class="line"></div>
 
             <div class="aboutBox left">
-                <img src="./images/Omar.jpg" alt="Omar Picture" class="center">
+                <img src="./images/Omar.jpg" alt="" class="center">
                 <div class="hehe">
                   <h3>Omar Alabdali</h3>
                 
