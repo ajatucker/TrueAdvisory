@@ -1,5 +1,5 @@
 # TrueAdvisory
-[TrueAdvisory logo](images/logo.png)<br>
+![TrueAdvisory logo](https://github.com/ajatucker/TrueAdvisory/blob/final-master/images/logo.png)<br>
 True Advisory is a one-stop shop for tutoring and class discussion. 
 Add your courses to your course list, and you can see the class discussion and available resources for that class. 
 Users can submit updates to the page if the information is outdated, especially so students can stay up-to-date with what they need to succeed. 
