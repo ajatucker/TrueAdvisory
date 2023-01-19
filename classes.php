@@ -39,22 +39,6 @@ $resultCourse->closeCursor();
 
 // Get ID
 
-
-    //display the retrieved result on the webpage  
-
-    // while ($row = mysqli_fetch_array($result)) {  
-
-    //     echo $row['ID'] . ' ' . $row['Country'] . '</br>';  
-
-    // }  
- 
-// Get all discussions
-#$queryAllCategories = 'SELECT * FROM discussions';
-// $statement2 = $db->prepare($queryAllCategories);
-// $statement2->execute();
-// $discussions = $statement2->fetchAll();
-// $statement2->closeCursor();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

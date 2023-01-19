@@ -36,14 +36,6 @@ $statementDiscussions->execute();
 $discussions = $statementDiscussions->fetch();
 $statementDiscussions->closeCursor();
 
-/*$user_list = filter_input(INPUT_GET, 'name');
-
-$queryAllCategoriesUserList = 'SELECT * FROM user';
-$statementUserList = $db->prepare($queryAllCategoriesUserList);
-$statementUserList->execute();
-$userList = $statementUserList->fetch();
-$statementUserList->closeCursor();*/
-
 $message_id = filter_input(INPUT_GET, 'messageID', FILTER_VALIDATE_INT);
 if ($message_id == NULL || $message_id == FALSE) {
     $message_id = 0;
@@ -56,9 +48,6 @@ $discuss->execute();
 $message = $discuss->fetchAll();
 $discuss->closeCursor();
 
-
-//$url1=$_SERVER['REQUEST_URI'];
-//header("Refresh: 5; URL=$url1");
 ?>
 
 <!DOCTYPE html>

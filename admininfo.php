@@ -2,7 +2,6 @@
 require_once('./backend/database.php');
 require_once('./backend/informationQuery.php');
 
-// We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
@@ -12,7 +11,6 @@ if (!isset($_SESSION['loggedin'])) {
 
 $user_id = $_SESSION['id'];
 $email = $_SESSION['email'];
-//$major = $_SESSION['major'];
 
 // We don't have the password or email info stored in sessions so instead we can get the results from the database.
 $queryUser = 'SELECT * FROM user WHERE id = :user_id';
@@ -34,14 +32,6 @@ $userTutoringStmt->bindValue(':user_id', $user_id);
 $userTutoringStmt->execute();
 $currTutoring = $userTutoringStmt->fetchAll();
 $userTutoringStmt->closeCursor();
-
-/*$sbDiscussStmt = $db->prepare('SELECT * FROM discussions WHERE courseID=(SELECT courseID FROM usercourselist WHERE (id = :user_id))');
-$sbDiscussStmt->bindValue(':user_id', $user_id);
-$sbDiscussStmt->execute();
-$currDiscussions = $sbDiscussStmt->fetchAll();
-$sbDiscussStmt->closeCursor();*/
-
-#$sbTutorStmt = $db->prepare('SELECT * FROM user WHERE id=(SELECT id FROM usercourselist WHERE (id = :user_id))');
 
 $tutorRequestStmt = $db->prepare('SELECT * FROM user WHERE tutorPrivileges=2');
 $tutorRequestStmt->execute();
