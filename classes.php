@@ -63,8 +63,6 @@ $resultCourse->closeCursor();
 <body>
  
     <div class="wrapper">
-       
-
         <!-- Page Content Holder -->
         <div id="content">
             <nav class="navbar navbar-expand-lg rounded">

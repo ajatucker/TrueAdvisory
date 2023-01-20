@@ -36,7 +36,7 @@ require('./backend/informationQuery.php');
                     <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Course List</a>
                     <ul class="collapse list-unstyled" id="courseSubmenu">
                     <?php foreach ($currCourse as $course) : ?>
-                            <a href="classes.php">
+                            <a href="userCoursesPage.php?course_id=">
                                 <?php echo $course['courseID'];?>        
                             </a>
                             <?php endforeach; ?>
