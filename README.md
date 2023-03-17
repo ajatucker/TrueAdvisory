@@ -6,3 +6,9 @@ Users can submit updates to the page if the information is outdated, especially 
 There are a few problems that True Advisory seeks to solve. Currently important resources are scattered around the main UMD website. 
 Depending on the major, there is often a lack of resources. Tutoring is scarce, and it can be hard to find help. 
 This site seeks to be somewhat of a self-moderating ecosystem where students, admins, and tutors request or update information as needed.
+
+The main menu should appear:
+
+![TrueAdvisory logo](https://github.com/ajatucker/TrueAdvisory/blob/final-master/images/home-page.jpeg)<br>
+
+There are also some extraneous pages that allow admin users to add courses.
